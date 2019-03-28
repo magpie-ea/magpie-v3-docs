@@ -1,0 +1,7 @@
+site_name: _babe documentation 
+nav:
+    - Experiments (basics): basics.md
+    - Complex experiments: complex.md
+    - Server app: server_app.md
+    - About: about.md
+theme: readthedocs
