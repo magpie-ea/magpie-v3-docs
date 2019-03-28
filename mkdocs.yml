@@ -3,5 +3,6 @@ nav:
     - Experiments (basics): basics.md
     - Complex experiments: complex.md
     - Server app: server_app.md
+    - Deployment: deployment.md
     - About: about.md
 theme: readthedocs
