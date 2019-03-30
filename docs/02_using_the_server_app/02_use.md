@@ -7,7 +7,6 @@ experiment is set to be active, it allows further submissions to be recorded in 
 database.
 
 <img src="../../images/server_app_screen.png" width="100%">
-![Screenshot](../../images/server_app_screen.png)
 
 The server app allows you to retrieve the data for an experiment from the database. Simply
 click on the button "Retrieve CSV" to download a CSV-file with the data collected so far.

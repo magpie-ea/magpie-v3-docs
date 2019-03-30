@@ -4,21 +4,21 @@ There are two types of views: trial type and wrapping views.
 **Template trial views defined in _babe:**
 
 * babeViews.forcedChoice
-    * [image of the view](../images/views_samples/view_fc.png)
+    * [image of the view](../../images/views_samples/view_fc.png)
 * babeViews.sliderRating
-    * [image of the view](../images/views_samples/view_sr.png)
+    * [image of the view](../../images/views_samples/view_sr.png)
 * babeViews.dropdownChoice
-    * [image of the view](../images/views_samples/view_dc.png)
+    * [image of the view](../../images/views_samples/view_dc.png)
 * babeViews.textboxInput
-    * [image of the view](../images/views_samples/view_ti.png)
+    * [image of the view](../../images/views_samples/view_ti.png)
 * babeViews.ratingScale
-    * [image of the view](../images/views_samples/view_rc.png)
+    * [image of the view](../../images/views_samples/view_rc.png)
 * babeViews.imageSelection
-    * [image of the view](../images/views_samples/view_is.png)
+    * [image of the view](../../images/views_samples/view_is.png)
 * babeViews.sentenceChoice
-    * [image of the view](../images/views_samples/view_ss.png)
+    * [image of the view](../../images/views_samples/view_ss.png)
 * babeViews.keyPress
-    * [image of the view](../images/views_samples/view_kp.png)
+    * [image of the view](../../images/views_samples/view_kp.png)
 * babeViews.selfPacedReading
 * babeViews.selfPacedReading_ratingScale
 
@@ -150,7 +150,7 @@ There are two types of views: trial type and wrapping views.
 
 ### Forced-choice task
 
-[image of the view](../images/views_samples/view_fc.png)
+[image of the view](../../images/views_samples/view_fc.png)
 
 #### Data properties
 
@@ -184,7 +184,7 @@ const forced_choice_trials = [
 
 ### Textbox Input task
 
-[image of the view](../images/views_samples/view_ti.png)
+[image of the view](../../images/views_samples/view_ti.png)
 
 #### Data properties
 
@@ -217,7 +217,7 @@ const textbox_input_trials = [
 
 ### Slider Rating task
 
-[image of the view](../images/views_samples/view_sr.png)
+[image of the view](../../images/views_samples/view_sr.png)
 
 #### Data properties
 
@@ -251,7 +251,7 @@ const slider_rating_trials = [
 
 ### Dropdown Choice task
 
-[image of the view](../images/views_samples/view_dc.png)
+[image of the view](../../images/views_samples/view_dc.png)
 
 
 #### Data properties
@@ -287,7 +287,7 @@ const dropdown_choice_trials = [
 
 ### Rating Scale task
 
-[image of the view](../images/views_samples/view_rc.png)
+[image of the view](../../images/views_samples/view_rc.png)
 
 #### Data properties
 
@@ -321,7 +321,7 @@ const rating_scale_trials = [
 
 ### Sentence Choice task
 
-[image of the view](../images/views_samples/view_ss.png)
+[image of the view](../../images/views_samples/view_ss.png)
 
 
 #### Data properties
@@ -361,7 +361,7 @@ const sentence_choice_trials = [
 
 ### Image Selection task
 
-[image of the view](../images/views_samples/view_is.png)
+[image of the view](../../images/views_samples/view_is.png)
 
 
 #### Data properties
@@ -399,7 +399,7 @@ const image_selection_trials = [
 
 ### Key Press task
 
-[image of the view](../images/views_samples/view_kp.png)
+[image of the view](../../images/views_samples/view_kp.png)
 
 
 #### Data properties
@@ -679,7 +679,7 @@ If not passed the canvas's
 ## Samples
 
 ### 1
-<img src='../images/canvas_samples/samples_1.png' alt='sample' height='auto' width='500' />
+<img src='../../images/canvas_samples/samples_1.png' alt='sample' height='auto' width='500' />
 
 ```
 canvas: {
@@ -703,7 +703,7 @@ canvas: {
 ```
 
 ### 2
-<img src='../images/canvas_samples/samples_2.png' alt='sample' height='auto' width='500' />
+<img src='../../images/canvas_samples/samples_2.png' alt='sample' height='auto' width='500' />
 
 ```
 canvas: {
@@ -725,7 +725,7 @@ canvas: {
 ```
 
 ### 3
-<img src='../images/canvas_samples/samples_3.png' alt='sample' height='auto' width='500' />
+<img src='../../images/canvas_samples/samples_3.png' alt='sample' height='auto' width='500' />
 
 ```
 canvas: {
@@ -741,7 +741,7 @@ canvas: {
 ```
 
 ### 4
-<img src='../images/canvas_samples/samples_4.png' alt='sample' height='auto' width='500' />
+<img src='../../images/canvas_samples/samples_4.png' alt='sample' height='auto' width='500' />
 
 ```
 canvas: {
@@ -760,7 +760,7 @@ canvas: {
 ```
 
 ### 5
-<img src='../images/canvas_samples/samples_5.png' alt='sample' height='auto' width='500' />
+<img src='../../images/canvas_samples/samples_5.png' alt='sample' height='auto' width='500' />
 
 ```
 canvas: {
@@ -780,7 +780,7 @@ canvas: {
 ```
 
 ### 6
-<img src='../images/canvas_samples/samples_6.png' alt='sample' height='auto' width='500' />
+<img src='../../images/canvas_samples/samples_6.png' alt='sample' height='auto' width='500' />
 
 ```
 canvas: {
@@ -802,7 +802,7 @@ canvas: {
 ```
 
 ### 7
-<img src='../images/canvas_samples/samples_7.png' alt='sample' height='auto' width='500' />
+<img src='../../images/canvas_samples/samples_7.png' alt='sample' height='auto' width='500' />
 
 ```
 canvas: {

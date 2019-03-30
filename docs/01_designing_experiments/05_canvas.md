@@ -4,15 +4,15 @@ babe provides three types of element plcement:
 
 1. **random placement**
 
-<img src='../images/canvas_samples/random.png' alt='random placement example' height='auto' width='600' />
+<img src='../../images/canvas_samples/random.png' alt='random placement example' height='auto' width='600' />
 
 2. **grid placement**
 
-<img src='../images/canvas_samples/grid.png' alt='grid placement example' height='auto' width='600' />
+<img src='../../images/canvas_samples/grid.png' alt='grid placement example' height='auto' width='600' />
 
 3. **split grid placement**
 
-<img src='../images/canvas_samples/split_grid.png' alt='split grid placement example' height='auto' width='600' />
+<img src='../../images/canvas_samples/split_grid.png' alt='split grid placement example' height='auto' width='600' />
 
 
 ## How to use babe canvas
