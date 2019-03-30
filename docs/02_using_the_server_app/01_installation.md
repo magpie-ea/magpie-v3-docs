@@ -1,3 +1,5 @@
+[TOC]
+
 # Installation
 
 ## Installation on Heroku

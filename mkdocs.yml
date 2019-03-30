@@ -7,4 +7,9 @@ nav:
     - Miscellaneous: 05_miscellaneous.md
     - Development: 06_development.md
     - About: 07_about.md
-theme: readthedocs
+site_description: documentation of _babe (basic architecture for browser-based experiments)
+site_author: Michael Franke
+copyright: MIT license
+markdown_extensions:
+    - toc:
+        baselevel: 2
