@@ -1,5 +1,3 @@
-[TOC]
-
 To get the development version of the \_babe package, clone this repository and install the dependencies by running `npm install` in the terminal.
 
 ### Workflow

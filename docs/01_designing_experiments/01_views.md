@@ -1,14 +1,7 @@
-[TOC]
-
-# General properties
-
 There are two types of views: trial type and wrapping views.
+\_babe provides a number of templates to create views with a pre-given structure. 
 
-# View templates
-
-_babe provides a number of templates to create views with a pre-given structure. 
-
-### Custom trial views defined in _babe
+**Template trial views defined in _babe:**
 
 * babeViews.forcedChoice
     * [image of the view](../images/views_samples/view_fc.png)
@@ -29,7 +22,7 @@ _babe provides a number of templates to create views with a pre-given structure.
 * babeViews.selfPacedReading
 * babeViews.selfPacedReading_ratingScale
 
-### Custom wrapping views
+**Template wrapping views:**
 
 * babeViews.intro
     * gives general information about the experiment
@@ -45,28 +38,28 @@ _babe provides a number of templates to create views with a pre-given structure.
     * Debug mode: displays the data
     * submits the data of the live experiments
 
-## Trial views' properties
+**Trial views' properties**
 
-### **Obligatory fields**
+*Obligatory fields*
 * `trials: int` - the number of trials this view will appear
 * `name: string`
 * `trial_type: string` - the name of the trial type as you want it to appear in the submitted the final data (for example 'main binary choice')
 * `data: array` - an array of trial objects
 
-### **Optional fields (can be skipped)**
+*Optional fields (can be skipped)*
 * `title: string` - the title at the top of the view 
 * `pause: number (in ms)` - blank screen before the fixation point or stimulus show
 * `fix_duration: number (in ms)` - blank screen with fixation point in the middle
 * `stim_duration: number (in ms)` - for how long to have the stimulus on the screen
 * `hook: object` - option to hook and add custom functions to the view. [more about hooks](hooks.md)
 
-## Wrapping views' properties
+**Wrapping views' properties**
 
-### **Obligatory fields**
+*Obligatory fields*
 * `trials: int` - the number of trials this view will appear
 * `name: string`
 
-### **Optional fields by view type**:
+*Optional fields by view type*
 * babeViews.intro:
     * `buttonText: string`
         * the text of the button that takes the participant to the next view
@@ -152,104 +145,6 @@ _babe provides a number of templates to create views with a pre-given structure.
         * text asking the participant to press the 'confirm' button
         * default: 'Please press the button below to confirm that you completed the experiment with Prolific'
 
-## Trial views lifecycle
-
-All the trial views go through 4 steps.
-
-1. pause step - blank screen
-
-    * enable by passing `pause: number (in miliseconds)` (will show a pause for after number amount of time)
-    * shows nothing but a blank screen and the `QUD` if there is such
-
-2. fixation point step - a cross in the middle where the stimulus appears
-
-    * passed to the trial view as `fix_duration: number (in miliseconds)`
-    * shows a cross in the middle of the stimulus and the `QUD` if there is such
-
-3. stimulus shown step - stimulus appears
-
-3.5 (optional) stimulus hidden step - hides the stimulus from the screen
-    * hide the stimulus after certain amount of time by passing `stim_duration: number (in miliseconds)` to the view creation
-    * hide the stimulus when SPACE gets pressed with `stim_duration: 'space'`
-    * skip this step by not defining `stim_duration`
-
-4. interactions are enabled - the participant can interact with the view (respond, read the sentence etc.)
-
-The views you created do not need to use these timeouts, however, each trial view still goes through these steps on the background and you can still [hook](#trial-view-hooks) and call locally defined functions
-
-## Trial views hooks
-
-You can create functions in your local js files and hook these functions to the trial view. To understand how hooks work, first learn about babe's [trial views lifecycle](#trial-views-lifecycle)
-
-**Hooks**
-
-* after the pause is finished
-    enable with `hook.after_pause: _function_`
-
-* after the fixation point hides
-    enable with `hook.after_fin_point: _function_`
-
-* after the stimulus is shown
-    enable with `hook.after_stim_shown: _function_`
-
-* after the stimulus hides
-    enable with `hook.after_stim_hidden: _function_`
-
-* after the interactions are enabled
-    enable with `hook.after_response_enabled: _function_`
-
-
-Your custom functions get the trial `data` for each trial view and `next` as arguments. You can use the `data` if you need to. To proceed to the next step of the lifecycle, you have to call `next()`
-
-**Full lifecycle - hook sample**
-
-1. pause shows
-2. pause finishes
-3. after_pause function called
-4. fixation point shows
-5. fixation point disappears
-6. after_fix_point function called
-7. stimulus shows
-8. after_stim_shown function called
-9. stimlus hides
-10. after_stim_hidden function called
-11. response is enabled
-12. after_response_enabled function called
-
-**Real example**
-
-Imagine you want to tell the participants whether their repsonse was correct while they are getting familiar with the experiment, for example in the practice trial view. To do that you need to get the answer they chose and check it for correctness. You can define a funciton that gets their response and hook to the trial view after the response is enabled. In the example below, assume that `option1` is always the correct answer.
-
-
-```
-// compares the chosen answer to the value of `option1`
-function checkResponse(data, next) {
-    $('input[name=answer]').on('change', function(e) {
-        if (e.target.value === data.option1) {
-            alert('Your answer is correct! Yey!');
-        } else {
-            alert('Sorry, this answer is incorrect :(');
-        }
-        next();
-    })
-}
-```
-
-and add a `after_response_enabled` hook to the view:
-
-```
-const practice = babeViews.forcedChoice({
-    trials: 20,
-    name: 'practice',
-    trial_type: 'practice',
-    data: practice_trials.forcedChoice,
-    fix_duration: 500,
-    pause: 500,
-    hook: {
-        after_response_enabled: checkResponse
-    }
-});
-```
 
 ## Trial views' data format
 
@@ -696,54 +591,6 @@ $("document").ready(function() {
 });
 ```
 
-# Custom views
-
-# Canvas
-
-Each babe trial type view can use the babe canvas api to create a picture of elements in the trial view.
-
-babe provides three types of element plcement:
-
-1. **random placement**
-
-<img src='../images/canvas_samples/random.png' alt='random placement example' height='auto' width='600' />
-
-2. **grid placement**
-
-<img src='../images/canvas_samples/grid.png' alt='grid placement example' height='auto' width='600' />
-
-3. **split grid placement**
-
-<img src='../images/canvas_samples/split_grid.png' alt='split grid placement example' height='auto' width='600' />
-
-
-## How to use babe canvas
-
-To generate a picture of shapes, all you need is to have `canvas` object with some properties in the data your views use.
-
-For example:
-
-```
-let trials = [
-    ...,
-    {
-        question: "Are there any blue squares on the screen?",
-        option1: 'yes',
-        option2: 'no',
-        canvas: {
-            focalColor: 'black',
-            focalShape: 'circle',
-            focalNumber: 23,
-            otherShape: 'square',
-            otherColor: 'red',
-            sort: 'random',
-            elemSize: 30,
-            total: 40
-        }
-    },
-    ...
-];
-```
 
 ## Data format
 
@@ -972,6 +819,4 @@ canvas: {
 
 // start_with is default (focal elem)
 ```
-
-# Life cycle & hooks
 
