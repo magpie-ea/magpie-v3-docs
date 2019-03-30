@@ -161,7 +161,7 @@ There are two types of views: trial type and wrapping views.
 * **Optional Fields**
     * `question: string`
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
     * `picture: string (link)`
 
 #### Sample data
@@ -193,7 +193,7 @@ const forced_choice_trials = [
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
     * `picture: string (link)`
     * `min_chars: number`
         * the minumum number of characters in the textarea field before proceeding is available
@@ -227,7 +227,7 @@ const textbox_input_trials = [
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
     * `picture: string (link)`
     * `question: string`
 
@@ -262,7 +262,7 @@ const slider_rating_trials = [
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
     * `picture: string (link)`
     * `question_left_part: string`
     * `question_right_part: string`
@@ -297,7 +297,7 @@ const dropdown_choice_trials = [
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
     * `picture: string (link)`
     * `question: string`
 
@@ -332,7 +332,7 @@ const rating_scale_trials = [
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
     * `picture: string (link)`
     * `question: string`
 
@@ -375,7 +375,7 @@ const sentence_choice_trials = [
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
     * `question: string`
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
 
 #### Sample data
 
@@ -414,7 +414,7 @@ const image_selection_trials = [
 * **Optional Fields**
     * `question: string`
     * `picture: string (link)`
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
 
 #### Sample data
 
@@ -456,7 +456,7 @@ const key_press_trials = [
         * instructions to press SPACE above the spr sentence lines
         * default - *Press the SPACE bar to reveal the words*
     * `picture: string`
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
     * `question: string`
 
 #### Sample data
@@ -495,10 +495,10 @@ const spr_trials = [
     * `QUD: string` - text that is always present on the slide
     * `help_text: string` - SPACE press text above the spr sentence
     * `picture: string`
-    * `canvas: object` [more about babe canvas](01_designing_experiments/05_canvas.md)
+    * `canvas: object` [more about babe canvas](05_canvas.md)
     * `question: string`
 
-#### Sample data
+
 
 ```
 const spr_rc_trials = [
