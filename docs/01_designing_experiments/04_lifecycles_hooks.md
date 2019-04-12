@@ -35,7 +35,7 @@ You can create functions in your local js files and hook these functions to the 
     enable with `hook.after_pause: _function_`
 
 * after the fixation point hides
-    enable with `hook.after_fin_point: _function_`
+    enable with `hook.after_fix_point: _function_`
 
 * after the stimulus is shown
     enable with `hook.after_stim_shown: _function_`
