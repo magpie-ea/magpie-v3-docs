@@ -75,8 +75,8 @@ Instantiate with `babeViews.imageSelection`. Realizes another 2-alternative forc
 <img src='../../images/views_samples/view_is.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
 * **Obligatory Fields**
-    * `option1: string`
-    * `option2: string`
+    * `option1: string` - label for choice of picture 1 (stored in `response` variable)
+    * `option2: string` - label for choice of picture 2 (stored in `response` variable)
     * `picture1: string (link)` - refers to `option1`
     * `picture2: string (link)` - refers to `option2`
 
