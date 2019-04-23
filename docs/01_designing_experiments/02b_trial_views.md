@@ -1,5 +1,12 @@
 Trial views are the parts of your experiment which are (usually) instantiated several times (realizing different trials of your, say, main experimental task). They usually collect the data and often rely on additional information (e.g., the picture to be displayed in trial 27, or the question and answer options for trial 13).
 
+All trial views have three **obligatory fields**:
+
+1. `trials: int` - the number of trials this view will appear
+2. `name: string` - the name of the view
+3. `data: array` - list of objects, each with information for each consecutive trial
+
+Different types of wrapping views have more optional fields, as documented below. 
 
 # Forced-choice task
 

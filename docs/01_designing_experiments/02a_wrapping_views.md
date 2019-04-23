@@ -1,13 +1,5 @@
 Wrapping views are short, usually one-trial views that structure your experiment. They can provide a welcome message, instructions or collect post-survey data. The most important wrapping view is the *thanks* view. **The _thanks_ view must always be included in your experiment because it wraps up and processes the data collected during the experiment.**
 
-All wrapping views have two **obligatory fields**:
-
-1. `trials: int` - the number of trials this view will appear
-2. `name: string` - the name of the view
-
-Different types of wrapping views have more optional fields, as documented below. 
-
-
 # Intro view
 
 Instantiate with `babeViews.intro`. Optional fields:
