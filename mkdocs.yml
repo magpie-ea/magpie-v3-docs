@@ -1,30 +1,47 @@
 site_name: _babe documentation
+site_description: 'documentation of _babe (basic architecture for browser-based experiments)'
+site_author: 'Michael Franke'
+
+theme:
+    name: rtd-dropdown
+    # Default settings
+    collapse_by_default: false
+    highlightjs: true
+    hljs_languages:
+        - javascript
+        - elixir
+    # Development Settings
+    #name: null
+    #custom_dir: 'rtd_dropdown/'
+
+repo_url: https://github.com/babe-project/babe-docs/
+
 nav:
-- Views:
-  - Overview: '01_designing_experiments/01_views.md'
-  - Template views: 
-      - Wrapping views: '01_designing_experiments/02a_wrapping_views.md'
-      - Trial views: '01_designing_experiments/02b_trial_views.md'
-      - Self-paced reading: '01_designing_experiments/02c_SPR.md'
-  - Custom views:
-    - Designing custom views: '01_designing_experiments/03_custom_views.md'
-  - Life cycles & hooks: '01_designing_experiments/04_lifecycles_hooks.md'
-  - Canvas: '01_designing_experiments/05_canvas.md'
+- 'Designing experiments':
+  - Views:
+    - Overview:
+      - Overview: '01_designing_experiments/01_views.md'
+    - Template views:
+      - Wrapping views: '01_designing_experiments/wrapping_views.md'
+      - Trial views: '01_designing_experiments/trial_views.md'
+      - Self-paced reading: '01_designing_experiments/SPR.md'
+- Custom views:
+  - Miscellaneous: '01_designing_experiments/custom_views.md'
+- Life cycles & hooks: '01_designing_experiments/04_lifecycles_hooks.md'
+- Canvas: '01_designing_experiments/05_canvas.md'
 - Complex experiments: '01_designing_experiments/06_complex_experiments.md'
 - server app:
   - Installation: '02_using_the_server_app/01_installation.md'
   - Use: '02_using_the_server_app/02_use.md'
 - deploying experiments:
-  - Hosting on netlify: '03_deploying_experiments/01_hosting_on_netlify.md'      
+  - Hosting on netlify: '03_deploying_experiments/01_hosting_on_netlify.md'
 - Development: 04_development.md
 - About: 05_about.md
-theme:
-    name: readthedocs
-    highlightjs: true
-    hljs_languages:
-        - yaml
-        - rust
-site_description: documentation of _babe (basic architecture for browser-based experiments)
-site_author: Michael Franke
-copyright: MIT license
 
+plugins:
+    - search
+
+copyright: MIT license
+markdown_extensions:
+    - toc:
+        baselevel: 4
