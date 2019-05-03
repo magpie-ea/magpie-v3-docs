@@ -3,7 +3,7 @@ site_description: 'documentation of _babe (basic architecture for browser-based 
 site_author: 'Michael Franke'
 
 theme:
-    name: rtd-dropdown
+    # name: rtd-dropdown
     # Default settings
     collapse_by_default: false
     highlightjs: true
@@ -11,8 +11,8 @@ theme:
         - javascript
         - elixir
     # Development Settings
-    #name: null
-    #custom_dir: 'rtd_dropdown/'
+    name: null
+    custom_dir: 'rtd_dropdown/'
 
 repo_url: https://github.com/babe-project/babe-docs/
 
