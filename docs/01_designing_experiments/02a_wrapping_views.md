@@ -1,6 +1,8 @@
+# Wrapping views
+
 Wrapping views are short, usually one-trial views that structure your experiment. They can provide a welcome message, instructions or collect post-survey data. The most important wrapping view is the *thanks* view. **The _thanks_ view must always be included in your experiment because it wraps up and processes the data collected during the experiment.**
 
-# Intro view
+## Intro view
 
 Instantiate with `babeViews.intro`. Optional fields:
 
@@ -15,7 +17,7 @@ Instantiate with `babeViews.intro`. Optional fields:
     * default: *there is no default*
 
 
-# Instructions view
+## Instructions view
 
 Instantiate with `babeViews.instructions`. Optional fields:
 
@@ -29,7 +31,7 @@ Instantiate with `babeViews.instructions`. Optional fields:
     * the text of the view
     * default: *there is no default*
 
-# Begin view
+## Begin view
 
 Instantiate with `babeViews.begin`. Optional fields:
 
@@ -43,7 +45,7 @@ Instantiate with `babeViews.begin`. Optional fields:
     * the text of the view
     * default: *there is no default*
 
-# PostTest view
+## PostTest view
 
 Instantiate with `babeViews.postTest`. Optional fields:
 
@@ -90,7 +92,7 @@ Instantiate with `babeViews.postTest`. Optional fields:
     * more info about what native languages are
     * default: '(i.e. the language(s) spoken at home when you were a child)'
 
-# Thanks view
+## Thanks view
 
 Instantiate with `babeViews.thanks`. **The _thanks_ view must always be included in your experiment because it wraps up and processes the data collected during the experiment.** Optional fields:
 

@@ -20,7 +20,7 @@ nav:
 - 'Designing experiments':
   - Overview: '01_designing_experiments/01_views.md'
   - Template views:
-    - Wrapping views: '01_designing_experiments/02a_wrapping_views.md'
+    - Wrapping views: '01_designing_experiments/Wrapping Views.md'
     - Trial views: '01_designing_experiments/02b_trial_views.md'
     - Self-paced reading: '01_designing_experiments/02c_SPR.md'
   - Custom views:

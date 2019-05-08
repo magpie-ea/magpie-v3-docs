@@ -1,3 +1,7 @@
+# Self-paced reading
+
+There are templates for realizing self-paced reading tasks too.
+
 # Self-paced reading with forced choice response
 
 * **Obligatory Fields**
