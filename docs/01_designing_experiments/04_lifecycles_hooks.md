@@ -1,3 +1,5 @@
+# Life cycles and hooks
+
 All trial views have a fixed life cycle that you can use to manipulate the timing of events during a trial. You can insert custom functions, so-called 'hooks' to massage template views into style.
 
 ## Life cycle

@@ -1,3 +1,5 @@
+# Canvas
+
 Each babe trial type view can use the babe canvas api to create a picture of elements in the trial view.
 
 babe provides three types of element placement:

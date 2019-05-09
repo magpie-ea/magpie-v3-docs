@@ -17,17 +17,11 @@ theme:
 repo_url: https://github.com/babe-project/babe-docs/
 
 nav:
-- 'Designing experiments':
-  - Overview: '01_designing_experiments/01_views.md'
-  - Template views:
-    - Wrapping views: '01_designing_experiments/Wrapping Views.md'
-    - Trial views: '01_designing_experiments/02b_trial_views.md'
-    - Self-paced reading: '01_designing_experiments/02c_SPR.md'
-  - Custom views:
-    - Miscellaneous: '01_designing_experiments/03_custom_views.md'
-  - Life cycles & hooks: '01_designing_experiments/04_lifecycles_hooks.md'
+- Designing Experiments:
+  - Template views: '01_designing_experiments/01_template_views.md'
+  - Custom views: '01_designing_experiments/03_custom_views.md'
+  - Life cycles and hooks: '01_designing_experiments/04_lifecycles_hooks.md'
   - Canvas: '01_designing_experiments/05_canvas.md'
-  - Complex experiments: '01_designing_experiments/06_complex_experiments.md'
 - server app:
   - Installation: '02_using_the_server_app/01_installation.md'
   - Use: '02_using_the_server_app/02_use.md'
