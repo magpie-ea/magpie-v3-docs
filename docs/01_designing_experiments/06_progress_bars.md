@@ -1,6 +1,4 @@
-# Miscellaneous
-
-## Progress bars
+# Progress bars
 
 \_babe provides the option to include progress bars in selected views. For example, when you have defined views whose name-attribute is `practice` and `main` (note that these names need not correspond to the names of the variables you defined to refer to these view instances), you can include progress bars for these views by specifying this information during the creation of the \_babe object, like so:
 
@@ -26,10 +24,10 @@ You can use one of the following 3 styles (see pictues below):
 * `default` - shows a single bar which tracks progress within the whole experiment (all views designated for progress tracking)
 * `chunks` - shows multiple bars, one for each progress-tracked view
 
-Use `progress_bar.width` to set the width (in pixels) of the progress bars.
+Use `progress_bar.width` to set the width (in pixels** of the progress bars.
 
 
-### Examples
+**Examples**
 
 ```
 progress_bar: {
