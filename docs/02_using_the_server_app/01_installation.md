@@ -1,3 +1,7 @@
+# Installation
+
+You can install \_babe on a server for online use or locally on your machine. We explain here how to use Heroku as a hosting service for online use, and how to set up the server app locally. 
+
 ## Installation on Heroku
 
 The _babe server app can be hosted on any hosting service or your own server. We here describe the process for

@@ -28,8 +28,9 @@ nav:
   - Use: '02_using_the_server_app/02_use.md'
 - deploying experiments:
   - Hosting on netlify: '03_deploying_experiments/01_hosting_on_netlify.md'
-- Development: 04_development.md
-- About: 05_about.md
+- Misc:
+  - Development: 04_development.md
+  - About: 05_about.md
 
 plugins:
     - search

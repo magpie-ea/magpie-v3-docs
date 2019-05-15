@@ -1,6 +1,4 @@
-[TOC]
-
-## Deployment using Netlify 
+# Hosting on Netlify 
 
 1. Registration
     -  Go to https://www.netlify.com/ and sign up using GitHub

@@ -1,3 +1,5 @@
+# Use 
+
 After installation you can visit the server app in a browser, with the username and password you previously specified. For Heroku deployment, you may do so by running `heroku open` in the command line or find the app URL in your Heroku account. For local deployment, the URL is by default http://localhost:4000.
 
 The server app shows a list of experiments whose data may be stored in a database. It
