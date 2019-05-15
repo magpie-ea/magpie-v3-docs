@@ -22,6 +22,7 @@ nav:
   - Custom views: '01_designing_experiments/03_custom_views.md'
   - Life cycles and hooks: '01_designing_experiments/04_lifecycles_hooks.md'
   - Canvas: '01_designing_experiments/05_canvas.md'
+  - Miscellaneous: '01_designing_experiments/06_misc.md'
 - server app:
   - Installation: '02_using_the_server_app/01_installation.md'
   - Use: '02_using_the_server_app/02_use.md'
