@@ -4,34 +4,48 @@ All trial views have a fixed life cycle that you can use to manipulate the timin
 
 ## Life cycle
 
-All the trial views go through 4 steps.
+All the trial views go through the following steps.
 
-1. pause step - blank screen
+1. **pause step** :: show a blank screen for specified time
 
-    * enable by passing `pause: number (in miliseconds)` (will show a pause for after number amount of time)
+    * enable by passing `pause: number (in miliseconds)`
+    * defaults to `pause: 0`
     * shows nothing but a blank screen and the `QUD` if there is such
 
-2. fixation point step - a cross in the middle where the stimulus appears
+2. **fixation point step** :: show fixation cross in the middle where the stimulus appears for specified time
 
-    * passed to the trial view as `fix_duration: number (in miliseconds)`
+    * enabled by setting `fix_duration: number (in miliseconds)`
+    * defaults to `fix_duration: 0`
     * shows a cross in the middle of the stimulus and the `QUD` if there is such
 
-3. stimulus shown step - stimulus appears
+3. **stimulus shown step** :: stimulus appears
 
-3.5 (optional) stimulus hidden step - hides the stimulus from the screen
-    * hide the stimulus after certain amount of time by passing `stim_duration: number (in miliseconds)` to the view creation
+4. **stimulus hidden step** :: hides the stimulus from the screen
+    * set by passing `stim_duration: number (in miliseconds)`
+    * defaults to `stim_duration: Infinity`
     * hide the stimulus when SPACE gets pressed with `stim_duration: 'space'`
     * skip this step by not defining `stim_duration`
 
-4. interactions are enabled - the participant can interact with the view (respond, read the sentence etc.)
+5. **response enabled step** :: the participant can interact with the view (respond, read the sentence etc.**
 
-The views you created do not need to use these timeouts, however, each trial view still goes through these steps on the background and you can still [hook](#trial-view-hooks) and call locally defined functions
+
+**Example**
+
+Suppose you want to add a 1000 ms inter-stimulus break between two trials and show a fixation cross for 250 ms. You could realize this when instantiating your view like this:
+
+~~~
+const forced_choice_2A = babeViews.view_generator("key_press", {
+    trials: trial_info.forced_choice.length,
+    name: 'forced_choice_2A',
+    data: trial_info.forced_choice,
+    pause: 1000,
+    fix_duration: 250
+});
+~~~
 
 ## Hooks
 
-You can create functions in your local js files and hook these functions to the trial view. To understand how hooks work, first learn about babe's [trial views lifecycle](#trial-views-lifecycle)
-
-**Hooks**
+For minor customization of the template views, you can create functions, ideally in file `02_custom_functions.js` and hook these functions to specific steps in the life cycle of a trial view. The following **hooks** exist where your custom functions could attach:
 
 * after the pause is finished
     enable with `hook.after_pause: _function_`
@@ -66,37 +80,56 @@ Your custom functions get the trial `data` for each trial view and `next` as arg
 11. response is enabled
 12. after_response_enabled function called
 
-**Real example**
+**Example: response check**
 
-Imagine you want to tell the participants whether their repsonse was correct while they are getting familiar with the experiment, for example in the practice trial view. To do that you need to get the answer they chose and check it for correctness. You can define a funciton that gets their response and hook to the trial view after the response is enabled. In the example below, assume that `option1` is always the correct answer.
+Imagine you want to tell the participants whether their choice was right or wrong, e.g., during practice trials. We could realize this with a function  which checks the answer for correctness which is hooked to the "response-enabled step". Of course, your data for each trial needs to include the information which answer is correct. For the Departure-Point example, we could add this information to `04_trials.js` like so:
 
+```javascript
+    forced_choice: [
+        {
+            question: "What's on the bread?",
+            picture: "images/question_mark_02.png",
+            option1: 'jam',
+            option2: 'ham',
+            correct: 'jam' // which option is correct?
+        },
+        {
+            question: "What's the weather like?",
+            picture: "images/weather.jpg",
+            option1: "shiny",
+            option2: "rainbow",
+            correct: "shiny" // which option is correct?
+        }
+    ]
+
+```
+
+We then define the function to be hooked, ideally in file `02_custom_functions.js`:
 
 ```
 // compares the chosen answer to the value of `option1`
-function checkResponse(data, next) {
+check_response = function(data, next) {
     $('input[name=answer]').on('change', function(e) {
-        if (e.target.value === data.option1) {
+        if (e.target.value === data.correct) {
             alert('Your answer is correct! Yey!');
         } else {
-            alert('Sorry, this answer is incorrect :(');
+            alert('Sorry, this answer is incorrect :( The correct answer was ' + data.correct);
         }
         next();
     })
 }
 ```
 
-and add a `after_response_enabled` hook to the view:
+We then add this function to be called after the relevant step when creating the relevant view:
 
 ```
-const practice = babeViews.forcedChoice({
-    trials: 20,
-    name: 'practice',
-    trial_type: 'practice',
-    data: practice_trials.forcedChoice,
-    fix_duration: 500,
-    pause: 500,
+const forced_choice_2A = babeViews.view_generator("key_press", {
+    trials: trial_info.forced_choice.length,
+    name: 'forced_choice_2A',
+    data: trial_info.forced_choice,
     hook: {
-        after_response_enabled: checkResponse
+        after_response_enabled: check_response
     }
+
 });
 ```
