@@ -27,7 +27,8 @@ nav:
   - Installation: '02_using_the_server_app/01_installation.md'
   - Use: '02_using_the_server_app/02_use.md'
 - deploying experiments:
-  - Hosting on netlify: '03_deploying_experiments/01_hosting_on_netlify.md'
+  - Deploy configuration: '03_deploying_experiments/01_configuration.md'
+  - Hosting on netlify: '03_deploying_experiments/02_hosting_on_netlify.md'
 - Misc:
   - Development: 04_development.md
   - About: 05_about.md
