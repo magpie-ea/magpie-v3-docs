@@ -141,7 +141,7 @@ const textbox_input_trials = [
         min_chars: 100
     },
     {
-        question: "What's the weather like? like?",
+        question: "What's the weather like?",
         min_chars: 50
     }
 ];
@@ -174,7 +174,7 @@ const slider_rating_trials = [
         optionRight: 'ham'
     },
     {
-        question: "What's the weather like? like?",
+        question: "What's the weather like?",
         optionLeft: 'shiny',
         optionRight: 'rainbow'
     }
@@ -276,7 +276,7 @@ Instantiate with `babeViews.keyPress`. Offers a 2-alternative forced choice task
 ```
 const key_press_trials = [
     {
-        question: "What's the weather like? like?",
+        question: "What's the weather like?",
         key1: 'f',
         key2: 'j',
         f: 'shiny',
