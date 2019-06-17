@@ -25,6 +25,11 @@ Instantiate with `babeViews.view_generator('intro', ...)`. Optional fields:
     * the text of the view
     * default: *there is no default*
 
+The intro view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `fixed text`
+* answer_container_generator: `one_button`
+* handle_response_function: `intro`
 
 ### Instructions view
 
@@ -40,6 +45,13 @@ Instantiate with `babeViews.view_generator('instructions', ...)`. Optional field
     * the text of the view
     * default: *there is no default*
 
+The intro view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `fixed text`
+* answer_container_generator: `one_button`
+* handle_response_function: `one_click`
+
+
 ### Begin view
 
 Instantiate with `babeViews.view_generator('begin, ...)`. Optional fields:
@@ -53,6 +65,12 @@ Instantiate with `babeViews.view_generator('begin, ...)`. Optional fields:
 * `text: string`
     * the text of the view
     * default: *there is no default*
+    
+The begin view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `fixed text`
+* answer_container_generator: `one_button`
+* handle_response_function: `one_click`
 
 ### Post_test view
 
@@ -101,6 +119,12 @@ Instantiate with `babeViews.view_generator('post_test', ...)`. Optional fields:
     * more info about what native languages are
     * default: '(i.e. the language(s) spoken at home when you were a child)'
 
+The post test view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `post_test`
+* answer_container_generator: `post_test`
+* handle_response_function: `post_test`
+
 ### Thanks view
 
 Instantiate with `babeViews.view_generator('thanks', ...)`. **The _thanks_ view must always be included in your experiment because it wraps up and processes the data collected during the experiment.** Optional fields:
@@ -112,6 +136,11 @@ Instantiate with `babeViews.view_generator('thanks', ...)`. **The _thanks_ view 
     * text asking the participant to press the 'confirm' button
     * default: 'Please press the button below to confirm that you completed the experiment with Prolific'
 
+The thanks view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `empty`
+* answer_container_generator: `empty`
+* handle_response_function: `empty`
 
 ## Trial views
 
@@ -128,7 +157,7 @@ All trial views have three **obligatory fields**:
 
 Different types of wrapping views have more optional fields, as documented below. 
 
-### Forced-choice task
+### Forced choice (2 alternatives)
 
 Instantiate with `babeViews.view_generator('forced_choice', ...)` Displays a context, a picture and a question to be answered in a two-alternative forced choice task. Choices are made by clicking on one of two buttons.
 
@@ -156,7 +185,14 @@ const forced_choice_trials = [
     }
 ];
 ```
-### Sentence Choice task
+
+The forced\_choice view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `basic_stimulus`
+* answer_container_generator: `button_choice`
+* handle_response_function: `button_choice`
+
+### Sentence choice 
 
 Instantiate with `babeViews.view_generator('sentence_choice', ...)`. Similar to the `forcedChoice` view, this view presents two text-based options to click on. This view, however, realizes options on longer buttons arranged vertically. This is better for choice between several longer expressions, like whole sentences.
 
@@ -195,7 +231,13 @@ const sentence_choice_trials = [
 ];
 ```
 
-### Image Selection task
+The sentence\_choice view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `basic_stimulus`
+* answer_container_generator: `sentence_choice`
+* handle_response_function: `button_choice`
+
+### Image selection
 
 Instantiate with `babeViews.view_generator('image_seletion', ...)`. Realizes another 2-alternative forced choice task, by presenting two pictures (arranged horizontally) and requiring a click on one of the pictures. 
 
@@ -232,6 +274,12 @@ const image_selection_trials = [
 ];
 ```
 
+The image\_selection view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `basic_stimulus`
+* answer_container_generator: `image_selection`
+* handle_response_function: `button_choice`
+
 ### Textbox Input task
 
 Instantiate with `babeViews.view_generator('textbox_input', ...)`. Requires users to type in text freely in a textbox. Allows to specify a minimum number of characters before the `next` button appears. 
@@ -265,7 +313,14 @@ const textbox_input_trials = [
 ];
 ```
 
-### Slider Rating task
+The forced\_choice view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `basic_stimulus`
+* answer_container_generator: `textbox_input`
+* handle_response_function: `textbox_input`
+
+
+### Slider rating
 
 Instantiate with `babeViews.view_generator('slider_rating', ...)`. Gives you a single (horizontally oriented) slider, with endpoints whose labels can be specified. The `next` button only appears when the slider is clicked on or moved at least once. Internally slider values are represented as ranging from 0 to 100 in steps of 1.
 
@@ -299,7 +354,13 @@ const slider_rating_trials = [
 ];
 ```
 
-### Dropdown Choice task
+The slider\_rating view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `basic_stimulus`
+* answer_container_generator: `slider_rating`
+* handle_response_function: `slider_rating`
+
+### Dropdown choice
 
 Instantiate with `babeViews.view_generator(drowdown_choice', ...)`. Prompts the user to select one option from a drop-down menu, which can be embedded into a sentence, e.g., to fill in a word or phrase in a fixed sentence frame.
 
@@ -335,7 +396,13 @@ const dropdown_choice_trials = [
 ];
 ```
 
-### Rating Scale task
+The dropdown\_choice view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `basic_stimulus`
+* answer_container_generator: `dropdown_choice`
+* handle_response_function: `dropdown_choice`
+
+### Rating scale
 
 Instantiate with `babeViews.view_generator('rating_scale', ...)`. Realizes a Likert-scale (ordinal) rating task, with button labeled with consecutive numbers. Participants click on these numbered buttons to proceed. Allows labels for endpoints on the scale.
 
@@ -371,7 +438,15 @@ const rating_scale_trials = [
 ];
 ```
 
-### Key Press task
+The rating\_scale view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `basic_stimulus`
+* answer_container_generator: `rating_scale`
+* handle_response_function: `button_choice`
+
+
+
+### Key press
 
 Instantiate with `babeViews.view_generator('key_press', ...)`. Offers a 2-alternative forced choice task where choice options are given by pressing keys on the keyboard. Ideal for more accurate reaction time measurements.
 
@@ -412,6 +487,14 @@ const key_press_trials = [
     }
 ];
 ```
+
+The key\_press view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `key_press`
+* answer_container_generator: `question`
+* handle_response_function: `key_press`
+
+
 
 ## Self-paced reading
 
@@ -458,6 +541,12 @@ const spr_trials = [
 ];
 ```
 
+The self\_paced\_reading view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `self_paced_reading`
+* answer_container_generator: `button_choice`
+* handle_response_function: `self_paced_reading`
+
 ### Self-paced reading task with rating scale response
 
 Instantiate with `babeViews.view_generator('self_paced_reading_rating_scale', ...)`.
@@ -498,3 +587,8 @@ const spr_rc_trials = [
 ];
 ```
 
+The self\_paced\_reading\_rating\_scale view uses the following [predefined view elements](../03_custom_views/#predefined-view-elements):
+
+* stimulus_container_generator: `self_paced_reading`
+* answer_container_generator: `rating_choice`
+* handle_response_function: `self_paced_reading`
