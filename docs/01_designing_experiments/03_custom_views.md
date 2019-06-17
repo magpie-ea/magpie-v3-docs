@@ -1,6 +1,6 @@
 # Custom views 
 
-When the template views are not enough for your purposes, you can define your own custom views. There are two ways of doing this. The first possibility is to customize the template views. You would then keep the basic structure and design of a template view but to change some parts of it. The other is to define a completely new view from scratch.
+When the template views are not enough for your purposes, you can define your own custom views. There are two ways of doing this. The first possibility is to [customize the template views](#customizing-template-views). You would then keep the basic structure and design of a template view and change selected parts of it. Since all predefined template views consist of modular [predefined view elements](#predefined-view-elements), you can often modularly assemble and tweak your desired view functionality based on slight changes of the template views. The other, more radical method is to [define a completely new view from scratch](#defining-a-custom-view-from-scratch).
 
 ## Customizing template views
 
@@ -44,7 +44,7 @@ const forced_choice_instance = babeViews.view_generator(
    );
 ```
 
-Here, we supply a third object with custom generator functions, one for each of the three elements. Since the second code box just uses the defaults which are implicit in the first, the two calls are equivalent.
+Here, we supply a third object with custom generator functions, one for each of the three elements. Since the second code box just uses the defaults which are implicit in the first, the two calls are equivalent. The description of [template views](../01_template_views/) lists which view elements each template view uses. All predefined view elements are listed and shown [below](#predefined-view-elements).
 
 The stimulus generator function used by the template `forced_choice` view is this:
 
@@ -146,7 +146,9 @@ function(config, CT, babe, answer_container_generator, startingTime) {
 
 When this function is called (automatically by \_babe) it first creates the answer container. It also adds an event listener. Here, it reacts when a button is pressed, but this behavior needs to be coordinated with whatever you define in the `answer_container_generator` part. It then records the trial time and assembles the data to be recorded in the variable `trial_data`. By default, \_babe automatically adds all the data for the current trial to this object and then pushes this to its internal representation of the accumulated data so far which is in `babe.trial_data`. The function `babe.findNextView` is then called and takes you to the next trial or view.
 
-When you write your own custom `handle_response_function` you should supply the same arguments as the function above. You should also make sure to record the data and call `babe.findNextView` eventually. Other than this, you could implement a more dynamic display of different pictures and response options, using the interplay of `answer_container_generator` and `handle_response_function**, for example.
+When you write your own custom `handle_response_function` you should supply the same arguments as the function above. You should also make sure to record the data and call `babe.findNextView` eventually. Other than this, you could implement a more dynamic display of different pictures and response options, using the interplay of `answer_container_generator` and `handle_response_function`, for example.
+
+If you write longer custom functions for customization, it is good practice to put these into the file `02_custom_functions.js`. An example is presented in the [showroom](https://github.com/babe-project/showroom).
 
 ## Predefined view elements
 
@@ -746,5 +748,89 @@ const handle_response_functions = {
 
 ## Defining a custom view from scratch
 
+You can also define a custom view from scratch. To do this, create a view template, ideally in file `03_custom_views_templates.js`. A view template gets a `config` object information as input (with relevant information, e.g., URLs for pictures, text to show on each trial etc.). The view template function then returns a view.
 
-... to be filled soon ... 
+Here's a basic scaffolding of a view template:
+
+```javascript
+const custom_view_template = function(config) {
+    const view = {
+        name: config.name,
+        CT: 0,
+        trials: config.trials,
+        // The render functions gets the babe object as well as the current trial in view counter as input
+        render: function (CT, babe) {
+            // Here, you can do whatever you want, eventually you should call babe.findNextView()
+            // to proceed to the next view and if it is an trial type view,
+            // you should save the trial information with babe.trial_data.push(trial_data)
+        }
+    };
+    // We have to return the view, so that it can be used in 05_views.js
+    return view;
+};
+```
+
+A view is an object, that obligatorily has the properties:
+
+* `name`: the view's name
+* `CT`: the view's current trial (the counter of how many times this view occurred in the experiment, initialized to 0)
+* `trials`: the maximum number of times this view is repeated
+* `render`: a function that is called to create each trial of the view
+
+The most important part is the `render` function. It gets `CT` and the babe-object itself as input.  has to call `babe.findNextView()` eventually to proceed to the next view (or the next trial in this view). If data is to be saved from any given trial, you would need to collect the data as an object, e.g., named `trial_data` and store it for later output by calling `babe.trial_data.push(trial_data)`.
+
+Here's a full example from the [showroom](https://github.com/babe-project/showroom):
+
+```javascript
+// In this view the user can click on one of two buttons
+const custom_press_a_button = function(config) {
+    const view = {
+        name: config.name,
+        CT: 0,
+        trials: config.trials,
+        // The render functions gets the babe object as well as the current trial in view counter as input
+        render: function (CT, babe) {
+            // Here, you can do whatever you want, eventually you should call babe.findNextView()
+            // to proceed to the next view and if it is an trial type view,
+            // you should save the trial information with babe.trial_data.push(trial_data)
+
+            // Normally, you want to display some kind of html, to do this you append your html to the main element
+            // You could use one of our predefined html-templates, with (babe.)stimulus_container_generators["<view_name>"](config, CT)
+            $("main").html(`<div class='babe-view'>
+                <h1 class='babe-view-title'>Click on one of the buttons!</h1>
+                <button id="first" class='babe-view-button'>First Button</button>
+                <button id="second" class='babe-view-button'>Second Button</button>
+                </div>`);
+
+            // This function will handle  the response
+            const handle_click = function(e) {
+                // We will just save the response and continue to the next view
+                let trial_data = {
+                    trial_name: config.name,
+                    trial_number: CT + 1,
+                    response: e.target.id
+                };
+                // Often it makes sense to also save the config information
+                // trial_data = babeUtils.view.save_config_trial_data(config.data[CT], trial_data);
+
+                // Here, we save the trial_data
+                babe.trial_data.push(trial_data);
+
+                // Now, we will continue with the next view
+                babe.findNextView();
+            };
+
+            // We will add the handle_click functions to both buttons
+            $('#first').on("click", handle_click);
+            $('#second').on("click", handle_click);
+
+            // That's everything for this view
+        }
+    };
+    // We have to return the view, so that it can be used in 05_views.js
+    return view;
+};
+```
+
+
+
