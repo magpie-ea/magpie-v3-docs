@@ -140,7 +140,7 @@ The thanks view uses the following [predefined view elements](../03_custom_views
 
 * stimulus_container_generator: `empty`
 * answer_container_generator: `empty`
-* handle_response_function: `empty`
+* handle_response_function: `thanks`
 
 ## Trial views
 
@@ -518,6 +518,12 @@ Instantiate with `babeViews.view_generator('self_paced_reading', ...)`.
     * `picture: string`
     * `canvas: object` - [more about babe canvas](05_canvas.md)
     * `question: string`
+    * `wordPos: "next" or "same"`
+        * option how to display the spr parts, if "next" every spr part is displayed next to each other, as in a sentence, if "same" every spr part is displayed at the same place
+        * default: "next"
+    * `underline: "words", "sentence" or "none"`
+        * option how to underline the spr parts, if "words" every part is underlined separately,  if "sentence" the complete sentence is underlined, if "none" there is no underline 
+        * default: "words"
 
 * **Sample data**
 
@@ -531,12 +537,14 @@ const spr_trials = [
         sentence: "all | of | the | yellow | marbles | are | inside | the | case.'",
         option1: "Bring it",
         option2: "Leave it",
+        wordPos: "same"
     },
     {
         question: "Should you bring Johnny this box or not?",
         sentence: "some | of the | black marbles | are | inside | the case.'",
         option1: "Bring it",
-        option2: "Leave it"
+        option2: "Leave it",
+        underline: "none"
     }
 ];
 ```
@@ -564,6 +572,12 @@ Instantiate with `babeViews.view_generator('self_paced_reading_rating_scale', ..
     * `picture: string`
     * `canvas: object` - [more about babe canvas](05_canvas.md)
     * `question: string`
+    * `wordPos: "next" or "same"`
+        * option how to display the spr parts, if "next" every spr part is displayed next to each other, as in a sentence, if "same" every spr part is displayed at the same place
+        * default: "next"
+    * `underline: "words", "sentence" or "none"`
+        * option how to underline the spr parts, if "words" every part is underlined separately,  if "sentence" the complete sentence is underlined, if "none" there is no underline
+        * default: "words"
 
 
 
