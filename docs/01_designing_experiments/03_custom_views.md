@@ -10,10 +10,10 @@ Each template view consists of three elements, which jointly define its appearan
 2. **answer container**: defines the lower part of the screen, containing the answer options, 'next' buttons, etc.
 3. **handle response function**: function that is called to handle the response
 
-Each one of these elements is independently customizable. Indeed, when a template view is created by \_babe "behind the scenes", it simply uses defaults for these three elements which are appropriate for the template view to be created. For example, we would normally create a template `forced_choice` view like so:
+Each one of these elements is independently customizable. Indeed, when a template view is created by \_magpie "behind the scenes", it simply uses defaults for these three elements which are appropriate for the template view to be created. For example, we would normally create a template `forced_choice` view like so:
 
 ```javascript
-const forced_choice_instance = babeViews.view_generator(
+const forced_choice_instance = magpieViews.view_generator(
     'forced_choice', 
     // config information
     {
@@ -27,7 +27,7 @@ const forced_choice_instance = babeViews.view_generator(
 Equivalently, we could write this: 
 
 ```javascript
-const forced_choice_instance = babeViews.view_generator(
+const forced_choice_instance = magpieViews.view_generator(
    'forced_choice', 
    // config information
     {
@@ -50,21 +50,21 @@ The stimulus generator function used by the template `forced_choice` view is thi
 
 ```javascript
 function (config, CT) {
-        return `<div class='babe-view'>
-                    <h1 class='babe-view-title'>${config.title}</h1>
-                    <p class='babe-view-question babe-view-qud'>${config.data[CT].QUD}</p>
-                    <div class='babe-view-stimulus-container'>
-                        <div class='babe-view-stimulus babe-nodisplay'></div>
+        return `<div class='magpie-view'>
+                    <h1 class='magpie-view-title'>${config.title}</h1>
+                    <p class='magpie-view-question magpie-view-qud'>${config.data[CT].QUD}</p>
+                    <div class='magpie-view-stimulus-container'>
+                        <div class='magpie-view-stimulus magpie-nodisplay'></div>
                     </div>
                 </div>`;
 ```
 
-Generally, the function supplied to `stimulus_container_generator` must take the `config` object and a `CT` argument. The latter is the current trial, and it is supplied by \_babe internally. The function should then return HTML code as a string, which governs the appearance of the upper part of the view screen. You can use information from `config` and `CT`, so that when we write `${config.data[CT].QUD}` in the HTML string to be returned this is replaced by the QUD information stored in `config` for the current trial. Notice that the picture element is inserted automatically by \_babe in the `babe-view-stimulus` container. 
+Generally, the function supplied to `stimulus_container_generator` must take the `config` object and a `CT` argument. The latter is the current trial, and it is supplied by \_magpie internally. The function should then return HTML code as a string, which governs the appearance of the upper part of the view screen. You can use information from `config` and `CT`, so that when we write `${config.data[CT].QUD}` in the HTML string to be returned this is replaced by the QUD information stored in `config` for the current trial. Notice that the picture element is inserted automatically by \_magpie in the `magpie-view-stimulus` container. 
 
 We can specify whatever we'd like to appear in the stimulus container. For example, let's insert the same picture twice. This can be done by instantiating a customized template view like so:
 
 ```javascript
-const forced_choice_custonmized = babeViews.view_generator(
+const forced_choice_custonmized = magpieViews.view_generator(
     "forced_choice",
     // config information
     {
@@ -75,8 +75,8 @@ const forced_choice_custonmized = babeViews.view_generator(
     // custom generator functions
     {
         stimulus_container_generator: function (config, CT) {
-            return `<div class='babe-view'>
-                      <div class='babe-view-stimulus-container'>
+            return `<div class='magpie-view'>
+                      <div class='magpie-view-stimulus-container'>
                         <img src="${config.data[CT].picture}" height="42" width="42">
                         <img src="${config.data[CT].picture}" height="42" width="42">
                       </div>
@@ -89,7 +89,7 @@ We can also change the design and behavior of the part of the view that deals wi
 
 
 ```javascript
-const forced_choice_customized = babeViews.view_generator(
+const forced_choice_customized = magpieViews.view_generator(
     "forced_choice",
     // config information
     {
@@ -100,13 +100,13 @@ const forced_choice_customized = babeViews.view_generator(
     // custom generator functions
     {
       answer_container_generator: function (config, CT) {
-       return `<div class='babe-view-answer-container'>
-               <p class='babe-view-question'>${config.data[CT].question}</p>
-               <label for='o1' class='babe-response-buttons'>${config.data[CT].option1}</label>
+       return `<div class='magpie-view-answer-container'>
+               <p class='magpie-view-question'>${config.data[CT].question}</p>
+               <label for='o1' class='magpie-response-buttons'>${config.data[CT].option1}</label>
                <input type='radio' name='answer' id='o1' value=${config.data[CT].option1} />
-               <label for='o2' class='babe-response-buttons'>${config.data[CT].option2}</label>
+               <label for='o2' class='magpie-response-buttons'>${config.data[CT].option2}</label>
                <input type='radio' name='answer' id='o2' value=${config.data[CT].option2} />
-               <label for='o2' class='babe-response-buttons'>${config.data[CT].option3}</label>
+               <label for='o2' class='magpie-response-buttons'>${config.data[CT].option3}</label>
                <input type='radio' name='answer' id='o3' value=${config.data[CT].option3} />
                </div>`;
   }
@@ -119,10 +119,10 @@ It is possible to supply a completely new type of response variable via the func
 The `handle_response_function` used per default in the `forced_choice` view is this:
 
 ```javascript
-function(config, CT, babe, answer_container_generator, startingTime) {
+function(config, CT, magpie, answer_container_generator, startingTime) {
 
     // create the answer container
-    $(".babe-view").append(answer_container_generator(config, CT));
+    $(".magpie-view").append(answer_container_generator(config, CT));
     
     // attaches an event listener to the radio button input
     // when an input is selected a response property with a value equal
@@ -136,64 +136,64 @@ function(config, CT, babe, answer_container_generator, startingTime) {
         response: $("input[name=answer]:checked").val(),
         RT: RT
     };
-    trial_data = babeUtils.view.save_config_trial_data(config.data[CT], trial_data);
-    babe.trial_data.push(trial_data);
-    babe.findNextView();
+    trial_data = magpieUtils.view.save_config_trial_data(config.data[CT], trial_data);
+    magpie.trial_data.push(trial_data);
+    magpie.findNextView();
     });
     
 }    
 ```
 
-When this function is called (automatically by \_babe) it first creates the answer container. It also adds an event listener. Here, it reacts when a button is pressed, but this behavior needs to be coordinated with whatever you define in the `answer_container_generator` part. It then records the trial time and assembles the data to be recorded in the variable `trial_data`. By default, \_babe automatically adds all the data for the current trial to this object and then pushes this to its internal representation of the accumulated data so far which is in `babe.trial_data`. The function `babe.findNextView` is then called and takes you to the next trial or view.
+When this function is called (automatically by \_magpie) it first creates the answer container. It also adds an event listener. Here, it reacts when a button is pressed, but this behavior needs to be coordinated with whatever you define in the `answer_container_generator` part. It then records the trial time and assembles the data to be recorded in the variable `trial_data`. By default, \_magpie automatically adds all the data for the current trial to this object and then pushes this to its internal representation of the accumulated data so far which is in `magpie.trial_data`. The function `magpie.findNextView` is then called and takes you to the next trial or view.
 
-When you write your own custom `handle_response_function` you should supply the same arguments as the function above. You should also make sure to record the data and call `babe.findNextView` eventually. Other than this, you could implement a more dynamic display of different pictures and response options, using the interplay of `answer_container_generator` and `handle_response_function`, for example.
+When you write your own custom `handle_response_function` you should supply the same arguments as the function above. You should also make sure to record the data and call `magpie.findNextView` eventually. Other than this, you could implement a more dynamic display of different pictures and response options, using the interplay of `answer_container_generator` and `handle_response_function`, for example.
 
-If you write longer custom functions for customization, it is good practice to put these into the file `02_custom_functions.js`. An example is presented in the [showroom](https://github.com/babe-project/showroom).
+If you write longer custom functions for customization, it is good practice to put these into the file `02_custom_functions.js`. An example is presented in the [showroom](https://github.com/magpie-ea/showroom).
 
 ## Predefined view elements
 
 ### Stimulus container generators
 
-The following predefined stimulus container generators are available. The template [wrapping views](../01_template_views/#wrapping-views) and [trial views](../01_template_views/#trial-views) defined in \_babe all use one of these, as listed [here](../01_template_views/).
+The following predefined stimulus container generators are available. The template [wrapping views](../01_template_views/#wrapping-views) and [trial views](../01_template_views/#trial-views) defined in \_magpie all use one of these, as listed [here](../01_template_views/).
 
 ```javascript
 // The view template dict contains a generator function for every view type we support
-// The generator gets the config dict and CT as input and will generate the babe-view HTML code
+// The generator gets the config dict and CT as input and will generate the magpie-view HTML code
 // (Some view templates are the same, e.g. forced_choice and sliderRating)
 const stimulus_container_generators = {
     basic_stimulus: function (config, CT) {
-        return `<div class='babe-view'>
-                    <h1 class='babe-view-title'>${config.title}</h1>
-                    <p class='babe-view-question babe-view-qud'>${config.data[CT].QUD}</p>
-                    <div class='babe-view-stimulus-container'>
-                        <div class='babe-view-stimulus babe-nodisplay'></div>
+        return `<div class='magpie-view'>
+                    <h1 class='magpie-view-title'>${config.title}</h1>
+                    <p class='magpie-view-question magpie-view-qud'>${config.data[CT].QUD}</p>
+                    <div class='magpie-view-stimulus-container'>
+                        <div class='magpie-view-stimulus magpie-nodisplay'></div>
                     </div>
                 </div>`;
     },
     key_press: function(config, CT) {
-        return `<div class="babe-view">
-                    <h1 class='babe-view-title'>${config.title}</h1>
-                    <p class='babe-response-keypress-header'>
+        return `<div class="magpie-view">
+                    <h1 class='magpie-view-title'>${config.title}</h1>
+                    <p class='magpie-response-keypress-header'>
                     <strong>${config.data[CT].key1}</strong> = ${config.data[CT][config.data[CT].key1]}, 
                     <strong>${config.data[CT].key2}</strong> = ${config.data[CT][config.data[CT].key2]}</p>
-                    <div class='babe-view-stimulus-container'>
-                        <div class='babe-view-stimulus babe-nodisplay'></div>
+                    <div class='magpie-view-stimulus-container'>
+                        <div class='magpie-view-stimulus magpie-nodisplay'></div>
                     </div>
                 </div>`;
     },
     fixed_text: function(config, CT) {
-        return `<div class='babe-view'>
-                    <h1 class='babe-view-title'>${config.title}</h1>
-                    <section class="babe-text-container">
-                        <p class="babe-view-text">${config.text}</p>
+        return `<div class='magpie-view'>
+                    <h1 class='magpie-view-title'>${config.title}</h1>
+                    <section class="magpie-text-container">
+                        <p class="magpie-view-text">${config.text}</p>
                     </section>
                 </div>`;
     },
     post_test: function(config, CT) {
-        return `<div class='babe-view babe-post-test-view'>
-                    <h1 class='babe-view-title'>${config.title}</h1>
-                    <section class="babe-text-container">
-                        <p class="babe-view-text">${config.text}</p>
+        return `<div class='magpie-view magpie-post-test-view'>
+                    <h1 class='magpie-view-title'>${config.title}</h1>
+                    <section class="magpie-text-container">
+                        <p class="magpie-view-text">${config.text}</p>
                     </section>
                 </div>`;
     },
@@ -203,14 +203,14 @@ const stimulus_container_generators = {
     self_paced_reading: function(config, CT) {
         const helpText = config.data[CT].help_text !== undefined ?
             config.data[CT].help_text : "Press the SPACE bar to reveal the words";
-        return `<div class='babe-view'>
-                    <h1 class='babe-view-title'>${config.title}</h1>
-                    <p class='babe-view-question babe-view-qud'>${config.data[CT].QUD}</p>
-                    <div class='babe-view-stimulus-container'>
-                        <div class='babe-view-stimulus babe-nodisplay'></div>
+        return `<div class='magpie-view'>
+                    <h1 class='magpie-view-title'>${config.title}</h1>
+                    <p class='magpie-view-question magpie-view-qud'>${config.data[CT].QUD}</p>
+                    <div class='magpie-view-stimulus-container'>
+                        <div class='magpie-view-stimulus magpie-nodisplay'></div>
                     </div>
-                    <p class='babe-help-text babe-nodisplay'>${helpText}</p>
-                    <p class='babe-spr-sentence'></p>
+                    <p class='magpie-help-text magpie-nodisplay'>${helpText}</p>
+                    <p class='magpie-spr-sentence'></p>
                 </div>`;
     }
 };
@@ -218,39 +218,39 @@ const stimulus_container_generators = {
 
 ### Answer container generators
 
-The following predefined answer container generators are available. The template [wrapping views](../01_template_views/#wrapping-views) and [trial views](../01_template_views/#trial-views) defined in \_babe all use one of these, as listed [here](../01_template_views/).
+The following predefined answer container generators are available. The template [wrapping views](../01_template_views/#wrapping-views) and [trial views](../01_template_views/#trial-views) defined in \_magpie all use one of these, as listed [here](../01_template_views/).
 
 ```javascript
 // The answer container dict contains a generator function for every view type we support
-// The generator gets the config dict and CT as input and will generate the babe-view-answer-container HTML code
+// The generator gets the config dict and CT as input and will generate the magpie-view-answer-container HTML code
 // (Some answer container elements should be the same, e.g. slider rating and SPR-slider rating)
 const answer_container_generators = {
     button_choice: function (config, CT) {
-        return `<div class='babe-view-answer-container'>
-                    <p class='babe-view-question'>${config.data[CT].question}</p>
-                    <label for='o1' class='babe-response-buttons'>${config.data[CT].option1}</label>
+        return `<div class='magpie-view-answer-container'>
+                    <p class='magpie-view-question'>${config.data[CT].question}</p>
+                    <label for='o1' class='magpie-response-buttons'>${config.data[CT].option1}</label>
                     <input type='radio' name='answer' id='o1' value=${config.data[CT].option1} />
                     <input type='radio' name='answer' id='o2' value=${config.data[CT].option2} />
-                    <label for='o2' class='babe-response-buttons'>${config.data[CT].option2}</label>
+                    <label for='o2' class='magpie-response-buttons'>${config.data[CT].option2}</label>
                 </div>`;
     },
     question: function(config, CT) {
-        return `<div class='babe-view-answer-container'>
-                        <p class='babe-view-question'>${config.data[CT].question}</p>`;
+        return `<div class='magpie-view-answer-container'>
+                        <p class='magpie-view-question'>${config.data[CT].question}</p>`;
     },
     one_button: function (config, CT) {
-        return `<button id="next" class='babe-view-button' class="babe-nodisplay">${
+        return `<button id="next" class='magpie-view-button' class="magpie-nodisplay">${
             config.button
             }</button>`
     },
     post_test: function(config, CT) {
-        const quest = babeUtils.view.fill_defaults_post_test(config);
+        const quest = magpieUtils.view.fill_defaults_post_test(config);
         return `<form>
-                    <p class='babe-view-text'>
+                    <p class='magpie-view-text'>
                         <label for="age">${quest.age.title}:</label>
                         <input type="number" name="age" min="18" max="110" id="age" />
                     </p>
-                    <p class='babe-view-text'>
+                    <p class='magpie-view-text'>
                         <label for="gender">${quest.gender.title}:</label>
                         <select id="gender" name="gender">
                             <option></option>
@@ -259,7 +259,7 @@ const answer_container_generators = {
                             <option value="${quest.gender.other}">${quest.gender.other}</option>
                         </select>
                     </p>
-                    <p class='babe-view-text'>
+                    <p class='magpie-view-text'>
                         <label for="education">${quest.edu.title}:</label>
                         <select id="education" name="education">
                             <option></option>
@@ -268,15 +268,15 @@ const answer_container_generators = {
                             <option value="${quest.edu.higher_degree}">${quest.edu.higher_degree}</option>
                         </select>
                     </p>
-                    <p class='babe-view-text'>
+                    <p class='magpie-view-text'>
                         <label for="languages" name="languages">${quest.langs.title}:<br /><span>${quest.langs.text}</</span></label>
                         <input type="text" id="languages"/>
                     </p>
-                    <p class="babe-view-text">
+                    <p class="magpie-view-text">
                         <label for="comments">${quest.comments.title}</label>
                         <textarea name="comments" id="comments" rows="6" cols="40"></textarea>
                     </p>
-                    <button id="next" class='babe-view-button'>${config.button}</button>
+                    <button id="next" class='magpie-view-button'>${config.button}</button>
             </form>`
     },
     empty: function(config, CT) {
@@ -285,20 +285,20 @@ const answer_container_generators = {
     slider_rating: function(config, CT) {
         const option1 = config.data[CT].optionLeft;
         const option2 = config.data[CT].optionRight;
-        return `<p class='babe-view-question'>${config.data[CT].question}</p>
-                <div class='babe-view-answer-container'>
-                    <span class='babe-response-slider-option'>${option1}</span>
-                    <input type='range' id='response' class='babe-response-slider' min='0' max='100' value='50'/>
-                    <span class='babe-response-slider-option'>${option2}</span>
+        return `<p class='magpie-view-question'>${config.data[CT].question}</p>
+                <div class='magpie-view-answer-container'>
+                    <span class='magpie-response-slider-option'>${option1}</span>
+                    <input type='range' id='response' class='magpie-response-slider' min='0' max='100' value='50'/>
+                    <span class='magpie-response-slider-option'>${option2}</span>
                 </div>
-                <button id="next" class='babe-view-button babe-nodisplay'>Next</button>`;
+                <button id="next" class='magpie-view-button magpie-nodisplay'>Next</button>`;
     },
     textbox_input: function(config, CT) {
-        return `<p class='babe-view-question'>${config.data[CT].question}</p>
-                    <div class='babe-view-answer-container'>
-                        <textarea name='textbox-input' rows=10 cols=50 class='babe-response-text' />
+        return `<p class='magpie-view-question'>${config.data[CT].question}</p>
+                    <div class='magpie-view-answer-container'>
+                        <textarea name='textbox-input' rows=10 cols=50 class='magpie-response-text' />
                     </div>
-                    <button id='next' class='babe-view-button babe-nodisplay'>next</button>`;
+                    <button id='next' class='magpie-view-button magpie-nodisplay'>next</button>`;
     },
     dropdown_choice: function(config, CT) {
         const question_left_part =
@@ -307,7 +307,7 @@ const answer_container_generators = {
             config.data[CT].question_right_part === undefined ? "" : config.data[CT].question_right_part;
         const option1 = config.data[CT].option1;
         const option2 = config.data[CT].option2;
-        return `<div class='babe-view-answer-container babe-response-dropdown'>
+        return `<div class='magpie-view-answer-container magpie-response-dropdown'>
                     ${question_left_part}
                     <select id='response' name='answer'>
                         <option disabled selected></option>
@@ -316,48 +316,48 @@ const answer_container_generators = {
                     </select>
                     ${question_right_part}
                     </p>
-                    <button id='next' class='babe-view-button babe-nodisplay'>Next</button>
+                    <button id='next' class='magpie-view-button magpie-nodisplay'>Next</button>
                 </div>`;
 
     },
     rating_scale: function(config, CT) {
-        return `<p class='babe-view-question'>${config.data[CT].question}</p>
-                <div class='babe-view-answer-container'>
-                    <strong class='babe-response-rating-option babe-view-text'>${config.data[CT].optionLeft}</strong>
-                    <label for="1" class='babe-response-rating'>1</label>
+        return `<p class='magpie-view-question'>${config.data[CT].question}</p>
+                <div class='magpie-view-answer-container'>
+                    <strong class='magpie-response-rating-option magpie-view-text'>${config.data[CT].optionLeft}</strong>
+                    <label for="1" class='magpie-response-rating'>1</label>
                     <input type="radio" name="answer" id="1" value="1" />
-                    <label for="2" class='babe-response-rating'>2</label>
+                    <label for="2" class='magpie-response-rating'>2</label>
                     <input type="radio" name="answer" id="2" value="2" />
-                    <label for="3" class='babe-response-rating'>3</label>
+                    <label for="3" class='magpie-response-rating'>3</label>
                     <input type="radio" name="answer" id="3" value="3" />
-                    <label for="4" class='babe-response-rating'>4</label>
+                    <label for="4" class='magpie-response-rating'>4</label>
                     <input type="radio" name="answer" id="4" value="4" />
-                    <label for="5" class='babe-response-rating'>5</label>
+                    <label for="5" class='magpie-response-rating'>5</label>
                     <input type="radio" name="answer" id="5" value="5" />
-                    <label for="6" class='babe-response-rating'>6</label>
+                    <label for="6" class='magpie-response-rating'>6</label>
                     <input type="radio" name="answer" id="6" value="6" />
-                    <label for="7" class='babe-response-rating'>7</label>
+                    <label for="7" class='magpie-response-rating'>7</label>
                     <input type="radio" name="answer" id="7" value="7" />
-                    <strong class='babe-response-rating-option babe-view-text'>${config.data[CT].optionRight}</strong>
+                    <strong class='magpie-response-rating-option magpie-view-text'>${config.data[CT].optionRight}</strong>
                 </div>`;
     },
     sentence_choice: function(config, CT) {
-        return `<div class='babe-view-answer-container'>
-                    <p class='babe-view-question'>${config.data[CT].question}</p>
-                    <label for='s1' class='babe-response-sentence'>${config.data[CT].option1}</label>
+        return `<div class='magpie-view-answer-container'>
+                    <p class='magpie-view-question'>${config.data[CT].question}</p>
+                    <label for='s1' class='magpie-response-sentence'>${config.data[CT].option1}</label>
                     <input type='radio' name='answer' id='s1' value="${config.data[CT].option1}" />
-                    <label for='s2' class='babe-response-sentence'>${config.data[CT].option2}</label>
+                    <label for='s2' class='magpie-response-sentence'>${config.data[CT].option2}</label>
                     <input type='radio' name='answer' id='s2' value="${config.data[CT].option2}" />
                 </div>`;
     },
     image_selection: function(config, CT) {
-        $(".babe-view-stimulus-container").addClass("babe-nodisplay");
-        return    `<div class='babe-view-answer-container'>
-                        <p class='babe-view-question'>${config.data[CT].question}</p>
-                        <label for="img1" class='babe-view-picture babe-response-picture'><img src=${config.data[CT].picture1}></label>
+        $(".magpie-view-stimulus-container").addClass("magpie-nodisplay");
+        return    `<div class='magpie-view-answer-container'>
+                        <p class='magpie-view-question'>${config.data[CT].question}</p>
+                        <label for="img1" class='magpie-view-picture magpie-response-picture'><img src=${config.data[CT].picture1}></label>
                         <input type="radio" name="answer" id="img1" value="${config.data[CT].option1}" />
                         <input type="radio" name="answer" id="img2" value="${config.data[CT].option2}" />
-                        <label for="img2" class='babe-view-picture babe-response-picture'><img src=${config.data[CT].picture2}></label>
+                        <label for="img2" class='magpie-view-picture magpie-response-picture'><img src=${config.data[CT].picture2}></label>
                     </div>`;
     }
 };
@@ -365,14 +365,14 @@ const answer_container_generators = {
 
 ### Handle response functions
 
-The following predefined handle response functions are available. The template [wrapping views](../01_template_views/#wrapping-views) and [trial views](../01_template_views/#trial-views) defined in \_babe all use one of these, as listed [here](../01_template_views/).
+The following predefined handle response functions are available. The template [wrapping views](../01_template_views/#wrapping-views) and [trial views](../01_template_views/#trial-views) defined in \_magpie all use one of these, as listed [here](../01_template_views/).
 
 ```javascript
 // The enable response dict contains a generator function for every view type we support
 // The generator gets the config dict, CT, the answer_container_generator and the startingTime as input
 const handle_response_functions = {
-    button_choice: function(config, CT, babe, answer_container_generator, startingTime) {
-        $(".babe-view").append(answer_container_generator(config, CT));
+    button_choice: function(config, CT, magpie, answer_container_generator, startingTime) {
+        $(".magpie-view").append(answer_container_generator(config, CT));
 
         // attaches an event listener to the yes / no radio inputs
         // when an input is selected a response property with a value equal
@@ -387,15 +387,15 @@ const handle_response_functions = {
                 RT: RT
             };
 
-            trial_data = babeUtils.view.save_config_trial_data(config.data[CT], trial_data);
+            trial_data = magpieUtils.view.save_config_trial_data(config.data[CT], trial_data);
 
-            babe.trial_data.push(trial_data);
-            babe.findNextView();
+            magpie.trial_data.push(trial_data);
+            magpie.findNextView();
         });
     },
-    key_press: function (config, CT, babe, answer_container_generator, startingTime) {
+    key_press: function (config, CT, magpie, answer_container_generator, startingTime) {
 
-        $(".babe-view").append(answer_container_generator(config, CT));
+        $(".magpie-view").append(answer_container_generator(config, CT));
 
         const handleKeyPress = function(e) {
             const keyPressed = String.fromCharCode(
@@ -428,19 +428,19 @@ const handle_response_functions = {
                 trial_data[config.data[CT].key2] =
                     config.data[CT][config.data[CT].key2];
 
-                trial_data = babeUtils.view.save_config_trial_data(config.data[CT], trial_data);
+                trial_data = magpieUtils.view.save_config_trial_data(config.data[CT], trial_data);
 
-                babe.trial_data.push(trial_data);
+                magpie.trial_data.push(trial_data);
                 $("body").off("keydown", handleKeyPress);
-                babe.findNextView();
+                magpie.findNextView();
             }
         };
 
         $("body").on("keydown", handleKeyPress);
     },
-    intro: function(config, CT, babe, answer_container_generator, startingTime) {
+    intro: function(config, CT, magpie, answer_container_generator, startingTime) {
 
-        $(".babe-view").append(answer_container_generator(config, CT));
+        $(".magpie-view").append(answer_container_generator(config, CT));
 
         let prolificId;
         const prolificForm = `<p id="prolific-id-form">
@@ -452,15 +452,15 @@ const handle_response_functions = {
 
         function showNextBtn() {
             if (prolificId.val().trim() !== "") {
-                next.removeClass("babe-nodisplay");
+                next.removeClass("magpie-nodisplay");
             } else {
-                next.addClass("babe-nodisplay");
+                next.addClass("magpie-nodisplay");
             }
         }
 
-        if (babe.deploy.deployMethod === "Prolific") {
-            $(".babe-text-container").append(prolificForm);
-            next.addClass("babe-nodisplay");
+        if (magpie.deploy.deployMethod === "Prolific") {
+            $(".magpie-text-container").append(prolificForm);
+            next.addClass("magpie-nodisplay");
             prolificId = $("#prolific-id");
 
             prolificId.on("keyup", function() {
@@ -474,108 +474,108 @@ const handle_response_functions = {
 
         // moves to the next view
         next.on("click", function() {
-            if (babe.deploy.deployMethod === "Prolific") {
-                babe.global_data.prolific_id = prolificId.val().trim();
+            if (magpie.deploy.deployMethod === "Prolific") {
+                magpie.global_data.prolific_id = prolificId.val().trim();
             }
 
-            babe.findNextView();
+            magpie.findNextView();
         });
     },
-    one_click: function(config, CT, babe, answer_container_generator, startingTime) {
+    one_click: function(config, CT, magpie, answer_container_generator, startingTime) {
 
-        $(".babe-view").append(answer_container_generator(config, CT));
+        $(".magpie-view").append(answer_container_generator(config, CT));
 
         $("#next").on("click", function() {
-            babe.findNextView();
+            magpie.findNextView();
         });
     },
-    post_test: function(config, CT, babe, answer_container_generator, startingTime) {
-        $(".babe-view").append(answer_container_generator(config, CT));
+    post_test: function(config, CT, magpie, answer_container_generator, startingTime) {
+        $(".magpie-view").append(answer_container_generator(config, CT));
 
         $("#next").on("click", function(e) {
             // prevents the form from submitting
             e.preventDefault();
 
             // records the post test info
-            babe.global_data.age = $("#age").val();
-            babe.global_data.gender = $("#gender").val();
-            babe.global_data.education = $("#education").val();
-            babe.global_data.languages = $("#languages").val();
-            babe.global_data.comments = $("#comments")
+            magpie.global_data.age = $("#age").val();
+            magpie.global_data.gender = $("#gender").val();
+            magpie.global_data.education = $("#education").val();
+            magpie.global_data.languages = $("#languages").val();
+            magpie.global_data.comments = $("#comments")
             .val()
             .trim();
-            babe.global_data.endTime = Date.now();
-            babe.global_data.timeSpent =
-                (babe.global_data.endTime -
-                    babe.global_data.startTime) /
+            magpie.global_data.endTime = Date.now();
+            magpie.global_data.timeSpent =
+                (magpie.global_data.endTime -
+                    magpie.global_data.startTime) /
                 60000;
 
             // moves to the next view
-            babe.findNextView();
+            magpie.findNextView();
         });
     },
-    thanks: function(config, CT, babe, answer_container_generator, startingTime) {
-        const prolificConfirmText = babeUtils.view.setter.prolificConfirmText(config.prolificConfirmText,
+    thanks: function(config, CT, magpie, answer_container_generator, startingTime) {
+        const prolificConfirmText = magpieUtils.view.setter.prolificConfirmText(config.prolificConfirmText,
             "Please press the button below to confirm that you completed the experiment with Prolific");
         if (
-            babe.deploy.is_MTurk ||
-            babe.deploy.deployMethod === "directLink" ||
-            babe.deploy.deployMethod === "localServer"
+            magpie.deploy.is_MTurk ||
+            magpie.deploy.deployMethod === "directLink" ||
+            magpie.deploy.deployMethod === "localServer"
         ) {
             // updates the fields in the hidden form with info for the MTurk's server
             $("#main").html(
-                `<div class='babe-view babe-thanks-view'>
-                            <h2 id='warning-message' class='babe-warning'>Submitting the data
-                                <p class='babe-view-text'>please do not close the tab</p>
-                                <div class='babe-loader'></div>
+                `<div class='magpie-view magpie-thanks-view'>
+                            <h2 id='warning-message' class='magpie-warning'>Submitting the data
+                                <p class='magpie-view-text'>please do not close the tab</p>
+                                <div class='magpie-loader'></div>
                             </h2>
-                            <h1 id='thanks-message' class='babe-thanks babe-nodisplay'>${
+                            <h1 id='thanks-message' class='magpie-thanks magpie-nodisplay'>${
                     config.title
                     }</h1>
                         </div>`
             );
-        } else if (babe.deploy.deployMethod === "Prolific") {
+        } else if (magpie.deploy.deployMethod === "Prolific") {
             $("#main").html(
-                `<div class='babe-view babe-thanks-view'>
-                            <h2 id='warning-message' class='babe-warning'>Submitting the data
-                                <p class='babe-view-text'>please do not close the tab</p>
-                                <div class='babe-loader'></div>
+                `<div class='magpie-view magpie-thanks-view'>
+                            <h2 id='warning-message' class='magpie-warning'>Submitting the data
+                                <p class='magpie-view-text'>please do not close the tab</p>
+                                <div class='magpie-loader'></div>
                             </h2>
-                            <h1 id='thanks-message' class='babe-thanks babe-nodisplay'>${
+                            <h1 id='thanks-message' class='magpie-thanks magpie-nodisplay'>${
                     config.title
                     }</h1>
-                            <p id='extra-message' class='babe-view-text babe-nodisplay'>
+                            <p id='extra-message' class='magpie-view-text magpie-nodisplay'>
                                 ${prolificConfirmText}
                                 <a href="${
-                    babe.deploy.prolificURL
-                    }" class="babe-view-button prolific-url">Confirm</a>
+                    magpie.deploy.prolificURL
+                    }" class="magpie-view-button prolific-url">Confirm</a>
                             </p>
                         </div>`
             );
-        } else if (babe.deploy.deployMethod === "debug") {
+        } else if (magpie.deploy.deployMethod === "debug") {
             $("main").html(
-                `<div id='babe-debug-table-container' class='babe-view babe-thanks-view'>
-                            <h1 class='babe-view-title'>Debug Mode</h1>
+                `<div id='magpie-debug-table-container' class='magpie-view magpie-thanks-view'>
+                            <h1 class='magpie-view-title'>Debug Mode</h1>
                         </div>`
             );
         } else {
-            console.error("No such babe.deploy.deployMethod");
+            console.error("No such magpie.deploy.deployMethod");
         }
 
-        babe.submission.submit(babe);
+        magpie.submission.submit(magpie);
     },
-    slider_rating: function(config, CT, babe, answer_container_generator, startingTime){
+    slider_rating: function(config, CT, magpie, answer_container_generator, startingTime){
         let response;
 
-        $(".babe-view").append(answer_container_generator(config, CT));
+        $(".magpie-view").append(answer_container_generator(config, CT));
 
         response = $("#response");
         // checks if the slider has been changed
         response.on("change", function() {
-            $("#next").removeClass("babe-nodisplay");
+            $("#next").removeClass("magpie-nodisplay");
         });
         response.on("click", function() {
-            $("#next").removeClass("babe-nodisplay");
+            $("#next").removeClass("magpie-nodisplay");
         });
 
         $("#next").on("click", function() {
@@ -587,18 +587,18 @@ const handle_response_functions = {
                 RT: RT
             };
 
-            trial_data = babeUtils.view.save_config_trial_data(config.data[CT], trial_data);
+            trial_data = magpieUtils.view.save_config_trial_data(config.data[CT], trial_data);
 
-            babe.trial_data.push(trial_data);
-            babe.findNextView();
+            magpie.trial_data.push(trial_data);
+            magpie.findNextView();
         });
     },
-    textbox_input: function(config, CT, babe, answer_container_generator, startingTime) {
+    textbox_input: function(config, CT, magpie, answer_container_generator, startingTime) {
         let next;
         let textInput;
         const minChars = config.data[CT].min_chars === undefined ? 10 : config.data[CT].min_chars;
 
-        $(".babe-view").append(answer_container_generator(config, CT));
+        $(".magpie-view").append(answer_container_generator(config, CT));
 
         next = $("#next");
         textInput = $("textarea");
@@ -608,9 +608,9 @@ const handle_response_functions = {
             // if the text is longer than (in this case) 10 characters without the spaces
             // the 'next' button appears
             if (textInput.val().trim().length > minChars) {
-                next.removeClass("babe-nodisplay");
+                next.removeClass("magpie-nodisplay");
             } else {
-                next.addClass("babe-nodisplay");
+                next.addClass("magpie-nodisplay");
             }
         });
 
@@ -624,13 +624,13 @@ const handle_response_functions = {
                 RT: RT
             };
 
-            trial_data = babeUtils.view.save_config_trial_data(config.data[CT], trial_data);
+            trial_data = magpieUtils.view.save_config_trial_data(config.data[CT], trial_data);
 
-            babe.trial_data.push(trial_data);
-            babe.findNextView();
+            magpie.trial_data.push(trial_data);
+            magpie.findNextView();
         });
     },
-    dropdown_choice: function(config, CT, babe, answer_container_generator, startingTime){
+    dropdown_choice: function(config, CT, magpie, answer_container_generator, startingTime){
         let response;
 
         const question_left_part =
@@ -638,12 +638,12 @@ const handle_response_functions = {
         const question_right_part =
             config.data[CT].question_right_part === undefined ? "" : config.data[CT].question_right_part;
 
-        $(".babe-view").append(answer_container_generator(config, CT));
+        $(".magpie-view").append(answer_container_generator(config, CT));
 
         response = $("#response");
 
         response.on("change", function() {
-            $("#next").removeClass("babe-nodisplay");
+            $("#next").removeClass("magpie-nodisplay");
         });
 
 
@@ -657,13 +657,13 @@ const handle_response_functions = {
                 RT: RT
             };
 
-            trial_data = babeUtils.view.save_config_trial_data(config.data[CT], trial_data);
+            trial_data = magpieUtils.view.save_config_trial_data(config.data[CT], trial_data);
 
-            babe.trial_data.push(trial_data);
-            babe.findNextView();
+            magpie.trial_data.push(trial_data);
+            magpie.findNextView();
         });
     },
-    self_paced_reading: function(config, CT, babe, answer_container_generator, startingTime){
+    self_paced_reading: function(config, CT, magpie, answer_container_generator, startingTime){
 
         const sentenceList = config.data[CT].sentence.trim().split(" | ");
         let spaceCounter = 0;
@@ -687,14 +687,14 @@ const handle_response_functions = {
                 if (showNeighbor) {
                     wordList[spaceCounter].classList.remove("spr-word-hidden");
                 } else {
-                    $(".babe-spr-sentence").html(`<span class='spr-word'>${sentenceList[spaceCounter]}</span>`);
+                    $(".magpie-spr-sentence").html(`<span class='spr-word'>${sentenceList[spaceCounter]}</span>`);
                     if (not_underline){
-                        $('.babe-spr-sentence .spr-word').addClass('no-line');
+                        $('.magpie-spr-sentence .spr-word').addClass('no-line');
                     }
                 }
 
                 if (spaceCounter === 0) {
-                    $(".babe-help-text").addClass("babe-invisible");
+                    $(".magpie-help-text").addClass("magpie-invisible");
                 }
 
                 if (spaceCounter > 0 && showNeighbor) {
@@ -707,10 +707,10 @@ const handle_response_functions = {
                 if (showNeighbor) {
                     wordList[spaceCounter - 1].classList.add("spr-word-hidden");
                 } else {
-                    $(".babe-spr-sentence").html("");
+                    $(".magpie-spr-sentence").html("");
                 }
 
-                $(".babe-view").append(answer_container_generator(config, CT));
+                $(".magpie-view").append(answer_container_generator(config, CT));
 
                 $("input[name=answer]").on("change", function() {
                     const RT = Date.now() - startingTime;
@@ -729,22 +729,22 @@ const handle_response_functions = {
                         time_spent: RT
                     };
 
-                    trial_data = babeUtils.view.save_config_trial_data(config.data[CT], trial_data);
+                    trial_data = magpieUtils.view.save_config_trial_data(config.data[CT], trial_data);
 
-                    babe.trial_data.push(trial_data);
-                    babe.findNextView();
+                    magpie.trial_data.push(trial_data);
+                    magpie.findNextView();
                 });
                 readingTimes.push(Date.now());
                 spaceCounter++;
             }
         };
         // shows the help text
-        $(".babe-help-text").removeClass("babe-nodisplay");
+        $(".magpie-help-text").removeClass("magpie-nodisplay");
 
         if (showNeighbor) {
             // creates the sentence
             sentenceList.map((word) => {
-                $(".babe-spr-sentence").append(
+                $(".magpie-spr-sentence").append(
                     `<span class='spr-word spr-word-hidden'>${word}</span>`
                 );
             });
@@ -754,10 +754,10 @@ const handle_response_functions = {
         }
 
         if (not_underline){
-            $('.babe-spr-sentence .spr-word').addClass('no-line');
+            $('.magpie-spr-sentence .spr-word').addClass('no-line');
         }
         if (one_line){
-            $('.babe-spr-sentence .spr-word').addClass('one-line');
+            $('.magpie-spr-sentence .spr-word').addClass('one-line');
         }
 
         // attaches an eventListener to the body for space
@@ -779,11 +779,11 @@ const custom_view_template = function(config) {
         name: config.name,
         CT: 0,
         trials: config.trials,
-        // The render functions gets the babe object as well as the current trial in view counter as input
-        render: function (CT, babe) {
-            // Here, you can do whatever you want, eventually you should call babe.findNextView()
+        // The render functions gets the magpie object as well as the current trial in view counter as input
+        render: function (CT, magpie) {
+            // Here, you can do whatever you want, eventually you should call magpie.findNextView()
             // to proceed to the next view and if it is an trial type view,
-            // you should save the trial information with babe.trial_data.push(trial_data)
+            // you should save the trial information with magpie.trial_data.push(trial_data)
         }
     };
     // We have to return the view, so that it can be used in 05_views.js
@@ -798,9 +798,9 @@ A view is an object, that obligatorily has the properties:
 * `trials`: the maximum number of times this view is repeated
 * `render`: a function that is called to create each trial of the view
 
-The most important part is the `render` function. It gets `CT` and the babe-object itself as input.  has to call `babe.findNextView()` eventually to proceed to the next view (or the next trial in this view). If data is to be saved from any given trial, you would need to collect the data as an object, e.g., named `trial_data` and store it for later output by calling `babe.trial_data.push(trial_data)`.
+The most important part is the `render` function. It gets `CT` and the magpie-object itself as input.  has to call `magpie.findNextView()` eventually to proceed to the next view (or the next trial in this view). If data is to be saved from any given trial, you would need to collect the data as an object, e.g., named `trial_data` and store it for later output by calling `magpie.trial_data.push(trial_data)`.
 
-Here's a full example from the [showroom](https://github.com/babe-project/showroom):
+Here's a full example from the [showroom](https://github.com/magpie-ea/showroom):
 
 ```javascript
 // In this view the user can click on one of two buttons
@@ -809,18 +809,18 @@ const custom_press_a_button = function(config) {
         name: config.name,
         CT: 0,
         trials: config.trials,
-        // The render functions gets the babe object as well as the current trial in view counter as input
-        render: function (CT, babe) {
-            // Here, you can do whatever you want, eventually you should call babe.findNextView()
+        // The render functions gets the magpie object as well as the current trial in view counter as input
+        render: function (CT, magpie) {
+            // Here, you can do whatever you want, eventually you should call magpie.findNextView()
             // to proceed to the next view and if it is an trial type view,
-            // you should save the trial information with babe.trial_data.push(trial_data)
+            // you should save the trial information with magpie.trial_data.push(trial_data)
 
             // Normally, you want to display some kind of html, to do this you append your html to the main element
-            // You could use one of our predefined html-templates, with (babe.)stimulus_container_generators["<view_name>"](config, CT)
-            $("main").html(`<div class='babe-view'>
-                <h1 class='babe-view-title'>Click on one of the buttons!</h1>
-                <button id="first" class='babe-view-button'>First Button</button>
-                <button id="second" class='babe-view-button'>Second Button</button>
+            // You could use one of our predefined html-templates, with (magpie.)stimulus_container_generators["<view_name>"](config, CT)
+            $("main").html(`<div class='magpie-view'>
+                <h1 class='magpie-view-title'>Click on one of the buttons!</h1>
+                <button id="first" class='magpie-view-button'>First Button</button>
+                <button id="second" class='magpie-view-button'>Second Button</button>
                 </div>`);
 
             // This function will handle  the response
@@ -832,13 +832,13 @@ const custom_press_a_button = function(config) {
                     response: e.target.id
                 };
                 // Often it makes sense to also save the config information
-                // trial_data = babeUtils.view.save_config_trial_data(config.data[CT], trial_data);
+                // trial_data = magpieUtils.view.save_config_trial_data(config.data[CT], trial_data);
 
                 // Here, we save the trial_data
-                babe.trial_data.push(trial_data);
+                magpie.trial_data.push(trial_data);
 
                 // Now, we will continue with the next view
-                babe.findNextView();
+                magpie.findNextView();
             };
 
             // We will add the handle_click functions to both buttons

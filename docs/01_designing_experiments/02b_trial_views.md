@@ -12,7 +12,7 @@ Different types of wrapping views have more optional fields, as documented below
 
 ## Forced-choice task
 
-Instantiate with `babeView.forcedChoice`. Displays a context, a picture and a question to be answered in a two-alternative forced choice task. Choices are made by clicking on one of two buttons.
+Instantiate with `magpieView.forcedChoice`. Displays a context, a picture and a question to be answered in a two-alternative forced choice task. Choices are made by clicking on one of two buttons.
 
 <img src='../../images/views_samples/view_fc.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -23,7 +23,7 @@ Instantiate with `babeView.forcedChoice`. Displays a context, a picture and a qu
 * **Optional Fields**
     * `question: string` - question to be asked
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)` - picture to be displayed
 
 * **Sample data**
@@ -40,7 +40,7 @@ const forced_choice_trials = [
 ```
 ## Sentence Choice task
 
-Instantiate with `babeViews.sentenceChoice`. Similar to the `forcedChoice` view, this view presents two text-based options to click on. This view, however, realizes options on longer buttons arranged vertically. This is better for choice between several longer expressions, like whole sentences.
+Instantiate with `magpieViews.sentenceChoice`. Similar to the `forcedChoice` view, this view presents two text-based options to click on. This view, however, realizes options on longer buttons arranged vertically. This is better for choice between several longer expressions, like whole sentences.
 
 <img src='../../images/views_samples/view_ss.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -50,7 +50,7 @@ Instantiate with `babeViews.sentenceChoice`. Similar to the `forcedChoice` view,
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)`
     * `question: string`
 
@@ -79,7 +79,7 @@ const sentence_choice_trials = [
 
 ## Image Selection task
 
-Instantiate with `babeViews.imageSelection`. Realizes another 2-alternative forced choice task, by presenting two pictures (arranged horizontally) and requiring a click on one of the pictures. 
+Instantiate with `magpieViews.imageSelection`. Realizes another 2-alternative forced choice task, by presenting two pictures (arranged horizontally) and requiring a click on one of the pictures. 
 
 <img src='../../images/views_samples/view_is.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -92,7 +92,7 @@ Instantiate with `babeViews.imageSelection`. Realizes another 2-alternative forc
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
     * `question: string`
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
 
 * **Sample data**
 
@@ -116,7 +116,7 @@ const image_selection_trials = [
 
 ## Textbox Input task
 
-Instantiate with `babeViews.textboxInput`. Requires users to type in text freely in a textbox. Allows to specify a minimum number of characters before the `next` button appears. 
+Instantiate with `magpieViews.textboxInput`. Requires users to type in text freely in a textbox. Allows to specify a minimum number of characters before the `next` button appears. 
 
 <img src='../../images/views_samples/view_ti.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -125,7 +125,7 @@ Instantiate with `babeViews.textboxInput`. Requires users to type in text freely
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)` - picture to be displayed
     * `min_chars: number`
         * the minumum number of characters in the textarea field before the `next` button appears
@@ -149,7 +149,7 @@ const textbox_input_trials = [
 
 ## Slider Rating task
 
-Instantiate with `babeViews.sliderRating`. Gives you a single (horizontally oriented) slider, with endpoints whose labels can be specified. The `next` button only appears when the slider is clicked on or moved at least once. Internally slider values are represented as ranging from 0 to 100 in steps of 1.
+Instantiate with `magpieViews.sliderRating`. Gives you a single (horizontally oriented) slider, with endpoints whose labels can be specified. The `next` button only appears when the slider is clicked on or moved at least once. Internally slider values are represented as ranging from 0 to 100 in steps of 1.
 
 <img src='../../images/views_samples/view_sr.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -159,7 +159,7 @@ Instantiate with `babeViews.sliderRating`. Gives you a single (horizontally orie
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)`
     * `question: string`
 
@@ -183,7 +183,7 @@ const slider_rating_trials = [
 
 ## Dropdown Choice task
 
-Instantiate with `babeViews.dropdownChoice`. Prompts the user to select one option from a drop-down menu, which can be embedded into a sentence, e.g., to fill in a word or phrase in a fixed sentence frame.
+Instantiate with `magpieViews.dropdownChoice`. Prompts the user to select one option from a drop-down menu, which can be embedded into a sentence, e.g., to fill in a word or phrase in a fixed sentence frame.
 
 <img src='../../images/views_samples/view_dc.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -194,7 +194,7 @@ Instantiate with `babeViews.dropdownChoice`. Prompts the user to select one opti
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)`
     * `question_left_part: string`
     * `question_right_part: string`
@@ -219,7 +219,7 @@ const dropdown_choice_trials = [
 
 ## Rating Scale task
 
-Instantiate with `babeViews.ratingScale`. Realizes a Likert-scale (ordinal) rating task, with button labeled with consecutive numbers. Participants click on these numbered buttons to proceed. Allows labels for endpoints on the scale.
+Instantiate with `magpieViews.ratingScale`. Realizes a Likert-scale (ordinal) rating task, with button labeled with consecutive numbers. Participants click on these numbered buttons to proceed. Allows labels for endpoints on the scale.
 
 <img src='../../images/views_samples/view_rc.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -231,7 +231,7 @@ Instantiate with `babeViews.ratingScale`. Realizes a Likert-scale (ordinal) rati
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)`
     * `question: string`
 
@@ -255,7 +255,7 @@ const rating_scale_trials = [
 
 ## Key Press task
 
-Instantiate with `babeViews.keyPress`. Offers a 2-alternative forced choice task where choice options are given by pressing keys on the keyboard. Ideal for more accurate reaction time measurements.
+Instantiate with `magpieViews.keyPress`. Offers a 2-alternative forced choice task where choice options are given by pressing keys on the keyboard. Ideal for more accurate reaction time measurements.
 
 <img src='../../images/views_samples/view_kp.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -269,7 +269,7 @@ Instantiate with `babeViews.keyPress`. Offers a 2-alternative forced choice task
 * **Optional Fields**
     * `question: string`
     * `picture: string (link)`
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
 
 * **Sample data**
 

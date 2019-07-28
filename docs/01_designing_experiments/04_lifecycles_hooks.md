@@ -34,7 +34,7 @@ All the trial views go through the following steps.
 Suppose you want to add a 1000 ms inter-stimulus break between two trials and show a fixation cross for 250 ms. You could realize this when instantiating your view like this:
 
 ~~~
-const forced_choice_2A = babeViews.view_generator("key_press", {
+const forced_choice_2A = magpieViews.view_generator("key_press", {
     trials: trial_info.forced_choice.length,
     name: 'forced_choice_2A',
     data: trial_info.forced_choice,
@@ -123,7 +123,7 @@ check_response = function(data, next) {
 We then add this function to be called after the relevant step when creating the relevant view:
 
 ```
-const forced_choice_2A = babeViews.view_generator("key_press", {
+const forced_choice_2A = magpieViews.view_generator("key_press", {
     trials: trial_info.forced_choice.length,
     name: 'forced_choice_2A',
     data: trial_info.forced_choice,

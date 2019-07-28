@@ -13,7 +13,7 @@ All wrapping views have two **obligatory fields**:
 
 ### Intro view
 
-Instantiate with `babeViews.view_generator('intro', ...)`. Optional fields:
+Instantiate with `magpieViews.view_generator('intro', ...)`. Optional fields:
 
 * `buttonText: string`
     * the text of the button that takes the participant to the next view
@@ -33,7 +33,7 @@ The intro view uses the following [predefined view elements](../03_custom_views/
 
 ### Instructions view
 
-Instantiate with `babeViews.view_generator('instructions', ...)`. Optional fields:
+Instantiate with `magpieViews.view_generator('instructions', ...)`. Optional fields:
 
 * `buttonText: string`
     * the text of the button that takes the participant to the next view
@@ -54,7 +54,7 @@ The intro view uses the following [predefined view elements](../03_custom_views/
 
 ### Begin view
 
-Instantiate with `babeViews.view_generator('begin, ...)`. Optional fields:
+Instantiate with `magpieViews.view_generator('begin, ...)`. Optional fields:
 
 * `buttonText: string`
     * the text of the button that takes the participant to the next view
@@ -74,7 +74,7 @@ The begin view uses the following [predefined view elements](../03_custom_views/
 
 ### Post_test view
 
-Instantiate with `babeViews.view_generator('post_test', ...)`. Optional fields:
+Instantiate with `magpieViews.view_generator('post_test', ...)`. Optional fields:
 
 * `buttonText: string`
     * the text of the button that takes the participant to the next view
@@ -127,7 +127,7 @@ The post test view uses the following [predefined view elements](../03_custom_vi
 
 ### Thanks view
 
-Instantiate with `babeViews.view_generator('thanks', ...)`. **The _thanks_ view must always be included in your experiment because it wraps up and processes the data collected during the experiment.** Optional fields:
+Instantiate with `magpieViews.view_generator('thanks', ...)`. **The _thanks_ view must always be included in your experiment because it wraps up and processes the data collected during the experiment.** Optional fields:
 
 * `title: string`
     * the title of the view
@@ -159,7 +159,7 @@ Different types of wrapping views have more optional fields, as documented below
 
 ### Forced choice (2 alternatives)
 
-Instantiate with `babeViews.view_generator('forced_choice', ...)` Displays a context, a picture and a question to be answered in a two-alternative forced choice task. Choices are made by clicking on one of two buttons.
+Instantiate with `magpieViews.view_generator('forced_choice', ...)` Displays a context, a picture and a question to be answered in a two-alternative forced choice task. Choices are made by clicking on one of two buttons.
 
 <img src='../../images/views_samples/view_fc.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -170,7 +170,7 @@ Instantiate with `babeViews.view_generator('forced_choice', ...)` Displays a con
 * **Optional Fields**
     * `question: string` - question to be asked
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)` - picture to be displayed
 
 * **Sample data**
@@ -194,7 +194,7 @@ The forced\_choice view uses the following [predefined view elements](../03_cust
 
 ### Sentence choice 
 
-Instantiate with `babeViews.view_generator('sentence_choice', ...)`. Similar to the `forcedChoice` view, this view presents two text-based options to click on. This view, however, realizes options on longer buttons arranged vertically. This is better for choice between several longer expressions, like whole sentences.
+Instantiate with `magpieViews.view_generator('sentence_choice', ...)`. Similar to the `forcedChoice` view, this view presents two text-based options to click on. This view, however, realizes options on longer buttons arranged vertically. This is better for choice between several longer expressions, like whole sentences.
 
 <img src='../../images/views_samples/view_ss.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -204,7 +204,7 @@ Instantiate with `babeViews.view_generator('sentence_choice', ...)`. Similar to 
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)`
     * `question: string`
 
@@ -239,7 +239,7 @@ The sentence\_choice view uses the following [predefined view elements](../03_cu
 
 ### Image selection
 
-Instantiate with `babeViews.view_generator('image_seletion', ...)`. Realizes another 2-alternative forced choice task, by presenting two pictures (arranged horizontally) and requiring a click on one of the pictures. 
+Instantiate with `magpieViews.view_generator('image_seletion', ...)`. Realizes another 2-alternative forced choice task, by presenting two pictures (arranged horizontally) and requiring a click on one of the pictures. 
 
 <img src='../../images/views_samples/view_is.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -252,7 +252,7 @@ Instantiate with `babeViews.view_generator('image_seletion', ...)`. Realizes ano
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
     * `question: string`
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
 
 * **Sample data**
 
@@ -282,7 +282,7 @@ The image\_selection view uses the following [predefined view elements](../03_cu
 
 ### Textbox Input task
 
-Instantiate with `babeViews.view_generator('textbox_input', ...)`. Requires users to type in text freely in a textbox. Allows to specify a minimum number of characters before the `next` button appears. 
+Instantiate with `magpieViews.view_generator('textbox_input', ...)`. Requires users to type in text freely in a textbox. Allows to specify a minimum number of characters before the `next` button appears. 
 
 <img src='../../images/views_samples/view_ti.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -291,7 +291,7 @@ Instantiate with `babeViews.view_generator('textbox_input', ...)`. Requires user
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)` - picture to be displayed
     * `min_chars: number`
         * the minumum number of characters in the textarea field before the `next` button appears
@@ -322,7 +322,7 @@ The forced\_choice view uses the following [predefined view elements](../03_cust
 
 ### Slider rating
 
-Instantiate with `babeViews.view_generator('slider_rating', ...)`. Gives you a single (horizontally oriented) slider, with endpoints whose labels can be specified. The `next` button only appears when the slider is clicked on or moved at least once. Internally slider values are represented as ranging from 0 to 100 in steps of 1.
+Instantiate with `magpieViews.view_generator('slider_rating', ...)`. Gives you a single (horizontally oriented) slider, with endpoints whose labels can be specified. The `next` button only appears when the slider is clicked on or moved at least once. Internally slider values are represented as ranging from 0 to 100 in steps of 1.
 
 <img src='../../images/views_samples/view_sr.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -332,7 +332,7 @@ Instantiate with `babeViews.view_generator('slider_rating', ...)`. Gives you a s
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)`
     * `question: string`
 
@@ -362,7 +362,7 @@ The slider\_rating view uses the following [predefined view elements](../03_cust
 
 ### Dropdown choice
 
-Instantiate with `babeViews.view_generator(drowdown_choice', ...)`. Prompts the user to select one option from a drop-down menu, which can be embedded into a sentence, e.g., to fill in a word or phrase in a fixed sentence frame.
+Instantiate with `magpieViews.view_generator(drowdown_choice', ...)`. Prompts the user to select one option from a drop-down menu, which can be embedded into a sentence, e.g., to fill in a word or phrase in a fixed sentence frame.
 
 <img src='../../images/views_samples/view_dc.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -373,7 +373,7 @@ Instantiate with `babeViews.view_generator(drowdown_choice', ...)`. Prompts the 
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)`
     * `question_left_part: string`
     * `question_right_part: string`
@@ -404,7 +404,7 @@ The dropdown\_choice view uses the following [predefined view elements](../03_cu
 
 ### Rating scale
 
-Instantiate with `babeViews.view_generator('rating_scale', ...)`. Realizes a Likert-scale (ordinal) rating task, with button labeled with consecutive numbers. Participants click on these numbered buttons to proceed. Allows labels for endpoints on the scale.
+Instantiate with `magpieViews.view_generator('rating_scale', ...)`. Realizes a Likert-scale (ordinal) rating task, with button labeled with consecutive numbers. Participants click on these numbered buttons to proceed. Allows labels for endpoints on the scale.
 
 <img src='../../images/views_samples/view_rc.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -416,7 +416,7 @@ Instantiate with `babeViews.view_generator('rating_scale', ...)`. Realizes a Lik
 
 * **Optional Fields**
     * `QUD: string` - text that is always present on the slide
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `picture: string (link)`
     * `question: string`
 
@@ -448,7 +448,7 @@ The rating\_scale view uses the following [predefined view elements](../03_custo
 
 ### Key press
 
-Instantiate with `babeViews.view_generator('key_press', ...)`. Offers a 2-alternative forced choice task where choice options are given by pressing keys on the keyboard. Ideal for more accurate reaction time measurements.
+Instantiate with `magpieViews.view_generator('key_press', ...)`. Offers a 2-alternative forced choice task where choice options are given by pressing keys on the keyboard. Ideal for more accurate reaction time measurements.
 
 <img src='../../images/views_samples/view_kp.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -462,7 +462,7 @@ Instantiate with `babeViews.view_generator('key_press', ...)`. Offers a 2-altern
 * **Optional Fields**
     * `question: string`
     * `picture: string (link)`
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
 
 * **Sample data**
 
@@ -502,7 +502,7 @@ There are templates for realizing self-paced reading tasks too.
 
 ### Self-paced reading with forced choice response
 
-Instantiate with `babeViews.view_generator('self_paced_reading', ...)`.
+Instantiate with `magpieViews.view_generator('self_paced_reading', ...)`.
 
 * **Obligatory Fields**
     * `sentence: string`
@@ -516,7 +516,7 @@ Instantiate with `babeViews.view_generator('self_paced_reading', ...)`.
         * instructions to press SPACE above the spr sentence lines
         * default - *Press the SPACE bar to reveal the words*
     * `picture: string`
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `question: string`
     * `wordPos: "next" or "same"`
         * option how to display the spr parts, if "next" every spr part is displayed next to each other, as in a sentence, if "same" every spr part is displayed at the same place
@@ -557,7 +557,7 @@ The self\_paced\_reading view uses the following [predefined view elements](../0
 
 ### Self-paced reading task with rating scale response
 
-Instantiate with `babeViews.view_generator('self_paced_reading_rating_scale', ...)`.
+Instantiate with `magpieViews.view_generator('self_paced_reading_rating_scale', ...)`.
 
 
 * **Obligatory Fields**
@@ -570,7 +570,7 @@ Instantiate with `babeViews.view_generator('self_paced_reading_rating_scale', ..
     * `QUD: string` - text that is always present on the slide
     * `help_text: string` - SPACE press text above the spr sentence
     * `picture: string`
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `question: string`
     * `wordPos: "next" or "same"`
         * option how to display the spr parts, if "next" every spr part is displayed next to each other, as in a sentence, if "same" every spr part is displayed at the same place

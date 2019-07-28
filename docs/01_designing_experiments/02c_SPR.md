@@ -16,7 +16,7 @@ There are templates for realizing self-paced reading tasks too.
         * instructions to press SPACE above the spr sentence lines
         * default - *Press the SPACE bar to reveal the words*
     * `picture: string`
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `question: string`
 
 * **Sample data**
@@ -55,7 +55,7 @@ const spr_trials = [
     * `QUD: string` - text that is always present on the slide
     * `help_text: string` - SPACE press text above the spr sentence
     * `picture: string`
-    * `canvas: object` - [more about babe canvas](05_canvas.md)
+    * `canvas: object` - [more about magpie canvas](05_canvas.md)
     * `question: string`
 
 

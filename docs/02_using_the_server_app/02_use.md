@@ -2,7 +2,7 @@
 
 After installation you can visit the server app in a browser, with the username and password you previously specified. For Heroku deployment, you may do so by running `heroku open` in the command line or find the app URL in your Heroku account. For local deployment, the URL is by default http://localhost:4000.
 
-There is an example demo of the server app available at [https://babe-demo.herokuapp.com](https://babe-demo.herokuapp.com).
+There is an example demo of the server app available at [https://magpie-demo.herokuapp.com](https://magpie-demo.herokuapp.com).
 
 ## Managing experiments
 
@@ -45,11 +45,11 @@ After you have created your experiment, there are two pieces of information that
 You need to specify the ID in field `experimentID` and the server URL for submissions **without the ID** in the field `serverAppURL`. So, in the case above, you would initialize your experiment with the following information:
 
 ```javascript
- babeInit({
+ magpieInit({
         ...
         deploy: {
             experimentID: "1",
-            serverAppURL: "https://babe-demo.herokuapp.com/api/submit_experiment/",
+            serverAppURL: "https://magpie-demo.herokuapp.com/api/submit_experiment/",
             ...
         }
         ...

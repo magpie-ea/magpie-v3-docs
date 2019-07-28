@@ -4,7 +4,7 @@ Wrapping views are short, usually one-trial views that structure your experiment
 
 ## Intro view
 
-Instantiate with `babeViews.intro`. Optional fields:
+Instantiate with `magpieViews.intro`. Optional fields:
 
 * `buttonText: string`
     * the text of the button that takes the participant to the next view
@@ -19,7 +19,7 @@ Instantiate with `babeViews.intro`. Optional fields:
 
 ## Instructions view
 
-Instantiate with `babeViews.instructions`. Optional fields:
+Instantiate with `magpieViews.instructions`. Optional fields:
 
 * `buttonText: string`
     * the text of the button that takes the participant to the next view
@@ -33,7 +33,7 @@ Instantiate with `babeViews.instructions`. Optional fields:
 
 ## Begin view
 
-Instantiate with `babeViews.begin`. Optional fields:
+Instantiate with `magpieViews.begin`. Optional fields:
 
 * `buttonText: string`
     * the text of the button that takes the participant to the next view
@@ -47,7 +47,7 @@ Instantiate with `babeViews.begin`. Optional fields:
 
 ## PostTest view
 
-Instantiate with `babeViews.postTest`. Optional fields:
+Instantiate with `magpieViews.postTest`. Optional fields:
 
 * `buttonText: string`
     * the text of the button that takes the participant to the next view
@@ -94,7 +94,7 @@ Instantiate with `babeViews.postTest`. Optional fields:
 
 ## Thanks view
 
-Instantiate with `babeViews.thanks`. **The _thanks_ view must always be included in your experiment because it wraps up and processes the data collected during the experiment.** Optional fields:
+Instantiate with `magpieViews.thanks`. **The _thanks_ view must always be included in your experiment because it wraps up and processes the data collected during the experiment.** Optional fields:
 
 * `title: string`
     * the title of the view

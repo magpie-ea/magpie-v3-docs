@@ -1,8 +1,8 @@
 # Canvas
 
-Each babe trial type view can use the babe canvas api to create a picture of elements in the trial view.
+Each magpie trial type view can use the magpie canvas api to create a picture of elements in the trial view.
 
-babe provides three types of element placement:
+magpie provides three types of element placement:
 
 1. **random placement**
 
@@ -17,7 +17,7 @@ babe provides three types of element placement:
 <img src='../../images/canvas_samples/split_grid.png' alt='split grid placement example' height='auto' width='600' />
 
 
-## How to use babe canvas
+## How to use magpie canvas
 
 To generate a picture of shapes, all you need is to have `canvas` object with some properties in the data your views use.
 

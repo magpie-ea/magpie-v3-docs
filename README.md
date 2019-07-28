@@ -1,2 +1,2 @@
-# babe-docs
-full documentation of _babe
+# magpie-docs
+full documentation of _magpie

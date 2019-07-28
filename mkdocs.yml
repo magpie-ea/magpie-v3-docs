@@ -1,5 +1,5 @@
-site_name: _babe documentation
-site_description: 'documentation of _babe (basic architecture for browser-based experiments)'
+site_name: _magpie documentation
+site_description: 'documentation of _magpie (minimal architecture for the generation of portable interactive experiments)'
 site_author: 'Michael Franke'
 
 theme:
@@ -14,7 +14,7 @@ theme:
     name: null
     custom_dir: 'rtd_dropdown/'
 
-repo_url: https://github.com/babe-project/babe-docs/
+repo_url: https://github.com/magpie-ea/magpie-docs/
 
 nav:
 - Designing Experiments:

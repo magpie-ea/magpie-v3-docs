@@ -1,10 +1,10 @@
 # Progress bars
 
-\_babe provides the option to include progress bars in selected views. For example, when you have defined views for variables `practice` and `main`, you can include progress bars for these views by specifying this information during the creation of the \_babe object, like so:
+\_magpie provides the option to include progress bars in selected views. For example, when you have defined views for variables `practice` and `main`, you can include progress bars for these views by specifying this information during the creation of the \_magpie object, like so:
 
 ```
 $("document").ready(function() {
-    babeInit({
+    magpieInit({
         ...
         progress_bar: {
             in: [
