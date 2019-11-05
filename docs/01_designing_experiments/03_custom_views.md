@@ -64,7 +64,7 @@ Generally, the function supplied to `stimulus_container_generator` must take the
 We can specify whatever we'd like to appear in the stimulus container. For example, let's insert the same picture twice. This can be done by instantiating a customized template view like so:
 
 ```javascript
-const forced_choice_custonmized = magpieViews.view_generator(
+const forced_choice_customized = magpieViews.view_generator(
     "forced_choice",
     // config information
     {
