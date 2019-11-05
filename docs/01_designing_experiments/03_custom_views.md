@@ -1,4 +1,4 @@
-# Custom views 
+# Custom views
 
 When the template views are not enough for your purposes, you can define your own custom views. There are two ways of doing this. The first possibility is to [customize the template views](#customizing-template-views). You would then keep the basic structure and design of a template view and change selected parts of it. Since all predefined template views consist of modular [predefined view elements](#predefined-view-elements), you can often modularly assemble and tweak your desired view functionality based on slight changes of the template views. The other, more radical method is to [define a completely new view from scratch](#defining-a-custom-view-from-scratch).
 
@@ -14,7 +14,7 @@ Each one of these elements is independently customizable. Indeed, when a templat
 
 ```javascript
 const forced_choice_instance = magpieViews.view_generator(
-    'forced_choice', 
+    'forced_choice',
     // config information
     {
         trials: part_one_trial_info.forced_choice.length,
@@ -24,11 +24,11 @@ const forced_choice_instance = magpieViews.view_generator(
     );
 ```
 
-Equivalently, we could write this: 
+Equivalently, we could write this:
 
 ```javascript
 const forced_choice_instance = magpieViews.view_generator(
-   'forced_choice', 
+   'forced_choice',
    // config information
     {
         trials: part_one_trial_info.forced_choice.length,
@@ -59,7 +59,7 @@ function (config, CT) {
                 </div>`;
 ```
 
-Generally, the function supplied to `stimulus_container_generator` must take the `config` object and a `CT` argument. The latter is the current trial, and it is supplied by \_magpie internally. The function should then return HTML code as a string, which governs the appearance of the upper part of the view screen. You can use information from `config` and `CT`, so that when we write `${config.data[CT].QUD}` in the HTML string to be returned this is replaced by the QUD information stored in `config` for the current trial. Notice that the picture element is inserted automatically by \_magpie in the `magpie-view-stimulus` container. 
+Generally, the function supplied to `stimulus_container_generator` must take the `config` object and a `CT` argument. The latter is the current trial, and it is supplied by \_magpie internally. The function should then return HTML code as a string, which governs the appearance of the upper part of the view screen. You can use information from `config` and `CT`, so that when we write `${config.data[CT].QUD}` in the HTML string to be returned this is replaced by the QUD information stored in `config` for the current trial. Notice that the picture element is inserted automatically by \_magpie in the `magpie-view-stimulus` container.
 
 We can specify whatever we'd like to appear in the stimulus container. For example, let's insert the same picture twice. This can be done by instantiating a customized template view like so:
 
@@ -113,7 +113,46 @@ const forced_choice_customized = magpieViews.view_generator(
     }
 );
 ```
+If we want to have more than one answer within the same view, we can of course also do so. There are only a few things which we have to keep in mind. The id of each input has to be unique, so we have to make sure that we do not use the same ids in both answer blocks. Additionally, the two blocks also need to have different names. Another important thing is that we have to include `style='display:none'` for each input, so that the formatting does not get lost. Suppose we want to show a sentence with two dropdown menus, which have three choices each, the code could look like this:
 
+```javascript
+const multi_dropdown_customized = magpieViews.view_generator(
+    "dropdown_choice",
+    // config information
+  {
+      trials: part_one_trial_info.dropdown_choice.length,
+      name: 'rebuilt_FC',
+      data: part_one_trial_info.dropdown_choice
+  },
+  // custom generator functions
+  {
+  answer_container_gen: function (config, CT) {
+    return `<div class='magpie-view-answer-container magpie-response-multi-dropdown'>
+        ${config.data[CT].sentence_chunk_1}
+          <div class= 'response-table'>
+            <input type='radio' name='answer1' id='o1' style='display:none value=${config.data[CT].choice_options_1[0]} />
+            <label for='o1' class='magpie-response-buttons'>${config.data[CT].choice_options_1[0]}</label>
+            <input type='radio' name='answer1' id='o2' style='display:none' value=${config.data[CT].choice_options_1[1]} />
+            <label for='o2' class='magpie-response-buttons'>${config.data[CT].choice_options_1[1]}</label>
+            <input type='radio' name='answer1' id='o3' style='display:none' value=${config.data[CT].choice_options_1[2]} />
+            <label for='o3' class='magpie-response-buttons'>${config.data[CT].choice_options_1[2]}</label>
+          </div>
+        ${config.data[CT].sentence_chunk_2}
+          <div class= 'response-table'>
+            <input type='radio' name='answer2' id='p1' style='display:none' value=${config.data[CT].choice_options_2[0]} />
+            <label for='p1' class='magpie-response-buttons'>${config.data[CT].choice_options_2[0]}</label>
+            <input type='radio' name='answer2' id='p2' style='display:none' value=${config.data[CT].choice_options_2[1]} />
+            <label for='p2' class='magpie-response-buttons'>${config.data[CT].choice_options_2[1]}</label>
+            <input type='radio' name='answer2' id='p3' style='display:none' value=${config.data[CT].choice_options_2[2]} />
+            <label for='p3' class='magpie-response-buttons'>${config.data[CT].choice_options_2[2]}</label>
+          </div>
+        ${config.data[CT].sentence_chunk_3}
+          </div>`;
+        }
+    }
+);
+
+```
 It is possible to supply a completely new type of response variable via the function specified for `answer_container_generator`. However, you might need to make sure that the data is handled correctly. This is the job of the final third element you can use to customize a template view, namely `handle_response_function`. In other words, often the two design elements `answer_container_generator` and `handle_response_function` might need to be adjusted to each other.
 
 The `handle_response_function` used per default in the `forced_choice` view is this:
@@ -123,7 +162,7 @@ function(config, CT, magpie, answer_container_generator, startingTime) {
 
     // create the answer container
     $(".magpie-view").append(answer_container_generator(config, CT));
-    
+
     // attaches an event listener to the radio button input
     // when an input is selected a response property with a value equal
     // to the answer is added to the trial object
@@ -140,7 +179,7 @@ function(config, CT, magpie, answer_container_generator, startingTime) {
     magpie.trial_data.push(trial_data);
     magpie.findNextView();
     });
-    
+
 }    
 ```
 
@@ -174,7 +213,7 @@ const stimulus_container_generators = {
         return `<div class="magpie-view">
                     <h1 class='magpie-view-title'>${config.title}</h1>
                     <p class='magpie-response-keypress-header'>
-                    <strong>${config.data[CT].key1}</strong> = ${config.data[CT][config.data[CT].key1]}, 
+                    <strong>${config.data[CT].key1}</strong> = ${config.data[CT][config.data[CT].key1]},
                     <strong>${config.data[CT].key2}</strong> = ${config.data[CT][config.data[CT].key2]}</p>
                     <div class='magpie-view-stimulus-container'>
                         <div class='magpie-view-stimulus magpie-nodisplay'></div>
@@ -852,6 +891,3 @@ const custom_press_a_button = function(config) {
     return view;
 };
 ```
-
-
-
