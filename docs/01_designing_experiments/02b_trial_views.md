@@ -333,5 +333,3 @@ const listen_and_decide_trials = [
     }
 ];
 ```
-
-* **Sample

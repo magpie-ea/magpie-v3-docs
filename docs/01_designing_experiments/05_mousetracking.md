@@ -30,8 +30,8 @@ The start function optionally takes an origin argument that defines the coordina
 ## Result fields
 Whenever mouse tracking is enabled, you will find four new properties in your result data:
 
-    * `mousetrackingTime: int[]` - The time coordinates of the mouse path in miliseconds since the start
-    * `mousetrackingX: int[]` - The x coordinates of the mouse path
-    * `mousetrackingY: int[]` - The y coordinates of the mouse path
-    * `mousetrackingDuration: int` - The total time the mouse was tracked for
-    * `mousetrackingStartTime: int` - The start time of mouse tracking in miliseconds since the UNIX epoch (1970-01-01)
+* `mousetrackingTime: int[]` - The time coordinates of the mouse path in miliseconds since the start
+* `mousetrackingX: int[]` - The x coordinates of the mouse path
+* `mousetrackingY: int[]` - The y coordinates of the mouse path
+* `mousetrackingDuration: int` - The total time the mouse was tracked for
+* `mousetrackingStartTime: int` - The start time of mouse tracking in miliseconds since the UNIX epoch (1970-01-01)
