@@ -22,14 +22,15 @@ nav:
   - Custom views: '01_designing_experiments/03_custom_views.md'
   - Life cycles and hooks: '01_designing_experiments/04_lifecycles_hooks.md'
   - Canvas: '01_designing_experiments/05_canvas.md'
+  - Mouse tracking: '01_designing_experiments/05_mousetracking.md'
   - Progress bars: '01_designing_experiments/06_progress_bars.md'
 - server app:
   - Installation: '02_using_the_server_app/01_installation.md'
   - Use: '02_using_the_server_app/02_use.md'
 - deploying experiments:
   - Deploy configuration: '03_deploying_experiments/01_configuration.md'
-  - Recruitment via MTurk: '03_deploying_experiments/02_recruitment_MTurk.md'  
-  - Recruitment via Prolific: '03_deploying_experiments/03_recruitment_Prolific.md'  
+  - Recruitment via MTurk: '03_deploying_experiments/02_recruitment_MTurk.md'
+  - Recruitment via Prolific: '03_deploying_experiments/03_recruitment_Prolific.md'
   - Hosting on netlify: '03_deploying_experiments/04_hosting_on_netlify.md'
 - Misc:
   - Development: 04_development.md
