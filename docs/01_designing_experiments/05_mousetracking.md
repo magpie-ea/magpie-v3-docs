@@ -27,6 +27,22 @@ When implementing custom views, you can start mouse tracking by calling `config.
 ### mousetracking.start([origin: {x: int, y: int}])
 The start function optionally takes an origin argument that defines the coordinate origin relative to which mouse coordinates will be recorded.
 
+### Tracking rate
+You can specify the minimum temporal resolution for the mouse tracking module in miliseconds using the `rate` config option. The default is 15ms. This is only the upper limit, however. Magpie may temporarily record data points at a higher rate.
+
+```js
+const main_block = magpieViews.view_generator("forced_choice", {
+  trials: main_trials.length,
+  name: 'main_trials',
+  data: main_trials,
+  mousetracking: {
+    autostart: true,
+    rate: 50
+  }
+});
+```
+
+
 ## Result fields
 Whenever mouse tracking is enabled, you will find four new properties in your result data:
 
