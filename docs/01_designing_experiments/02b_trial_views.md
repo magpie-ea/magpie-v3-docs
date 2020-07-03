@@ -8,7 +8,7 @@ All trial views have three **obligatory fields**:
 2. `name: string` - the name of the view
 3. `data: array` - list of objects, each with information for each consecutive trial
 
-Different types of wrapping views have more optional fields, as documented below. 
+Different types of wrapping views have more optional fields, as documented below.
 
 ## Forced-choice task
 
@@ -79,7 +79,7 @@ const sentence_choice_trials = [
 
 ## Image Selection task
 
-Instantiate with `magpieViews.imageSelection`. Realizes another 2-alternative forced choice task, by presenting two pictures (arranged horizontally) and requiring a click on one of the pictures. 
+Instantiate with `magpieViews.imageSelection`. Realizes another 2-alternative forced choice task, by presenting two pictures (arranged horizontally) and requiring a click on one of the pictures.
 
 <img src='../../images/views_samples/view_is.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -116,7 +116,7 @@ const image_selection_trials = [
 
 ## Textbox Input task
 
-Instantiate with `magpieViews.textboxInput`. Requires users to type in text freely in a textbox. Allows to specify a minimum number of characters before the `next` button appears. 
+Instantiate with `magpieViews.textboxInput`. Requires users to type in text freely in a textbox. Allows to specify a minimum number of characters before the `next` button appears.
 
 <img src='../../images/views_samples/view_ti.png' alt='sample' height='auto' width='auto' style="border:2px solid black" />
 
@@ -295,3 +295,41 @@ const key_press_trials = [
 ];
 ```
 
+## Listen and decide task with mousetracking
+
+This view is identified by `listen_and_decide_mousetracking`. Initially plays a "question" audio without any visual stimulus. Afterwards, it displays two images, each on one side of the screen, and a start button at the bottom. Once the start button is clicked the "answer" audio is played and the participant has to choose a fitting image.
+
+* **Configuration**
+
+  * `title: string` - The title of the task
+  * `imagePath: string` - A directory path relative to `index.html` or absolute
+  * `audioPath: string` - A directory path relative to `index.html` or absolute
+  * `initialDelay: integer` - The time to wait before playing the question
+  * `decisionEvent: string` - The DOM event to use for triggering the decision, e.g. `click`, `mouseover`, etc.
+
+* **Obligatory Fields**
+
+    * `question_file:string ` - An audio file located relative to `audioPath`
+    * `answer_file: string` - An audio file located relative to `audioPath`
+    * `picture_target: string` - The target image
+    * `picture_competitor: string` - The competitor image
+
+* **Result Fields**
+
+    * `response: string` - `target` or `competitor`
+    * `mousetrackingTime: int[]` - The time coordinates of the mouse path
+    * `mousetrackingX: int[]` - The x coordinates of the mouse path
+    * `mousetrackingY: int[]` - The y coordinates of the mouse path
+
+* **Sample data**
+
+```
+const listen_and_decide_trials = [
+    {
+        picture_target: "picture_of_mammal.jpg",
+        picture_competitor: "picture_of_fish.jpg",
+        question_file: "whale_question.ogg",
+        answer_file: "whale_answer.ogg",
+    }
+];
+```
