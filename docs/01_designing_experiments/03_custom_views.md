@@ -116,21 +116,21 @@ const forced_choice_customized = magpieViews.view_generator(
 If we want to have more than one answer within the same view, we can of course also do so. There are only a few things which we have to keep in mind. The id of each input has to be unique, so we have to make sure that we do not use the same ids in both answer blocks. Additionally, the two blocks also need to have different names. Another important thing is that we have to include `style='display:none'` for each input, so that the formatting does not get lost. Suppose we want to show a sentence with two dropdown menus, which have three choices each, the code could look like this:
 
 ```javascript
-const multi_dropdown_customized = magpieViews.view_generator(
-    "dropdown_choice",
+const multi_choice_customized = magpieViews.view_generator(
+    "multi_choice",
     // config information
   {
-      trials: part_one_trial_info.dropdown_choice.length,
+      trials: part_one_trial_info.multi_choice.length,
       name: 'rebuilt_FC',
-      data: part_one_trial_info.dropdown_choice
+      data: part_one_trial_info.multi_choice
   },
   // custom generator functions
   {
-  answer_container_gen: function (config, CT) {
+  answer_container_generator: function (config, CT) {
     return `<div class='magpie-view-answer-container magpie-response-multi-dropdown'>
         ${config.data[CT].sentence_chunk_1}
           <div class= 'response-table'>
-            <input type='radio' name='answer1' id='o1' style='display:none value=${config.data[CT].choice_options_1[0]} />
+            <input type='radio' name='answer1' id='o1' style='display:none' value=${config.data[CT].choice_options_1[0]} />
             <label for='o1' class='magpie-response-buttons'>${config.data[CT].choice_options_1[0]}</label>
             <input type='radio' name='answer1' id='o2' style='display:none' value=${config.data[CT].choice_options_1[1]} />
             <label for='o2' class='magpie-response-buttons'>${config.data[CT].choice_options_1[1]}</label>
