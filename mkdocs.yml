@@ -17,13 +17,14 @@ theme:
 repo_url: https://github.com/magpie-ea/magpie-docs/
 
 nav:
+- Getting started:
+    - Introduction: '00_getting_started/01_intro.md'
+    - File structure: '00_getting_started/02_file_structure.md'
+    - Vue.js: '00_getting_started/03_vue_js.md'
+    - Basics: '00_getting_started/04_basics.md'
 - Designing Experiments:
-  - Template views: '01_designing_experiments/01_template_views.md'
-  - Custom views: '01_designing_experiments/03_custom_views.md'
-  - Life cycles and hooks: '01_designing_experiments/04_lifecycles_hooks.md'
-  - Canvas: '01_designing_experiments/05_canvas.md'
-  - Mouse tracking: '01_designing_experiments/05_mousetracking.md'
-  - Progress bars: '01_designing_experiments/06_progress_bars.md'
+  - Built-in screens: '01_designing_experiments/00_built-in_screens.md'
+  - Custom screens: '01_designing_experiments/01_custom_screens.md'
 - server app:
   - Installation: '02_using_the_server_app/01_installation.md'
   - Use: '02_using_the_server_app/02_use.md'
