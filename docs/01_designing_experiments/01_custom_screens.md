@@ -34,7 +34,7 @@ If you would like to have another slide, you would need to use slot 1:
 
 The problem now is that there is no indication when to switch to the second slide. So, we will stay on slide 0 forever.
 
-## nextSlide
+## Switching slides
 
 However, _magpie lends us a hand here, and provides a function to go to the next slide:
 
@@ -85,7 +85,7 @@ This invisible component will wait one second and then call nextSlide for us, so
 
 Now, we're stuck on the second slide, however. How do we jump to the next screen?
 
-## nextScreen
+## Switching screens
 It turns out, there is a function for this as well:
 
 ```html
@@ -192,3 +192,61 @@ This architecture makes it possible to collect multiple responses per screen and
     </template>
 </Screen>
 ```
+
+## Validating measurements
+Imagine we want to record a participant-entered text in a screen. For this we can use the textarea input.
+
+```html
+<Screen>
+    <template #0="{ measurements, saveAndNextScreen }">
+        <TextareaInput :response.sync="measurements.text" />
+    
+        <button @click="saveAndNextScreen">Submit</button>
+    </template>
+</Screen>
+```
+
+However, we often have some specifications about how such input should look like. This is where validations come in.
+We can specify validations for measurements via the `validations` prop of the `Screen` component:
+
+```html
+<Screen :validations="{
+      text: {
+        minLength: $magpie.v.minLength(4),
+        alpha: $magpie.v.alpha
+      }
+    }">
+    <template #0="{ measurements, saveAndNextScreen }">
+        <TextareaInput :response.sync="measurements.text" />
+    
+        <button v-if="!validations.text.$error" @click="saveAndNextScreen">Submit</button>
+    </template>
+</Screen>
+```
+
+Here, we specify two validations for our `text` measurement: The text must be at least 4 characters long and may
+only contain alphabetical characters.
+
+Below, on the submit button, we added an if-statement that makes sure, we only show the button, if there are no problems
+with the measurement.
+
+You may have noticed, we use `$magpie.v` to access the validators we needed this time. `$magpie.v` provides
+a selection of generally useful validators. If you ever need a validator that is not in there, you can simply write a
+function that returns true if the validation passed and false if it didn't.
+
+```html
+<Screen :validations="{
+      text: {
+        minLength: (text) => text.length >= 4,
+        alpha: $magpie.v.alpha
+      }
+    }">
+    <template #0="{ measurements, saveAndNextScreen }">
+        <TextareaInput :response.sync="measurements.text" />
+    
+        <button v-if="!validations.text.$error" @click="saveAndNextScreen">Submit</button>
+    </template>
+</Screen>
+```
+
+Here, we've replaced the `minLength` validator with a hand-built validator that does the same thing.
