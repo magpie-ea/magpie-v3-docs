@@ -20,15 +20,15 @@ the opportunity to display fixation points, or enforce pauses between stimulus a
 
 ### Experiment
 The root component will always be `App.vue` in your project `src` directory. The top-most component in your `App.vue`
-should be an `<Experiment>` element, provided by _magpie, which initializes _magpie and makes sure you can use all _magpie functionality in your experiment.
+should be an [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) element, provided by _magpie, which initializes _magpie and makes sure you can use all _magpie functionality in your experiment.
 
 ### Screens
 Below the Experiment element, you define your screens. You can use the built-in screens
-to build experiments with simpler trials, but you can also use the flexible `<Screen>` component
+to build experiments with simpler trials, but you can also use the flexible [`<Screen>`](https://magpie-reference.netlify.app/#screen) component
 to build your own custom screens.
 
 ### $magpie
-_magpie also exposes a magic variable called `$magpie`, which gives you access to more advanced functionality for your experiment.
+_magpie also exposes a magic variable called [`$magpie`](#https://magpie-reference.netlify.app/#Magpie), which gives you access to more advanced functionality for your experiment.
 
 ## Example
 This is a simple example of how your experiment code could look like.

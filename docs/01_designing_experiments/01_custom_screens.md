@@ -1,7 +1,7 @@
 # Custom screens
 When the built-in screens are not enough for your purposes, you can define your own custom screens.
 
-For this purpose there is an abstract `<Screen>` component available with _magpie.
+For this purpose there is an abstract [`<Screen>`](https://magpie-reference.netlify.app/#screen) component available with _magpie.
 
 ## Slides
 
@@ -23,7 +23,7 @@ If you would like to have another slide, you would need to use slot 1:
 ```html
 <Screen>
     <template #0>
-    Hello World
+        Hello World
     </template>
 
     <template #1>
@@ -230,7 +230,7 @@ only contain alphabetical characters.
 Below, on the submit button, we added an if-statement that makes sure, we only show the button, if there are no problems
 with the measurement.
 
-You may have noticed, we use `$magpie.v` to access the validators we needed this time. `$magpie.v` provides
+You may have noticed, we use [`$magpie.v`](https://magpie-reference.netlify.app/#Magpie+validators) to access the validators we needed this time. `$magpie.v` provides
 a selection of generally useful validators. If you ever need a validator that is not in there, you can simply write a
 function that returns true if the validation passed and false if it didn't.
 

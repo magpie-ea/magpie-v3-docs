@@ -38,7 +38,10 @@ pending](fill_me)), you must specify which fields should be available to be retr
 API calls. This allows you to expose only the relevant fields, since the dynamic retrieval API
 is not password protected by default.
 
-After you have created your experiment, there are two pieces of information that are important for later use. When you [specify the deploy information](/03_deploying_experiments/01_configuration/#changing-deploy-information), you must supply the ID which the server app allocates to your experiment and you must specify the URL (possibly local) of the server app itself. You find these pieces of information when you click on "Edit" for your newly created experiment.
+After you have created your experiment, there are two pieces of information that are important for later use.
+When you [specify the deploy information](/03_deploying_experiments/01_configuration/#changing-deploy-information), you
+must supply the ID which the server app allocates to your experiment and you must specify the URL (possibly local) of
+the server app itself. You find these pieces of information when you click on "Edit" for your newly created experiment.
 
 <img src="../../images/edit_exp_screenshot.png" width="80%">
 
