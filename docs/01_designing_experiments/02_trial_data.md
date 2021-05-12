@@ -190,3 +190,101 @@ In a custom screen we could then use this method to draw a circle with a random 
     
 </Screen>
 ```
+
+## Pre-loading media assets
+When displaying media on the web, it is usually only loaded by the browser, the second it is about to be displayed.
+In an experiment that depends on response times, this is not ideal, so we often want to pre-load media assets before
+they are being displayed.
+
+For this, the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) component has various `assets` props:
+
+```html
+<template>
+  <Experiment title="_magpie demo"
+              :image-assets="pictures">
+      
+    <!-- The contents of the #title template slot will be
+         displayed in the upper left corner of the experiment -->
+    <template #title>
+      <div>The experiment</div>
+    </template>
+
+    <!-- The contents of the #screens template slot
+         define the screens of your experiment -->
+    <template #screens>
+      
+      <!-- This is the welcome screen -->
+      <InstructionScreen :title="'Welcome'">
+        This is a sample introduction screen.
+        <br />
+        <br />
+        This screen welcomes the participant and gives general information about
+        the experiment.
+        <br />
+        <br />
+        This mock up experiment is a showcase of the functionality of magpie.
+      </InstructionScreen>
+
+      <!-- We iterate over our experiment trials -->
+      <template v-for="(rating_task, i) in sliderRating">
+        <!-- and display a screen with a slider rating task
+             using the built-in SliderScreen component -->
+        <SliderScreen
+            :key="i"
+            :picture="rating_task.picture"
+            :left="rating_task.optionLeft"
+            :right="rating_task.optionRight" />
+      </template>
+
+      <!-- This screen will ask some optional questions about the
+           participant's background, like age, gender etc. -->
+      <PostTestScreen />
+
+      <!-- This screen is useful while testing your experiment to check
+           the results immediately after taking the experiment -->
+      <DebugResultsScreen />
+    </template>
+  </Experiment>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+        // Take the picture path from all slider rating tasks
+        pictures: sliderRating.map(task => task.picture),
+        
+        sliderRating,
+    };
+  }
+};
+
+// Here we define the independent variables for our experiment
+// we could also use a separate csv file for this purpose
+
+const sliderRating = [
+  {
+    picture: 'images/question_mark_02.png',
+    question: 'How are you today?',
+    optionLeft: 'fine',
+    optionRight: 'great'
+  },
+  {
+    picture: 'images/question_mark_01.png',
+    question: "What's the weather like?",
+    optionLeft: 'shiny',
+    optionRight: 'rainbow'
+  },
+  {
+    QUD: 'Here is a sentence that stays on the screen from the very beginning',
+    picture: 'images/question_mark_03.jpg',
+    question: "What's on the bread?",
+    optionLeft: 'ham',
+    optionRight: 'jam'
+  }
+];
+</script>
+```
+
+Here, we extract all pictures from our trial data and pass them to the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) component via the `image-assets` prop.
