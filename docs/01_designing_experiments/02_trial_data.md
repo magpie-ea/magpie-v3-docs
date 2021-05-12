@@ -17,7 +17,7 @@ Let's have a look again at an example experiment.
     <template #screens>
       
       <!-- This is the welcome screen -->
-      <Screen :title="'Welcome'">
+      <InstructionScreen :title="'Welcome'">
         This is a sample introduction screen.
         <br />
         <br />
@@ -26,9 +26,7 @@ Let's have a look again at an example experiment.
         <br />
         <br />
         This mock up experiment is a showcase of the functionality of magpie.
-        <!-- The $magpie variable gives you access to magpie-specific functionality -->
-        <button @click="$magpie.nextScreen()">Begin the experiment</button>
-      </Screen>
+      </InstructionScreen>
 
       <!-- We iterate over our experiment trials -->
       <template v-for="(rating_task, i) in sliderRating">
