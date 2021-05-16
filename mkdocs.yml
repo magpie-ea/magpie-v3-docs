@@ -10,6 +10,7 @@ theme:
     hljs_languages:
         - javascript
         - elixir
+        - html
     # Development Settings
     name: null
     custom_dir: 'rtd_dropdown/'
@@ -18,8 +19,8 @@ repo_url: https://github.com/magpie-ea/magpie-docs/
 
 nav:
 - Getting started:
-    - Introduction: '00_getting_started/01_intro.md'
-    - File structure: '00_getting_started/02_file_structure.md'
+    - Introduction: '00_getting_started/00_intro.md'
+    - Installation: '00_getting_started/01_installation.md'
     - Vue.js: '00_getting_started/03_vue_js.md'
     - Basics: '00_getting_started/04_basics.md'
 - Designing Experiments:
