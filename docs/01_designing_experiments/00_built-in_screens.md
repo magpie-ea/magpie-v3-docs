@@ -1,5 +1,42 @@
 # Built-in screens
 
+## Wrapper screens
+Wrapper screens allow you to display information about the experiment or ask for additional information
+about the participants.
+
+### Instruction screen
+The [`<InstructionScreen>`](https://magpie-reference.netlify.app/#instructionscreen) component displays informational
+text or HTML along with a simple "Next" button below it.
+
+```html
+<InstructionScreen>
+    <p>Thank you for participating in this experiment.</p>
+    <p>On the next screen you will find more information about how your data will be used.</p>
+</InstructionScreen>
+```
+
+### Post Test Screen
+The [`<PostTestScreen>`](https://magpie-reference.netlify.app/#posttestscreen) component asks for additional information
+about the participant. By default, it will ask for age, gender, level of education, native langauges and further comments.
+
+```html
+<PostTestScreen />
+```
+
+You can disable any of the questions using the associated prop:
+
+```html
+<PostTestScreen :age="false" />
+```
+
+If you would like to ask for additional information, you can use the component's default slot as follows:
+
+```html
+<PostTestScreen #default="{ measurements }">
+    <label>Name<input type="text" v-model="measurements.name"></label>
+</PostTestScreen>
+```
+
 ## Trial screens
 Trial screens are the parts of your experiment which are (usually) instantiated several times (realizing different
 trials of your, say, main experimental task). They usually collect the data and often rely on
