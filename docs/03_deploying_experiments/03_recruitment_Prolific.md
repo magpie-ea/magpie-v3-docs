@@ -11,16 +11,22 @@ Go to the Prolific website and create a new experiment. Make a note of the **com
 Enter the completion URL in the field `prolificURL` when creating your experiment, as follows:
 
 ```javascript
- magpieInit({
-        ...
-        deploy: {
-            deployMethod: "Prolific",
-            prolificURL: "https://app.prolific.ac/submissions/complete?cc=SAMPLE1234"
-        }
-        ...
-    });
+export default {
+    // Either 'debug', 'directLink' or 'prolific'
+    mode: 'Prolific',
+
+    experimentId: 'INSERT_A_NUMBER',
+    serverUrl: 'https://magpie-demo.herokuapp.com/',
+    socketUrl: 'wss://magpie-demo.herokuapp.com/socket',
+    contactEmail: 'test@example.com',
+
+    // this will be used in prolific mode
+    completionUrl: 'https://app.prolific.ac/submissions/complete?cc=SAMPLE1234',
+};
 ```
 
-Use deploy method `Prolific` has two consequences. For one, it will insert a text input field in the introduction view of your experiment. For another, it will supply a `confirm` button at the end of the experiment, which takes participants to the Prolific website where they are supplied with their completion code.
+Use deploy method `Prolific` will take participants back to the Prolific website where they are supplied with their completion code.
 
-The data from your experiment will _not_ be stored by Prolific, but recorded by the _magpie server app. Before launching the study on Prolific, double-check that the database on the back end is set up and the necessary information (`experimentID`, server URL) are set. Also do not forget to update a web-site version of your experiment so that it includes the correct information in `prolificURL` before running the study.
+The data from your experiment will _not_ be stored by Prolific, but recorded by the \_magpie server app.
+Before launching the study on Prolific, double-check that the database on the back end is set up and the necessary information (`experimentId`, server URL) are set.
+Also do not forget to update a web-site version of your experiment so that it includes the correct information in `completionUrl` before running the study.
