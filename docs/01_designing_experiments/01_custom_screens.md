@@ -250,3 +250,103 @@ function that returns true if the validation passed and false if it didn't.
 ```
 
 Here, we've replaced the `minLength` validator with a hand-built validator that does the same thing.
+
+## Separating custom screens into files
+If we want to use a custom screen multiple times in our experiment, we can separate it out into a different `.vue` file as follows:
+
+
+```html
+<!-- LimitedTextareaScreen.vue -->
+<template>
+    <Screen :validations="{
+          text: {
+            minLength: (text) => text.length >= minLength,
+            alpha: $magpie.v.alpha
+          }
+        }">
+        <template #0="{ measurements, saveAndNextScreen }">
+            <TextareaInput :response.sync="measurements.text" />
+        
+            <button v-if="!validations.text.$error" @click="saveAndNextScreen">Submit</button>
+        </template>
+    </Screen>
+</template>
+
+<script>
+export default {
+    name: 'LimitedTextareaScreen',
+    props: {
+        minLength: {
+            type: Number,
+            required: true
+        }
+    }
+}    
+</script>
+```
+
+Here, we simply define a new Vue component for the custom screen and introduce a prop called `minLength` to control validation.
+
+To define a prop we always have to set two facts about it: What data type is it? (One of `Number`, `String`, `Array`, `Boolean`)
+Is it required? If not, we have to set a default value using the `default` field.
+
+```html
+<script>
+export default {
+    name: 'LimitedTextareaScreen',
+    props: {
+        minLength: {
+            type: Number,
+            default: 10
+        }
+    }
+}    
+</script>
+```
+
+Now, we can use this screen component in our main experiment file.
+
+```html
+<!-- App.vue -->
+<template>
+  <Experiment title="_magpie demo">
+    <!-- The contents of the #screens template slot
+         define the screens of your experiment -->
+    <template #screens>
+      
+      <!-- This is the welcome screen -->
+      <InstructionScreen :title="'Welcome'">
+        This is a sample introduction screen.
+        <br />
+        <br />
+        This screen welcomes the participant and gives general information about
+        the experiment.
+        <br />
+        <br />
+        This mock up experiment is a showcase of the functionality of magpie.
+      </InstructionScreen>
+
+      <template v-for="i in 10">
+        <LimitedTextareaScreen
+            :key="i"
+            :min-length="13" />
+      </template>
+
+      <PostTestScreen />
+
+      <DebugResultsScreen />
+    </template>
+  </Experiment>
+</template>
+
+<script>
+import LimitedTextareaScreen from './LimitedTextareaScreen'
+export default {
+  name: 'App',
+  components: {LimitedTextareaScreen},
+};
+</script>
+```
+
+We import the new screen component into the current file using a normal import statement and afterwards register it as a
+sub-component to be used as part of our main App component. Now, we can use it in the `<template>` part of the file.

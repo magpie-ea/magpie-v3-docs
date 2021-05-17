@@ -202,13 +202,6 @@ For this, the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment)
 <template>
   <Experiment title="_magpie demo"
               :image-assets="pictures">
-      
-    <!-- The contents of the #title template slot will be
-         displayed in the upper left corner of the experiment -->
-    <template #title>
-      <div>The experiment</div>
-    </template>
-
     <!-- The contents of the #screens template slot
          define the screens of your experiment -->
     <template #screens>
@@ -248,6 +241,7 @@ For this, the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment)
 </template>
 
 <script>
+import sliderRating from '../trials/slider_rating.csv'
 export default {
   name: 'App',
   data() {
@@ -259,31 +253,6 @@ export default {
     };
   }
 };
-
-// Here we define the independent variables for our experiment
-// we could also use a separate csv file for this purpose
-
-const sliderRating = [
-  {
-    picture: 'images/question_mark_02.png',
-    question: 'How are you today?',
-    optionLeft: 'fine',
-    optionRight: 'great'
-  },
-  {
-    picture: 'images/question_mark_01.png',
-    question: "What's the weather like?",
-    optionLeft: 'shiny',
-    optionRight: 'rainbow'
-  },
-  {
-    QUD: 'Here is a sentence that stays on the screen from the very beginning',
-    picture: 'images/question_mark_03.jpg',
-    question: "What's on the bread?",
-    optionLeft: 'ham',
-    optionRight: 'jam'
-  }
-];
 </script>
 ```
 
