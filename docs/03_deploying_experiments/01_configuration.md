@@ -45,6 +45,6 @@ export default {
 None of these fields matter for the `debug` mode. But for any of the other modes, you should specify appropriate information to the following fields:
 
 + `contactEmail` should contain an appropriate email address which will be displayed in an alert box in case of errors, so your participants can directly reach out to you.
-+ `experimentIs` must contain the ID the \_magpie server app provided for your experiment when created it online (see the [section on server app use](/02_using_the_server_app/02_use/#creating-new-experiments) for more information).
++ `experimentId` must contain the ID the \_magpie server app provided for your experiment when created it online (see the [section on server app use](/02_using_the_server_app/02_use/#creating-new-experiments) for more information).
 + `serverUrl` is the URL (possibly local) to your server app instance which handles the data (see the [section on server app use](/02_using_the_server_app/02_use/#creating-new-experiments) for more information).
 + `prolificURL` is only necessary if you use the `Prolific` deploy mode. In that case you need to enter here the return URL given to you when you create your experiment on the Prolific web site (see information below).

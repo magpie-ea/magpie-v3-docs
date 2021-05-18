@@ -3,34 +3,34 @@ site_description: 'Documentation of _magpie (minimal architecture for the genera
 site_author: 'Michael Franke'
 
 theme:
-    # name: rtd-dropdown
-    # Default settings
-    collapse_by_default: false
-    highlightjs: true
-    hljs_languages:
-        - javascript
-        - elixir
-        - html
-    # Development Settings
-    name: null
-    custom_dir: 'rtd_dropdown/'
+  name: material
+
+  logo: assets/logo_small.png
+  features:
+    #- navigation.instant
+    - search.suggest
+    - search.highlight
+
+  use_pygments: true
 
 repo_url: https://github.com/magpie-ea/magpie-docs/
 
 nav:
+- Home: 'index.md'
 - Getting started:
-    - Introduction: '00_getting_started/00_intro.md'
-    - Installation: '00_getting_started/01_installation.md'
-    - Vue.js: '00_getting_started/03_vue_js.md'
-    - Basics: '00_getting_started/04_basics.md'
+  - Introduction: '00_getting_started/00_intro.md'
+  - Installation: '00_getting_started/01_installation.md'
+  - Vue.js: '00_getting_started/03_vue_js.md'
+  - Basics: '00_getting_started/04_basics.md'
 - Designing Experiments:
   - Built-in screens: '01_designing_experiments/00_built-in_screens.md'
   - Custom screens: '01_designing_experiments/01_custom_screens.md'
   - Trial data: '01_designing_experiments/02_trial_data.md'
-- server app:
+  - Interactive experiments: '01_designing_experiments/03_interactive_experiments.md'
+- Server app:
   - Installation: '02_using_the_server_app/01_installation.md'
   - Use: '02_using_the_server_app/02_use.md'
-- deploying experiments:
+- Deploying experiments:
   - Deploy configuration: '03_deploying_experiments/01_configuration.md'
   - Recruitment via MTurk: '03_deploying_experiments/02_recruitment_MTurk.md'
   - Recruitment via Prolific: '03_deploying_experiments/03_recruitment_Prolific.md'
@@ -40,9 +40,10 @@ nav:
   - About: 05_about.md
 
 plugins:
-    - search
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
 
 copyright: MIT license
-markdown_extensions:
-    - toc:
-        baselevel: 4

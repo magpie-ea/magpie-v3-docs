@@ -3,7 +3,7 @@
 ## Concepts
 Experiments in _magpie follow a certain conceptual structure, as visualized in the following schema.
 
-![Experiments schema](../../images/getting_started/experiments_schema.png)
+<img src="../../images/getting_started/experiments_schema.png" alt="Experiments schema" />
 
 A _magpie experiment consists of data used to build the experiment, usually termed "independent variables" in psychological literature.
 Each experiment defines a series of screens that participants will go through sequentially.
