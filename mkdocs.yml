@@ -6,6 +6,8 @@ theme:
   name: material
 
   logo: assets/logo_small.png
+  palette:
+    primary: deep purple
   features:
     #- navigation.instant
     - search.suggest
