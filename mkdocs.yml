@@ -3,17 +3,12 @@ site_description: 'Documentation of _magpie (minimal architecture for the genera
 site_author: 'Michael Franke'
 
 theme:
-  name: material
-
-  logo: assets/logo_small.png
-  palette:
-    primary: deep purple
-  features:
-    #- navigation.instant
-    - search.suggest
-    - search.highlight
-
-  use_pygments: true
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - html
+    - js
 
 repo_url: https://github.com/magpie-ea/magpie-docs/
 
