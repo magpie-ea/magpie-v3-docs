@@ -1,22 +1,32 @@
 # Basics
 
 ## Concepts
-Experiments in _magpie follow a certain conceptual structure, as visualized in the following schema.
+Experiments in _magpie follow a certain conceptual structure, as visualized in the following schema, to facilitate
+good practice and aid in the design experiments.
 
 <img src="../../images/getting_started/experiments_schema.png" alt="Experiments schema" />
 
-A _magpie experiment consists of data used to build the experiment, usually termed "independent variables" in psychological literature.
-Each experiment defines a series of screens that participants will go through sequentially.
+A _magpie experiment firstly consists of the data used to build the experiment, usually termed "independent variables" in psychological literature.
+This could be textual/visual/auditory stimuli that will be presented to the participants or possible choices that the participant can make.
 
-Trial screens will optionally obtain a set of measurements that will be stored for submission to the server, which can
-be anything from a text that the participant entered, a choice between different items, to the response time taken to accomplish the task.
+Every experiment is then composed of a series of screens that participants will go through sequentially, similar to a slide show.
+Such a screen could display instructions on how to participate, or present an actual trial task to the participant.
+Usually you will realize one trial per screen.
 
-A screen also allows validating the measured observations, e.g. to make sure entered text has a certain character length.
+A screen may consist of one or more slides that simplify dynamic presentation of the task.
+Slides are displayed sequentially, giving experimenters the opportunity to display fixation points, or enforce pauses between stimulus and response.
 
-To allow for more dynamic tasks, Screens may consist of multiple slides, which are displayed sequentially, giving experimentors
-the opportunity to display fixation points, or enforce pauses between stimulus and response.
+Any time during a screen, you can directly save a data row which will be sent to the _magpie server when the experiment is completed.
+To make collecting measurements across slides easier, you can also gradually accumulate data in a `measurements` object
+(think text that the participant entered, a choice between different items, or the response
+time taken to accomplish the task). Once the trial is completed you can simply save all measurements in one go.
+
+Screens also allows validating the measured observations, e.g. to make sure entered text has a certain character length.
+
+To ease the realization of experiments, there are many pre-built screens ready for usage allowing the quick assembly of simple experiments. 
 
 ## _magpie facilities
+A _magpie experiment is basically an HTML file with an extended collection of HTML elements available.
 
 ### Experiment
 The root component will always be `App.vue` in your project `src` directory. The top-most component in your `App.vue`
@@ -37,12 +47,6 @@ This is a simple example of how your experiment code could look like.
 <template>
   <!-- The title prop will be used for the browser tab title -->
   <Experiment title="_magpie demo">
-      
-    <!-- The contents of the #title template slot will be
-         displayed in the upper left corner of the experiment -->
-    <template #title>
-      <div>The experiment</div>
-    </template>
 
     <!-- The contents of the #screens template slot
          define the screens of your experiment -->
