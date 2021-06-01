@@ -2,7 +2,7 @@
 
 ## Concepts
 Experiments in _magpie follow a certain conceptual structure, as visualized in the following schema, to facilitate
-good practice and aid in the design experiments.
+good practice and aid in the design of experiments.
 
 <img src="../../images/getting_started/experiments_schema.png" alt="Experiments schema" />
 
@@ -13,24 +13,26 @@ Every experiment is then composed of a series of screens that participants will 
 Such a screen could display instructions on how to participate, or present an actual trial task to the participant.
 Usually you will realize one trial per screen.
 
-A screen may consist of one or more slides that simplify dynamic presentation of the task.
-Slides are displayed sequentially, giving experimenters the opportunity to display fixation points, or enforce pauses between stimulus and response.
+A screen may consist of one or more slides. Slides simplify dynamic presentation of more intricate tasks.
+They are also displayed sequentially, giving experimenters the opportunity to display fixation points, or enforce pauses between stimulus and response.
 
-Any time during a screen, you can directly save a data row which will be sent to the _magpie server when the experiment is completed.
-To make collecting measurements across slides easier, you can also gradually accumulate data in a `measurements` object
+Anytime during a screen, you can directly save a data row which will be sent to the _magpie server when the experiment is completed.
+To make collecting measurements across slides easier, you can also gradually accumulate data in a per-screen `measurements` object
 (think text that the participant entered, a choice between different items, or the response
 time taken to accomplish the task). Once the trial is completed you can simply save all measurements in one go.
 
-Screens also allows validating the measured observations, e.g. to make sure entered text has a certain character length.
+Screens also allow validating the measured observations, for example to make sure entered text has a certain character length.
 
-To ease the realization of experiments, there are many pre-built screens ready for usage allowing the quick assembly of simple experiments. 
+To ease the realization of experiments, there are many pre-built screen components ready for usage,
+allowing the quick assembly of simple experiments. 
 
 ## _magpie facilities
-A _magpie experiment is basically an HTML file with an extended collection of HTML elements available.
+A _magpie experiment is [a Vue.js component tree](/00_getting_started/03_vue_js/), which is basically an HTML file with an extended collection of HTML elements available,
+along with some management logic in JavaScript.
 
 ### Experiment
 The root component will always be `App.vue` in your project `src` directory. The top-most component in your `App.vue`
-should be an [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) element, provided by _magpie, which initializes _magpie and makes sure you can use all _magpie functionality in your experiment.
+should be an [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) element, which initializes _magpie and makes sure you can use all _magpie functionality in your experiment.
 
 ### Screens
 Below the Experiment element, you define your screens. You can use the built-in screens

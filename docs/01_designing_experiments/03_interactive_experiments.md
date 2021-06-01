@@ -104,13 +104,14 @@ Here, we define an array of messages in our component data. Whenever a socket ev
 it to the array of messages, as defined by the `chat_message` function in the `socket` option of our component.
 
 To send our own messages, we have a `send` method, which takes the value of the input field and broadcasts a `chat_message` event
-to all other participants in our chain.
+to all other participants in our chain using [`$magpie.socket.broadcast`](https://magpie-reference.netlify.app/#Socket+broadcast).
 
-The template then renders all chat messages and display the input field for entering messages.
+The template then renders all chat messages and displays the input field for entering messages.
 
 ### Active participants
 If you would like to know how many participants are currently active in the current screen, you can watch
-[`$magpie.socket.active`](https://magpie-reference.netlify.app/#Socket+active):
+[`$magpie.socket.active`](https://magpie-reference.netlify.app/#Socket+active), which is an array with the IDs of all participants currently
+active in the current screen:
 
 ```html
 <script>

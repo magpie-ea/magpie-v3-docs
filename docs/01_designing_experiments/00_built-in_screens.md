@@ -46,7 +46,8 @@ options for trial 13).
 _magpie has some ready-made trial screens built-in for simple experimental trials.
 
 ### Forced choice
-The [`<ForcedChoiceScreen>`](https://magpie-reference.netlify.app/#forcedchoicescreen) component displays a context, a picture and a question to be answered in a two-alternative forced choice task.
+The [`<ForcedChoiceScreen>`](https://magpie-reference.netlify.app/#forcedchoicescreen) component displays a context,
+a picture and a question to be answered in a forced choice task, with a variable number of options.
 Choices are made by clicking on one of the buttons.
 
 ```html

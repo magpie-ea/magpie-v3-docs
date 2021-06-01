@@ -1,5 +1,6 @@
 # Vue.js
-Magpie is based on a JavaScript framwork called [Vue.js](https://vuejs.org). To learn how _magpie works, we thus have to take a brief look at Vue.js first.
+Magpie is based on a JavaScript framwork called [Vue.js](https://vuejs.org). To learn how _magpie works, it is thus beneficial to take a brief look at Vue.js first.
+
 Vue.js allows you to compose a web application out of small self-contained components, that you can re-use and share with other people.
 
 

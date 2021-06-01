@@ -9,20 +9,20 @@ theme:
     - yaml
     - html
     - js
+    - gitignore
 
 repo_url: https://github.com/magpie-ea/magpie-docs/
 
 nav:
 - Home: 'index.md'
 - Getting started:
-  - Introduction: '00_getting_started/00_intro.md'
   - Installation: '00_getting_started/01_installation.md'
   - Vue.js: '00_getting_started/03_vue_js.md'
   - Basics: '00_getting_started/04_basics.md'
 - Designing Experiments:
   - Built-in screens: '01_designing_experiments/00_built-in_screens.md'
   - Custom screens: '01_designing_experiments/01_custom_screens.md'
-  - Trial data: '01_designing_experiments/02_trial_data.md'
+  - Independent variables: '01_designing_experiments/02_independent_variables.md'
   - Interactive experiments: '01_designing_experiments/03_interactive_experiments.md'
 - Server app:
   - Installation: '02_using_the_server_app/01_installation.md'

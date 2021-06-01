@@ -1,4 +1,4 @@
-# Trial data
+# Independent variables
 Let's have a look again at an example experiment.
 
 ```html
@@ -87,7 +87,7 @@ const sliderRating = [
 </script>
 ```
 
-Here, we have our trial data already in JavaScript form, stored in a variable called `sliderRating`, which we then inject into the experiment data.
+Here, we have our independent variables already in JavaScript form, stored in a variable called `sliderRating`, which we then inject into the experiment data.
 
 ## Loading csv data
 Usually, you probably have trial data only available in csv. You can import csv files into your experiment as follows:
@@ -127,7 +127,7 @@ First, we have to import lodash as follows
 import _ from 'lodash'
 ```
 
-then we can use a lodash's shuffle to randomly shuffle our trial data:
+then we can use lodash's shuffle to randomly shuffle our trial data:
 
 ```html
 <script>
@@ -192,7 +192,7 @@ In a custom screen we could then use this method to draw a circle with a random 
 ```
 
 ## Pre-loading media assets
-When displaying media on the web, it is usually only loaded by the browser, the second it is about to be displayed.
+When displaying media on the web, it is usually only loaded by the browser the second it is about to be displayed.
 In an experiment that depends on response times, this is not ideal, so we often want to pre-load media assets before
 they are being displayed.
 

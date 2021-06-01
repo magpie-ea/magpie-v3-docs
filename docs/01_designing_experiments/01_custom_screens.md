@@ -136,7 +136,7 @@ inject the `measurements` object from the Screen component:
 </Screen>
 ```
 
-Once, injected, we can a property of the measurements object to the `response` prop of the RatingInput. The magic here
+Once injected, we can assign a property of the measurements object to the `response` prop of the RatingInput. The magic here
 is in the `.sync` suffix. This will make sure, that the assignment is two-way: If the participant changes their response,
 `measurements.rating` will be changed automatically to always reflect the latest value.
 
