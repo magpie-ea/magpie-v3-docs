@@ -1,4 +1,4 @@
-# Progress bar
+# Mouse tracking
 _magpie can track mouse movements during trials.
 
 You can start collecting mouse tracking data by calling
