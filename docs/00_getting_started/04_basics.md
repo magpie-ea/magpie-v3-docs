@@ -40,7 +40,7 @@ to build experiments with simpler trials, but you can also use the flexible [`<S
 to build your own custom screens.
 
 ### $magpie
-_magpie also exposes a magic variable called [`$magpie`](#https://magpie-reference.netlify.app/#Magpie), which gives you access to more advanced functionality for your experiment.
+_magpie also exposes a magic variable called [`$magpie`](https://magpie-reference.netlify.app/#Magpie), which gives you access to more advanced functionality for your experiment.
 
 ## Example
 This is a simple example of how your experiment code could look like.

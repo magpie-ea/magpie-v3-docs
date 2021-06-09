@@ -350,3 +350,28 @@ export default {
 
 We import the new screen component into the current file using a normal import statement and afterwards register it as a
 sub-component to be used as part of our main App component. Now, we can use it in the `<template>` part of the file.
+
+## Creating result rows manually
+Sometimes you need to create multiple rows in the result data per screen or even add global data which should be present
+in all rows (for things like participant demographics, or information about the participant's technical setup).
+
+You can add new result rows from all contexts using [`$mapgie.addTrialData()`](https://magpie-reference.netlify.app/#Magpie+addTrialData)
+
+For example, instead of using `Screen`'s `measurements` together with `saveAndNextScreen`, you can save the data directly
+as follows:
+
+```html
+<Screen>
+    <template #0="{ nextScreen }">
+        <KeypressInput
+                :keys="{f: 'same', j: 'different'}"
+                @update:response="$magpie.addTrialData({keypress: $event}); nextScreen()" />    
+    </template>
+</Screen>
+```
+
+Here we use a [`KeypressInput`](https://magpie-reference.netlify.app/#keypressinput) to capture keyboard presses and listen for the `update:response` event to save the response
+and go the next screen afterwards.
+
+### Adding global data
+We can also add data globally such that it will be present in all result rows using [`$mapgie.addExpData()`](https://magpie-reference.netlify.app/#Magpie+addExpData).
