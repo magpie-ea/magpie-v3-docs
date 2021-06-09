@@ -9,7 +9,13 @@ installation on [Heroku](https://www.heroku.com/).
 
 [Heroku](https://www.heroku.com/) makes it easy to deploy an web app without having to manually manage the infrastructure. It has a free starter tier, which should be sufficient for the purpose of running experiments.
 
-There is an [official guide](https://hexdocs.pm/phoenix/heroku.html) on how to deploy the Phoenix framework on Heroku. The deployment procedure is based on this guide, but differs in some places.
+We provide a script `deploy.sh`, which is tested on MacOS and should also work on Linux. Before running the script, ensure that you have a [Heroku account](https://signup.heroku.com/) already, and have [Git](https://git-scm.com/downloads) and the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed and working on your computer. Git clone the [repo](https://github.com/magpie-ea/magpie-backend), then run the script with `sh deploy.sh NAME_OF_YOUR_APP USERNAME PASSWORD`, where
+- `NAME_OF_YOUR_APP` is a unique name for your instance of the app on Heroku. It must start with a letter, end with a letter or digit, and can only contain lowercase letters, digits, and dashes.
+- `USERNAME` and `PASSWORD` are credentials to be used when accessing the admin UI of the app.
+
+The following is a step-by-step guide if you prefer to do the deployment manually instead.
+
+There is an [official guide](https://hexdocs.pm/phoenix/heroku.html) from Phoenix framework on how to deploy a Phoenix app on Heroku. The deployment procedure is based on this guide, but differs in some places.
 
 {:start="0"}
 0. Ensure that you have [the Phoenix Framework installed](https://hexdocs.pm/phoenix/installation.html) and working. However, if you just want to deploy this server and do no development work/change on it at all, you may skip this step.
