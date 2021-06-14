@@ -6,16 +6,6 @@ Let's have a look again at an example experiment.
   <!-- The title prop will be used for the browser tab title -->
   <Experiment title="_magpie demo">
       
-    <!-- The contents of the #title template slot will be
-         displayed in the upper left corner of the experiment -->
-    <template #title>
-      <div>The experiment</div>
-    </template>
-
-    <!-- The contents of the #screens template slot
-         define the screens of your experiment -->
-    <template #screens>
-      
       <!-- This is the welcome screen -->
       <InstructionScreen :title="'Welcome'">
         This is a sample introduction screen.
@@ -46,7 +36,6 @@ Let's have a look again at an example experiment.
       <!-- This screen is useful while testing your experiment to check
            the results immediately after taking the experiment -->
       <DebugResultsScreen />
-    </template>
   </Experiment>
 </template>
 
@@ -174,7 +163,7 @@ In a custom screen we could then use this method to draw a circle with a random 
 ```html
 <Screen title="Some drawing exercises">
     
-    <template #0>
+    <Slide>
       <CanvasStage :config="{width: 700, height: 500}">
         <CanvasLayer>
           <CanvasCircle :config="{
@@ -186,7 +175,7 @@ In a custom screen we could then use this method to draw a circle with a random 
             strokeWidth: 2 }"></CanvasCircle>
         </CanvasLayer>
       </CanvasStage>
-    </template>
+    </Slide>
     
 </Screen>
 ```
@@ -202,9 +191,6 @@ For this, the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment)
 <template>
   <Experiment title="_magpie demo"
               :image-assets="pictures">
-    <!-- The contents of the #screens template slot
-         define the screens of your experiment -->
-    <template #screens>
       
       <!-- This is the welcome screen -->
       <InstructionScreen :title="'Welcome'">
@@ -236,7 +222,6 @@ For this, the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment)
       <!-- This screen is useful while testing your experiment to check
            the results immediately after taking the experiment -->
       <DebugResultsScreen />
-    </template>
   </Experiment>
 </template>
 

@@ -49,10 +49,6 @@ This is a simple example of how your experiment code could look like.
 <template>
   <!-- The title prop will be used for the browser tab title -->
   <Experiment title="_magpie demo">
-
-    <!-- The contents of the #screens template slot
-         define the screens of your experiment -->
-    <template #screens>
       
       <!-- This is the welcome screen -->
       <InstructionScreen :title="'Welcome'">
@@ -84,7 +80,6 @@ This is a simple example of how your experiment code could look like.
       <!-- This screen is useful while testing your experiment to check
            the results immediately after taking the experiment -->
       <DebugResultsScreen />
-    </template>
   </Experiment>
 </template>
 

@@ -11,9 +11,9 @@ look like this:
 
 ```html
 <Screen>
-    <template #0>
+    <Slide>
     Hello World
-    </template>
+    </Slide>
 </Screen>
 ```
 
@@ -22,13 +22,13 @@ If you would like to have another slide, you would need to use slot 1:
 
 ```html
 <Screen>
-    <template #0>
+    <Slide>
         Hello World
-    </template>
+    </Slide>
 
-    <template #1>
+    <Slide>
         Anybody here?
-    </template>
+    </Slide>
 </Screen>
 ```
 
@@ -40,48 +40,36 @@ However, _magpie lends us a hand here, and provides a function to go to the next
 
 ```html
 <Screen>
-    <template #0="{ nextSlide }">
-    Hello World
-    </template>
-
-    <template #1>
-        Anybody here?
-    </template>
-</Screen>
-```
-
-Here, we obtain the `nextSlide` function from the Screen component, so we can use it in our first slide. We can now use it in an event handler for example.
-
-```html
-<Screen>
-    <template #0="{ nextSlide }">
+    <Slide>
         Hello World
-        <button @click="nextSlide">Next slide</button>
-    </template>
+        <button @click="$magpie.nextSlide()">Next slide</button>
+    </Slide>
 
-    <template #1>
+    <Slide>
         Anybody here?
-    </template>
+    </Slide>
 </Screen>
 ```
+
+Here, we call `$magpie.nextSlide()` in an event handler for the click event of our button.
 
 Now our participants can click on the button to go to the next slide. We can also use a helper component to trigger
 this automatically after some time:
 
 ```html
 <Screen>
-    <template #0="{ nextSlide }">
+    <Slide>
         Hello World
-        <Wait :time="1000" @done="nextSlide" />
-    </template>
+        <Wait :time="1000" @done="$magpie.nextSlide()" />
+    </Slide>
 
-    <template #1>
+    <Slide>
         Anybody here?
-    </template>
+    </Slide>
 </Screen>
 ```
 
-This invisible component will wait one second and then call nextSlide for us, so effectively the first slide is only shown for one second.
+This invisible component will wait one second and then call `$magpie.nextSlide()` for us, so effectively the first slide is only shown for one second.
 
 Now, we're stuck on the second slide, however. How do we jump to the next screen?
 
@@ -90,21 +78,20 @@ It turns out, there is a function for this as well:
 
 ```html
 <Screen>
-    <template #0="{ nextSlide }">
+    <Slide>
         Hello World
-        <Wait :time="1000" @done="nextSlide" />
-    </template>
+        <Wait :time="1000" @done="$magpie.nextSlide()" />
+    </Slide>
 
-    <template #1="{ nextScreen }">
+    <Slide>
         Anybody here?
-        <button @click="nextScreen">Yes</button>
-    </template>
+        <button @click="$magpie.nextScreen()">Yes</button>
+    </Slide>
 </Screen>
 ```
 
 After 1 second of displaying "Hello world", we display "Anybody here?" and when the participant clicks the "Yes" button,
-we go to the next screen. Notice, that you have to inject the slot parameters you need (like `nextScreen`) in every slide
-separately.
+we go to the next screen.
 
 ## Collecting data
 Experiments are of course about collecting data, so we need some inputs to collect responses from our participants.
@@ -114,57 +101,57 @@ a rating task:
 
 ```html
 <Screen>
-    <template #0>
+    <Slide>
         <RatingInput
             :right="very cute"
             :left="very appalling"/>
-    </template>
+    </Slide>
 </Screen>
 ```
 
 This will display a 7-step rating going from "very appalling" to "very cute". To store the response somewhere, we can
-inject the `measurements` object from the Screen component:
+use the `$magpie.measurements` object:
 
 ```html
 <Screen>
-    <template #0="{ measurements }">
+    <Slide>
         <RatingInput
             :right="very cute"
             :left="very appalling"
-            :response.sync="measurements.rating" />
-    </template>
+            :response.sync="$magpie.measurements.rating" />
+    </Slide>
 </Screen>
 ```
 
-Once injected, we can assign a property of the measurements object to the `response` prop of the RatingInput. The magic here
+We can assign a property of the measurements object to the `response` prop of the RatingInput. The magic here
 is in the `.sync` suffix. This will make sure, that the assignment is two-way: If the participant changes their response,
-`measurements.rating` will be changed automatically to always reflect the latest value.
+`$magpie.measurements.rating` will be changed automatically to always reflect the latest value.
 
-To save all our measurements made in the current screen, we then use `save`:
+To save all our measurements made in the current screen, we then use `$magpie.saveMeasurements`:
 
 ```html
 <Screen>
-    <template #0="{ measurements, save, nextScreen }">
+    <Slide>
         <RatingInput
             :right="very cute"
             :left="very appalling"
-            :response.sync="measurements.rating" />
-        <button @click="save(); nextScreen()">Submit</button>
-    </template>
+            :response.sync="$magpie.measurements.rating" />
+        <button @click="$magpie.saveMeasurements(); $magpie.nextScreen()">Submit</button>
+    </Slide>
 </Screen>
 ```
 
-However, as writing and injecting both functions all the time is cumbersome, there's a combined version of the two:
+However, as writing both functions all the time is cumbersome, there's a combined version of the two:
 
 ```html
 <Screen>
-    <template #0="{ measurements, saveAndNextScreen }">
+    <Slide>
         <RatingInput
             :right="very cute"
             :left="very appalling"
-            :response.sync="measurements.rating" />
-        <button @click="saveAndNextScreen">Submit</button>
-    </template>
+            :response.sync="$magpie.measurements.rating" />
+        <button @click="$magpie.saveAndNextScreen()">Submit</button>
+    </Slide>
 </Screen>
 ```
 
@@ -174,22 +161,22 @@ This architecture makes it possible to collect multiple responses per screen and
 
 ```html
 <Screen>
-    <template #0="{ measurements, saveAndNextScreen }">
+    <Slide>
         <RatingInput
             :right="very cute"
             :left="very appalling"
-            :response.sync="measurements.cuteness" />
+            :response.sync="$magpie.measurements.cuteness" />
         <RatingInput
             :right="very large"
             :left="very small"
-            :response.sync="measurements.size" />
+            :response.sync="$magpie.measurements.size" />
         <RatingInput
             :right="very interesting"
             :left="very boring"
-            :response.sync="measurements.interest" />
+            :response.sync="$magpie.measurements.interest" />
     
-        <button @click="saveAndNextScreen">Submit</button>
-    </template>
+        <button @click="$magpie.saveAndNextScreen()">Submit</button>
+    </Slide>
 </Screen>
 ```
 
@@ -198,11 +185,11 @@ Imagine we want to record a participant-entered text in a screen. For this we ca
 
 ```html
 <Screen>
-    <template #0="{ measurements, saveAndNextScreen }">
-        <TextareaInput :response.sync="measurements.text" />
+    <Slide>
+        <TextareaInput :response.sync="$magpie.measurements.text" />
     
-        <button @click="saveAndNextScreen">Submit</button>
-    </template>
+        <button @click="$magpie.saveAndNextScreen()">Submit</button>
+    </Slide>
 </Screen>
 ```
 
@@ -216,11 +203,11 @@ We can specify validations for measurements via the `validations` prop of the `S
         alpha: $magpie.v.alpha
       }
     }">
-    <template #0="{ measurements, saveAndNextScreen }">
-        <TextareaInput :response.sync="measurements.text" />
+    <Slide>
+        <TextareaInput :response.sync="$magpie.measurements.text" />
     
-        <button v-if="!validations.text.$error" @click="saveAndNextScreen">Submit</button>
-    </template>
+        <button v-if="!$magpie.validateMeasurements.text.$invalid" @click="$magpie.saveAndNextScreen()">Submit</button>
+    </Slide>
 </Screen>
 ```
 
@@ -241,11 +228,11 @@ function that returns true if the validation passed and false if it didn't.
         alpha: $magpie.v.alpha
       }
     }">
-    <template #0="{ measurements, saveAndNextScreen }">
-        <TextareaInput :response.sync="measurements.text" />
-    
-        <button v-if="!validations.text.$error" @click="saveAndNextScreen">Submit</button>
-    </template>
+    <Slide>
+        <TextareaInput :response.sync="$magpie.measurements.text" />
+
+        <button v-if="!$magpie.validateMeasurements.text.$invalid" @click="$magpie.saveAndNextScreen()">Submit</button>
+    </Slide>
 </Screen>
 ```
 
@@ -264,11 +251,11 @@ If we want to use a custom screen multiple times in our experiment, we can separ
             alpha: $magpie.v.alpha
           }
         }">
-        <template #0="{ measurements, saveAndNextScreen }">
-            <TextareaInput :response.sync="measurements.text" />
+        <Slide>
+            <TextareaInput :response.sync="$magpie.measurements.text" />
         
-            <button v-if="!validations.text.$error" @click="saveAndNextScreen">Submit</button>
-        </template>
+            <button v-if="!$magpie.validateMeasurements.text.$invalid" @click="$magpie.saveAndNextScreen()">Submit</button>
+        </Slide>
     </Screen>
 </template>
 
@@ -310,9 +297,6 @@ Now, we can use this screen component in our main experiment file.
 <!-- App.vue -->
 <template>
   <Experiment title="_magpie demo">
-    <!-- The contents of the #screens template slot
-         define the screens of your experiment -->
-    <template #screens>
       
       <!-- This is the welcome screen -->
       <InstructionScreen :title="'Welcome'">
@@ -335,7 +319,6 @@ Now, we can use this screen component in our main experiment file.
       <PostTestScreen />
 
       <DebugResultsScreen />
-    </template>
   </Experiment>
 </template>
 
@@ -353,7 +336,7 @@ sub-component to be used as part of our main App component. Now, we can use it i
 
 ## Creating result rows manually
 Sometimes you need to create multiple rows in the result data per screen or even add global data which should be present
-in all rows (for things like participant demographics, or information about the participant's technical setup).
+in all rows (for things like participant demographics, or information about participant's technical setup).
 
 You can add new result rows from all contexts using [`$mapgie.addTrialData()`](https://magpie-reference.netlify.app/#Magpie+addTrialData)
 
@@ -362,11 +345,11 @@ as follows:
 
 ```html
 <Screen>
-    <template #0="{ nextScreen }">
+    <Slide>
         <KeypressInput
                 :keys="{f: 'same', j: 'different'}"
-                @update:response="$magpie.addTrialData({keypress: $event}); nextScreen()" />    
-    </template>
+                @update:response="$magpie.addTrialData({keypress: $event}); $magpie.nextScreen()" />    
+    </Slide>
 </Screen>
 ```
 
