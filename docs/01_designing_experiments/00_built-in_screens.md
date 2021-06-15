@@ -32,18 +32,77 @@ You can disable any of the questions using the associated prop:
 If you would like to ask for additional information, you can use the component's default slot as follows:
 
 ```html
-<PostTestScreen #default="{ measurements }">
-    <label>Name<input type="text" v-model="measurements.name"></label>
+<PostTestScreen>
+    <label>Name<input type="text" v-model="$magpie.measurements.name"></label>
 </PostTestScreen>
 ```
 
 ## Trial screens
 Trial screens are the parts of your experiment which are (usually) instantiated several times (realizing different
-trials of your, say, main experimental task). They usually collect the data and often rely on
+trials of your main experimental task, for example). They usually collect the data and often rely on
 additional information (e.g., the picture to be displayed in trial 27, or the question and answer
 options for trial 13).
 
 _magpie has some ready-made trial screens built-in for simple experimental trials.
+
+### Life cycle phases
+The built-in trial screens are usually based on the [`<LifecycleScreen>`](https://magpie-reference.netlify.app/#lifecyclescreen) component and thus
+have 4 slides or phases:
+
+ * A pause phase of variable duration, where nothing is displayed
+ * A fixation phase of variable duration, where a fixation cross or similar is displayed
+ * A stimulus phase of variable duration, where the stimulus is presented
+ * A response phase with an optional timeout, where the participant can respond
+
+The first two can be skipped and the stimulus and response phase can be merged into one phase.
+
+You can provide a stimulus by overriding the `stimulus` slot of the relevant screen as follows:
+
+```html
+<ForcedChoiceScreen
+    :options="['Yes', 'No']"
+    question="Do you understand this question?"
+    qud="Always do the opposite of what you are asked."
+>
+    <template #stimulus>
+        <img src="img/confusion.jpg" />
+    </template>
+</ForcedChoiceScreen>
+```
+
+This will display the stimulus on the same slide as the response inputs.
+
+If you want to present the stimulus only for a certain amount of time, you can use the `stimulusTime` prop:
+
+```html
+<ForcedChoiceScreen
+    :options="['Yes', 'No']"
+    question="Do you understand this question?"
+    qud="Always do the opposite of what you are asked."
+    :stimulusTime="1500"
+>
+    <template #stimulus>
+        <img src="img/confusion.jpg" />
+    </template>
+</ForcedChoiceScreen>
+```
+
+For things like audio or video, it can also be useful to go to the next slide dynamically:
+
+```html
+<ForcedChoiceScreen
+    :options="['Yes', 'No']"
+    question="Do you understand this question?"
+    qud="Always do the opposite of what you are asked."
+    :stimulusTime="-1"
+>
+    <template #stimulus>
+        <audio src="audio/sealion.ogg" autoplay @ended="$magpie.nextSlide()" /> 
+    </template>
+</ForcedChoiceScreen>
+```
+
+Here we set `stimulusTime` to `-1` to indicate that we want to control stimulus presentation ourselves.
 
 ### Forced choice
 The [`<ForcedChoiceScreen>`](https://magpie-reference.netlify.app/#forcedchoicescreen) component displays a context,
