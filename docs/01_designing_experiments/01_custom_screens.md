@@ -238,9 +238,11 @@ function that returns true if the validation passed and false if it didn't.
 
 Here, we've replaced the `minLength` validator with a hand-built validator that does the same thing.
 
+Validations incidentally also work for built-in screens as they inherit from the abstract Screen component.
+The variable that holds the response in these case is always called `response`.
+
 ## Separating custom screens into files
 If we want to use a custom screen multiple times in our experiment, we can separate it out into a different `.vue` file as follows:
-
 
 ```html
 <!-- LimitedTextareaScreen.vue -->

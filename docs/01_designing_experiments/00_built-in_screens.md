@@ -104,9 +104,11 @@ For things like audio or video, it can also be useful to go to the next slide dy
 
 Here we set `stimulusTime` to `-1` to indicate that we want to control stimulus presentation ourselves.
 
+For more details on the available parameter, [refer to the reference on the LifecycleScreen](https://magpie-reference.netlify.app/#lifecyclescreen).
+
 ### Forced choice
 The [`<ForcedChoiceScreen>`](https://magpie-reference.netlify.app/#forcedchoicescreen) component displays a context,
-a picture and a question to be answered in a forced choice task, with a variable number of options.
+and a question to be answered in a forced choice task, with a variable number of options.
 Choices are made by clicking on one of the buttons.
 
 ```html

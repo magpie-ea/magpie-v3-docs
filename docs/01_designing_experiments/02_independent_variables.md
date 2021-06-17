@@ -24,9 +24,12 @@ Let's have a look again at an example experiment.
              using the built-in SliderScreen component -->
         <SliderScreen
             :key="i"
-            :picture="rating_task.picture"
             :left="rating_task.optionLeft"
-            :right="rating_task.optionRight" />
+            :right="rating_task.optionRight">
+            <template #stimulus>
+                <img :src="rating_task.picture" />
+            </template>
+        </SliderScreen>
       </template>
 
       <!-- This screen will ask some optional questions about the

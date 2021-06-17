@@ -27,8 +27,8 @@ can thus also be assigned a unique tri-tuple, indicating their variant, chain an
 Before participants can interact with other participants in their chain, the browser needs to connect to the magpie server
 and wait for other participants.
 
-This routine is conveniently capsuled in the [`<ConnectInteractiveScreen>`](https://magpie-reference.netlify.app/#connectinteractivescreen) component, which by default displays the following
-text:
+This routine is conveniently encapsuled in the [`<ConnectInteractiveScreen>`](https://magpie-reference.netlify.app/#connectinteractivescreen)
+component, which by default displays the following text:
 
 > This screen sets up the socket connection for the interactive experiment and waits for other
 > participants to join so that the number of required participants to start an interactive experiment is met. 
