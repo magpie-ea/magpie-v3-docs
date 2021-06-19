@@ -1,16 +1,16 @@
 # _magpie
-_magpie is a framework for building psychological online experiments that run in the participants' browser.
+_magpie is a framework for building online experiments (e.g., for psychological research) that run in the participants' browser.
 
 It is composed of these parts:
 
- * server-side part that allows managing and configuring experiments and stores experiment results
- * a client-side part based on [Vue.js](https://vuejs.org/) that runs in the participant's browser and provides
-     * a technical and conceptual framework for building experiments
-     * a catalogue of components that can be used in experiments
+ 1. **a server-side part** that allows managing and configuring experiments and stores experiment results; and
+ 2. **a client-side part** based on [Vue.js](https://vuejs.org/) that runs in the participant's browser and provides:
+     * a technical and conceptual framework for building experiments; and
+     * a catalogue of components that can be used in experiments.
    
 You can use the same server instance for running multiple experiments.
 
-Vue.js allows to composing a web application out of small self-contained components, that you can re-use and share with other people.
+Vue.js enables building a web application out of small self-contained components, that you can re-use and share with other people.
 
 ## Features
 Some features of _magpie include:

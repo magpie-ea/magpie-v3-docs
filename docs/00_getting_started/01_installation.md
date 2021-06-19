@@ -46,16 +46,25 @@ package.json
 package-lock.json
 vue.config.js
 
-# Files for publishing (like media)
+# This is where npm installs the dependencies of your project
+# You usually don't need to look in here
+node_modules/
+
+# Files for including in your experiment 
 public/
   # your image files
-  img/
+  images/
   # your video files
   video/
   # your audio files
   audio/
+ 
+# Data (e.g.,csv files), with information about how to
+# realize individual trials, e.g., which pictures to show etc.
+trials/
 
-# Your code goes here
+# The source code that realizes your experiment
+# The main work happens here
 src/
   # _magpie-specific configuration
   magpie.config.js
@@ -64,12 +73,6 @@ src/
   # The main file for your experiment.
   App.vue
 
-# csv files and other data neded for your experiments go here
-trials/
-
-# This is where npm installs the dependencies of your project
-# You usually don't need to look in here
-node_modules/
 ```
 
 

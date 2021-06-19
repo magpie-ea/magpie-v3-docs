@@ -39,9 +39,8 @@ and Vue will render the component's contents instead.
 ```
 
 ## Data
-To make components more flexible, the `<template>` part actually accepts a superset
-of HTML, namely the *Vue template language*.
-It allows us to interpolate variables into our HTML and some more things.
+To make components more flexible, you can use a special syntax, the *Vue template language* inside the `<template>` tag.
+The string `{{ name }}` will be replace on a website with the value of the variable `name` defined in the `data` function inside the `<script>` tag.
 
 ```html
 <template>
@@ -62,7 +61,8 @@ export default {
 </script>
 ```
 
-Here we also added a function called `data` that initializes the internally stored data of the component, whenever it is used. Any property we define in `data` is available in the template as a variable.
+The `data` function initializes the internally stored data of the component, whenever it is used.
+Any property we define in `data` is available in the template as a variable.
 We can then use such a variable in a text block using
 the `{{ variable_name }}` notation.
 
@@ -112,7 +112,7 @@ export default {
   props: {
     name: {
       type: String,
-      required: true,
+      required: true
     }
   }
 }
@@ -122,7 +122,7 @@ export default {
 Here, instead of setting the variable `name` with a pre-defined value, we define a prop
 called `name` which accepts string values and always has to be set,
 when using this component (`required`). Notice that we can use props in the same way as variables defined in `data`.
-We can then use the component as follows:
+We can then use the "Greeter" component as follows inside of another component:
 
 ```html
 <template>
@@ -160,12 +160,13 @@ Here we use the colon-prefix for the prop to indicate that we want to pass a Jav
 
 
 ## Listening to events
-Static web pages are pretty boring, however, and of course we want the user to interact with the browser.
+Static web pages are relatively boring.
+We want the user to interact with the browser.
 We can achieve this by listening to HTML events.
 Vue.js allows us to do this using the @-shorthand.
 For example, to be notified when the user clicks on something, we use `@click`.
 The listener attribute accepts either a JavaScript statement, like a function call, or a function value.
-The event object is available as $event.
+The event object is available as `$event`.
 
 ```html
 <template>
@@ -239,7 +240,7 @@ However, we set a method as the listener for the `click` event. When the user cl
 the `changeGreeting` method will be called, which then changes the greeting to `'Bye'`. Notice that we have to use the magic `this` variable to access the variable inside methods.
 
 ## Emitting events
-Additionally, you can also emit events in your components using $emit.
+Additionally, you can also emit events in your components using `$emit`.
 
 For example, we might want to pass along the `click` event to our parent element.
 
