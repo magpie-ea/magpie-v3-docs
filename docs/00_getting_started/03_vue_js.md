@@ -242,7 +242,7 @@ the `changeGreeting` method will be called, which then changes the greeting to `
 ## Emitting events
 Additionally, you can also emit events in your components using `$emit`.
 
-For example, we might want to pass along the `click` event to our parent element.
+For example, we might want to pass along the `click` event to our parent component.
 
 ```html
 <template>
