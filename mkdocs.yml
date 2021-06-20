@@ -17,8 +17,9 @@ nav:
 - Home: 'index.md'
 - Getting started:
   - Installation: '00_getting_started/01_installation.md'
+  - Basics: '00_getting_started/02_basics.md'
   - Vue.js: '00_getting_started/03_vue_js.md'
-  - Basics: '00_getting_started/04_basics.md'
+  - Implementation basics: '00_getting_started/04_implementation_basics.md'
 - Designing Experiments:
   - Built-in screens: '01_designing_experiments/00_built-in_screens.md'
   - Custom screens: '01_designing_experiments/01_custom_screens.md'

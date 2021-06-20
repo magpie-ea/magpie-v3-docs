@@ -33,49 +33,6 @@ npm install
 
 This will install all kinds of small libraries that _magpie needs to run.
 
-## Project file structure
-By default, a _magpie project has the following file structure:
-
-```gitignore
-# top-level configuration files
-# these are usually not interesting
-.eslintrc.js
-.gitignore
-.prettierrc.js
-package.json
-package-lock.json
-vue.config.js
-
-# This is where npm installs the dependencies of your project
-# You usually don't need to look in here
-node_modules/
-
-# Files for including in your experiment 
-public/
-  # your image files
-  images/
-  # your video files
-  video/
-  # your audio files
-  audio/
- 
-# Data (e.g.,csv files), with information about how to
-# realize individual trials, e.g., which pictures to show etc.
-trials/
-
-# The source code that realizes your experiment
-# The main work happens here
-src/
-  # _magpie-specific configuration
-  magpie.config.js
-  # set-up code for Vue.js, usually you don't need to touch this
-  main.js
-  # The main file for your experiment.
-  App.vue
-
-```
-
-
 ## Running a development instance
 To try out your project on your local machine, run
 
