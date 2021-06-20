@@ -15,7 +15,7 @@ Vue.js enables building a web application out of small self-contained components
 ## Features
 Some features of _magpie include:
 
- * *Declarativeness*: Define your experiments in an easily extendable, HTML-based language (the Vue templating language)
+ * *Declarativeness*: Define your experiments in an easily extendable, HTML-based language (the Vue.js templating language)
  * *Ease of use*: There are many built-in screens to use for quickly building simple and advanced experiments
  * *Composability*: Build custom behavior by picking from and combining a wide range of components, built-in and external (any Vue-compatible library is supported)
  * *Interactivity*: Allow participants to interact with each other with support for interactive experiments built in

@@ -5,7 +5,7 @@ Vue.js allows you to compose a web application out of small self-contained compo
 
 
 ## Components
-A Vue component is a bundle of HTML, JavaScript and Optionally CSS, packaged together, usually in a file with the extension `.vue`.  Such a file  generally looks like this:
+A Vue.js component is a bundle of HTML, JavaScript and Optionally CSS, packaged together, usually in a file with the extension `.vue`.  Such a file  generally looks like this:
 
 ```html
 <template>
@@ -30,7 +30,7 @@ export default {
 The HTML content resides in a `template` element, the JavaScript part resides in a `script` element and the CSS code resides in a `style` element.
 
 Somewhere else, we could now use this component like a normal HTML element
-and Vue will render the component's contents instead.
+and Vue.js will render the component's contents instead.
 
 ```html
 <div>
@@ -38,8 +38,12 @@ and Vue will render the component's contents instead.
 </div>
 ```
 
+This will render
+
+> <h1>hello</h1>
+
 ## Data
-To make components more flexible, you can use a special syntax, the *Vue template language* inside the `<template>` tag.
+To make components more flexible, you can use a special syntax, the *Vue.js template language* inside the `<template>` tag.
 The string `{{ name }}` will be replace on a website with the value of the variable `name` defined in the `data` function inside the `<script>` tag.
 
 ```html
@@ -88,13 +92,16 @@ export default {
 </script>
 ```
 
-`toUpperCase` takes a string an returns it with all letters in upper case. This would render: "hello DONALD" as a first-order heading.
+`toUpperCase` takes a string an returns it with all letters in upper case.
+
+This will render
+
+> <h1>hello DONALD</h1>
 
 ## Component props
 To make components even more useful, we usually want to generalize them.
 So, we don't want a component for each person that can be greeted,
 but we want a general "greeter component".
-
 
 To do this, we want to be able to pass options to our components.
 Vue.js calls these `props` and we also have to define them in our component definition.
@@ -122,7 +129,7 @@ export default {
 Here, instead of setting the variable `name` with a pre-defined value, we define a prop
 called `name` which accepts string values and always has to be set,
 when using this component (`required`). Notice that we can use props in the same way as variables defined in `data`.
-We can then use the "Greeter" component as follows inside of another component:
+We can then use the "Greeter" component inside of another component, as follows:
 
 ```html
 <template>
@@ -140,7 +147,7 @@ export default {
 
 A normal attribute declaration like this will only allow passing strings.
 However, you often want to pass another variable or an expression to a component,
-and of course Vue's template language supports that, too.
+and of course Vue.js's template language supports that, too.
 
 ```html
 <template>
@@ -164,9 +171,9 @@ Static web pages are relatively boring.
 We want the user to interact with the browser.
 We can achieve this by listening to HTML events.
 Vue.js allows us to do this using the @-shorthand.
-For example, to be notified when the user clicks on something, we use `@click`.
+For example, to be notified when the user clicks on a sepcific element, we use `@click` on that element.
 The listener attribute accepts either a JavaScript statement, like a function call, or a function value.
-The event object is available as `$event`.
+The HTML event object is available as `$event`.
 
 ```html
 <template>
@@ -342,8 +349,27 @@ export default {
 
 Here we pass the HTML partial `<b>Donald</b>`, which renders `'Donald'` in bold.
 
+By default, child contents will be put into the `#default` slot. In that case we could have used the "Greeter" component
+as follows:
+
+```html
+<template>
+    <div>
+        <Greeter>
+            <b>Donald</b>
+        </Greeter>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'MyComponent',
+}
+</script>
+```
+
 ## If and for
-To make things even more interesting, Vue introduces two special attributes: `v-if` and `v-for`,
+To make things even more interesting, Vue.js introduces two special attributes: `v-if` and `v-for`,
 which allow you to render elements conditionally and iterate over them, respectively.
 
 ### Conditionals
@@ -392,7 +418,15 @@ export default {
 }
 </script>
 ```
-In every iteration, the variable `name` will be bound to one name in `names`.
+In every iteration, we create a new `<h1>` element and the variable `name` will be bound to one of the values in the `names` array we defined in our data function.
+
+This will render the following:
+
+> <h1>hello Donald</h1>
+> <h1>hello Hillary</h1>
+> <h1>hello Joe</h1>
+> <h1>hello Barack</h1>
+
 
 Notice that, in addition to the `v-for` attribute, we also have to provide a `:key` attribute when iterating over lists,
 which helps Vue.js distinguish between the different elements. Here, we simply use the `name` variable again for this purpose.
