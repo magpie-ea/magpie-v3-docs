@@ -1,4 +1,4 @@
-# _magpie
+# <img src="assets/logo.png" width="50" /> _magpie
 _magpie is a framework for building online experiments (e.g., for psychological research) that run in the participants' browser.
 
 It is composed of these parts:
