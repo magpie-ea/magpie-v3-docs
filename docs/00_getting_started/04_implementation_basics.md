@@ -60,7 +60,7 @@ The top-most component in the `<template>` section of your `App.vue` should be a
 
 ### The `Screen` components
 Below the `Experiment` component, you define your screens. You can use ready-made screens, which _magpie supplies for convenience, such as the `InstructionsScreen`, but you can also use the flexible [`<Screen>`](https://magpie-reference.netlify.app/#screen) component to build your own custom screens.
-For a list of available ready-made screens see [here]() (**TODO: insert link**).
+For a list of available ready-made screens see [here](https://magpie-reference.netlify.app/#screens).
 
 ```html
 <template>
