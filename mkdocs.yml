@@ -11,7 +11,7 @@ theme:
     - js
     - gitignore
 
-repo_url: https://github.com/magpie-ea/magpie-docs/
+repo_url: https://github.com/magpie-ea/magpie-v3-docs/
 
 nav:
 - Home: 'index.md'
