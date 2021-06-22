@@ -17,8 +17,9 @@ look like this:
 </Screen>
 ```
 
-This screen has exactly one slide, which displays "Hello world". Notice that we use numbered slots to define our slides.
-If you would like to have another slide, you would need to use slot 1:
+This screen has exactly one slide, which displays "Hello world".
+If you would like to have another slide, you can simply add another `<Slide>` component next to the first. They are displayed
+in the order they appear in the file.
 
 ```html
 <Screen>
@@ -32,7 +33,7 @@ If you would like to have another slide, you would need to use slot 1:
 </Screen>
 ```
 
-The problem now is that there is no indication when to switch to the second slide. So, we will stay on slide 0 forever.
+The problem now is that there is no indication when to switch to the second slide. So, we will stay on the first slide forever.
 
 ## Switching slides
 
