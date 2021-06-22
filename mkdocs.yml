@@ -26,7 +26,7 @@ nav:
   - Independent variables: '01_designing_experiments/02_independent_variables.md'
   - Interactive experiments: '01_designing_experiments/03_interactive_experiments.md'
   - Progress bar: '01_designing_experiments/04_progress_bar.md'
-  - Mouse tracking: '01_designing_experiments/05_mouse_tracking.md'
+  - Mouse and eye tracking: '01_designing_experiments/05_mouse_and_eye_tracking.md'
   - Canvas: '01_designing_experiments/06_canvas.md'
 - Server app:
   - Installation: '02_using_the_server_app/01_installation.md'
