@@ -1,7 +1,10 @@
 # <img src="assets/logo.png" width="50" /> _magpie
+
 _magpie is a framework for building online experiments (e.g., for psychological research) that run in the participants' browser.
 
-It is composed of these parts:
+<video src="/images/getting_started/intro.webm" style="width: 100%" controls></video>
+
+magpie is composed of these parts:
 
  1. **a server-side part** that allows managing and configuring experiments and stores experiment results; and
  2. **a client-side part** based on [Vue.js](https://vuejs.org/) that runs in the participant's browser and provides:
@@ -20,6 +23,7 @@ Some features of _magpie include:
  * *Composability*: Build custom behavior by picking from and combining a wide range of components, built-in and external (any Vue-compatible library is supported)
  * *Interactivity*: Allow participants to interact with each other with support for interactive experiments built in
 
+## This site
 This site serves the manual, which will guide you through the various features.
 
 There is also [the _magpie reference](https://magpie-reference.netlify.app/), a comprehensive documentation
