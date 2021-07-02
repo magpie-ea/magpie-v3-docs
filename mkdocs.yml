@@ -29,6 +29,7 @@ nav:
   - Mouse and eye tracking: '01_designing_experiments/05_mouse_and_eye_tracking.md'
   - Canvas: '01_designing_experiments/06_canvas.md'
   - Synthesizer: '01_designing_experiments/07_synth.md'
+  - Examples: '01_designing_experiments/10_examples.md'
 - Server app:
   - Installation: '02_using_the_server_app/01_installation.md'
   - Use: '02_using_the_server_app/02_use.md'
