@@ -12,8 +12,13 @@ For convenience you can also use [`<MousetrackingStart>`](https://magpie-referen
 custom screens to start a new mouse track once the component is rendered (it is invisible).
 
 ## Eye tracking
-magpie is also equipped with [WebGazer](https://webgazer.cs.brown.edu), a library that can track participants' eye movements
-via their web cam.
+magpie supports with [WebGazer](https://webgazer.cs.brown.edu), a library that can track participants' eye movements
+via their webcam. Due to licensing issue we cannot bundle WebgGazer with magpie, so you need to install it first using
+the following command in your terminal. (Note that WebGazer is licensed under the GNU Public License.)
+
+```shell
+npm install webgazer
+```
 
 Before you can record eye tracking data, WebGazer needs to be calibrated using
 [`<EyetrackingCalibrationScreen>`](https://magpie-reference.netlify.app/#eyetrackingcalibrationscreen). Afterwards, you can optionally
