@@ -4,7 +4,7 @@ Let's have a look again at an example experiment.
 ```html
 <template>
   <!-- The title prop will be used for the browser tab title -->
-  <Experiment title="_magpie demo">
+  <Experiment title="magpie demo">
       
       <!-- This is the welcome screen -->
       <InstructionScreen :title="'Welcome'">
@@ -192,7 +192,7 @@ For this, the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment)
 
 ```html
 <template>
-  <Experiment title="_magpie demo"
+  <Experiment title="magpie demo"
               :image-assets="pictures">
       
       <!-- This is the welcome screen -->

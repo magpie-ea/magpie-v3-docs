@@ -1,7 +1,7 @@
 # Custom screens
 When the built-in screens are not enough for your purposes, you can define your own custom screens.
 
-For this purpose there is an abstract [`<Screen>`](https://magpie-reference.netlify.app/#screen) component available with _magpie.
+For this purpose there is an abstract [`<Screen>`](https://magpie-reference.netlify.app/#screen) component available with magpie.
 
 ## Slides
 
@@ -37,7 +37,7 @@ The problem now is that there is no indication when to switch to the second slid
 
 ## Switching slides
 
-However, _magpie lends us a hand here, and provides a function to go to the next slide:
+However, magpie lends us a hand here, and provides a function to go to the next slide:
 
 ```html
 <Screen>
@@ -97,7 +97,7 @@ we go to the next screen.
 ## Collecting data
 Experiments are of course about collecting data, so we need some inputs to collect responses from our participants.
 
-_magpie has some built-in input components ready for you. For example, you could use the RatingInput component to realize
+magpie has some built-in input components ready for you. For example, you could use the RatingInput component to realize
 a rating task:
 
 ```html
@@ -299,7 +299,7 @@ Now, we can use this screen component in our main experiment file.
 ```html
 <!-- App.vue -->
 <template>
-  <Experiment title="_magpie demo">
+  <Experiment title="magpie demo">
       
       <!-- This is the welcome screen -->
       <InstructionScreen :title="'Welcome'">

@@ -48,9 +48,9 @@ To allow participants to communicate, you can add the [`<Chat>`](https://magpie-
 to your screens.
 
 ## Socket
-In order to build more complex interactions, you can use [_magpie's socket](https://magpie-reference.netlify.app/#Socket) infrastructure.
+In order to build more complex interactions, you can use [magpie's socket](https://magpie-reference.netlify.app/#Socket) infrastructure.
 
-This is a simplified Chat component that showcases how _magpie's socket works:
+This is a simplified Chat component that showcases how magpie's socket works:
 
 ```html
 <template>

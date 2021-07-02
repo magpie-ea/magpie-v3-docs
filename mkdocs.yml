@@ -1,5 +1,5 @@
-site_name: _magpie v3 manual
-site_description: 'Documentation of _magpie (minimal architecture for the generation of portable interactive experiments)'
+site_name: magpie v3 manual
+site_description: 'Documentation of magpie (minimal architecture for the generation of portable interactive experiments)'
 site_author: 'Michael Franke'
 
 theme:

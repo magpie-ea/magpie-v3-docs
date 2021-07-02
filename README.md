@@ -1,6 +1,6 @@
 # magpie-docs
 
-Full documentation of _magpie.
+Full documentation of magpie.
 
 The documentation is meant to be built with [MkDocs](https://www.mkdocs.org/).
 

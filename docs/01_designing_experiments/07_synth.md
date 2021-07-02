@@ -1,5 +1,5 @@
 # Synthesizer
-In addition to using pre-recorded audio files, _magpie also provides a synthesizer for creating auditory stimuli.
+In addition to using pre-recorded audio files, magpie also provides a synthesizer for creating auditory stimuli.
 
 The synthesizer is available via the [`<Synth>`](https://magpie-reference.netlify.app/#synth) component:
 

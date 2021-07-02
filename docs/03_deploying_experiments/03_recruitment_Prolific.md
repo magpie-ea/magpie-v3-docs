@@ -27,6 +27,6 @@ export default {
 
 Use deploy method `Prolific` will take participants back to the Prolific website where they are supplied with their completion code.
 
-The data from your experiment will _not_ be stored by Prolific, but recorded by the \_magpie server app.
+The data from your experiment will _not_ be stored by Prolific, but recorded by the magpie server app.
 Before launching the study on Prolific, double-check that the database on the back end is set up and the necessary information (`experimentId`, server URL) are set.
 Also do not forget to update a web-site version of your experiment so that it includes the correct information in `completionUrl` before running the study.

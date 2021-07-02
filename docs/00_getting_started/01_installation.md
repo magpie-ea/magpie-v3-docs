@@ -1,8 +1,8 @@
 # Installation
 To create an experiment you will need a recent version of [Node.js](https://nodejs.org) and npm (usually comes together with your Node.js installation).
-Node.js is a runtime for JavaScript, a language that predominantly runs in the browser. _magpie is therefore also written in JavaScript. npm is a package manager for JavaScript and allows you to install projects and libraries on your computer.
+Node.js is a runtime for JavaScript, a language that predominantly runs in the browser. magpie is therefore also written in JavaScript. npm is a package manager for JavaScript and allows you to install projects and libraries on your computer.
 
-To get started with _magpie, install magpie globally using npm, by running the following on the command line:
+To get started with magpie, install magpie globally using npm, by running the following on the command line:
 
 ```bash
 npm install -g magpie-base
@@ -23,7 +23,7 @@ To create a new project, go to a directory of your choice and run
 magpie new "project-name"
 ```
 
-_magpie will create a new directory for you with a ready-to-run sample project.
+magpie will create a new directory for you with a ready-to-run sample project.
 
 Now, you will need to install the dependencies for your project using
 
@@ -31,7 +31,7 @@ Now, you will need to install the dependencies for your project using
 npm install
 ```
 
-This will install all kinds of small libraries that _magpie needs to run.
+This will install all kinds of small libraries that magpie needs to run.
 
 ## Running a development instance
 To try out your project on your local machine, run

@@ -1,5 +1,5 @@
 # Progress bar
-_magpie can show a progress bar at the top right of the experiment, indicating the participant's progress in the experiment.
+magpie can show a progress bar at the top right of the experiment, indicating the participant's progress in the experiment.
 
 ## Setting progress per screen
 We can make any screen display a progress bar using the [`progress`](https://magpie-reference.netlify.app/#screen) prop,
@@ -8,7 +8,7 @@ which takes a value between 0 and 1:
 ```html
 <template>
   <!-- The title prop will be used for the browser tab title -->
-  <Experiment title="_magpie demo">
+  <Experiment title="magpie demo">
       
     <!-- The contents of the #title template slot will be
          displayed in the upper left corner of the experiment -->

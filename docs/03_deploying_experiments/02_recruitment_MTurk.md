@@ -1,6 +1,6 @@
 ## Recruitment via MTurk
 
-You can post a _magpie experiment as an external HIT on MTurk. If you are familiar with posting external HITs, the only thing that you need to take into account is that _magpie experiments send their collected data to the _magpie backend. So, in order to collect the data from your experiment, you would visit the _magpie backend to download a CSV file. No need to go via MTurk.
+You can post a magpie experiment as an external HIT on MTurk. If you are familiar with posting external HITs, the only thing that you need to take into account is that magpie experiments send their collected data to the magpie backend. So, in order to collect the data from your experiment, you would visit the magpie backend to download a CSV file. No need to go via MTurk.
 
 If you are not familiar with posting external HITs on MTurk, here is a simple method that uses `boto3`, which is a Python SDK for Amazon's Web Services (AWS). The [MTurkDeployTemplate](https://github.com/magpie-ea/MTurkDeployTemplate) gives a full example of an experiment that uses this method.
 
@@ -22,7 +22,7 @@ aws_secret_access_key=YOUR_SECRET_ACCESS_KEY
 
 ~~~
 
-Make sure that your _magpie experiment is ready for MTurk deployment:
+Make sure that your magpie experiment is ready for MTurk deployment:
 
 - set the deployment method to `MTurk`
 - host the experiment on a web server, e.g., [using Netlify](/03_deploying_experiments/02_hosting_on_netlify/)

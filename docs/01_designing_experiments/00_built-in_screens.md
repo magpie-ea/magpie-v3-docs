@@ -43,7 +43,7 @@ trials of your main experimental task, for example). They usually collect the da
 additional information (e.g., the picture to be displayed in trial 27, or the question and answer
 options for trial 13).
 
-_magpie has some ready-made trial screens built-in for simple experimental trials.
+magpie has some ready-made trial screens built-in for simple experimental trials.
 
 ### Life cycle phases
 The built-in trial screens are usually based on the [`<LifecycleScreen>`](https://magpie-reference.netlify.app/#lifecyclescreen) component and thus

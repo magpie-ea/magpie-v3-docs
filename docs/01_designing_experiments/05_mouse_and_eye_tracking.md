@@ -1,7 +1,7 @@
 # Mouse and eye tracking
 
 ## Mouse tracking
-_magpie can track mouse movements during trials.
+magpie can track mouse movements during trials.
 
 You can start collecting mouse tracking data by calling
 [`$magpie.mousetracking.start()`](https://magpie-reference.netlify.app/#Mousetracking+start).
@@ -12,7 +12,7 @@ For convenience you can also use [`<MousetrackingStart>`](https://magpie-referen
 custom screens to start a new mouse track once the component is rendered (it is invisible).
 
 ## Eye tracking
-_magpie is also equipped with [WebGazer](https://webgazer.cs.brown.edu), a library that can track participants' eye movements
+magpie is also equipped with [WebGazer](https://webgazer.cs.brown.edu), a library that can track participants' eye movements
 via their web cam.
 
 Before you can record eye tracking data, WebGazer needs to be calibrated using
