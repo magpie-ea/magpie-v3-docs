@@ -1,5 +1,5 @@
 # Progress bar
-magpie can show a progress bar at the top right of the experiment, indicating the participant's progress in the experiment.
+Magpie can show a progress bar at the top right of the experiment, indicating the participant's progress in the experiment.
 
 ## Setting progress per screen
 We can make any screen display a progress bar using the [`progress`](https://magpie-reference.netlify.app/#screen) prop,

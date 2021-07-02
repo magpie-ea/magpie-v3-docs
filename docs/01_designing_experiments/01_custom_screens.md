@@ -97,7 +97,7 @@ we go to the next screen.
 ## Collecting data
 Experiments are of course about collecting data, so we need some inputs to collect responses from our participants.
 
-magpie has some built-in input components ready for you. For example, you could use the RatingInput component to realize
+Magpie has some built-in input components ready for you. For example, you could use the RatingInput component to realize
 a rating task:
 
 ```html

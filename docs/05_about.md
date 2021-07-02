@@ -1,4 +1,4 @@
-magpie has been developed for open science by open scientists:
+Magpie has been developed for open science by open scientists:
 
 [Stela Ilieva](https://github.com/stelaseldano/)
 

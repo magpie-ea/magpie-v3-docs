@@ -1,7 +1,7 @@
 # Mouse and eye tracking
 
 ## Mouse tracking
-magpie can track mouse movements during trials.
+Magpie can track mouse movements during trials.
 
 You can start collecting mouse tracking data by calling
 [`$magpie.mousetracking.start()`](https://magpie-reference.netlify.app/#Mousetracking+start).

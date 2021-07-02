@@ -1,10 +1,10 @@
 # <img src="assets/logo_text.png" width="500" alt="magpie" />
 
-magpie is a framework for building online experiments (e.g., for psychological research) that run in the participants' browser.
+Magpie is a framework for building online experiments (e.g., for psychological research) that run in the participants' browser.
 
 <video src="/images/getting_started/intro.webm" style="width: 100%" controls></video>
 
-magpie is composed of these parts:
+Magpie is composed of these parts:
 
  1. **a server-side part** that allows managing and configuring experiments and stores experiment results; and
  2. **a client-side part** based on [Vue.js](https://vuejs.org/) that runs in the participant's browser and provides:
