@@ -22,7 +22,7 @@ Each stage of such a trial can be realized as a slide in magpie.
 
 Figure 1 from Todd, J., Marois, R. Capacity limit of visual short-term memory in human posterior parietal cortex. Nature 428, 751–754 (2004). <https://doi.org/10.1038/nature02466>
 
-To ease the realization of the most common experimental designs, there are many **built-in screen components** ready for usage, allowing the quick assembly of simple experiments. 
+To ease the realization of the most common experimental designs, there are many **built-in screen components** ready for use, allowing the quick assembly of simple experiments. 
 These screens always have 4 slides, which implement:
 
 1. A **pause**
@@ -42,10 +42,10 @@ This could be textual/visual/auditory stimuli that will be presented to the part
 <td>question<td>picture<td>option1<td>option2
 </thead>
 <tr>
-<td>"What's on the bread?"<td>"images/bread.jpg"<td>"jam"<td>"ham"
+<td>"What is on the bread?"<td>"images/bread.jpg"<td>"jam"<td>"ham"
 </tr>
 <tr>
-<td>"What's the weather like?"<td>"images/weather.png"<td>"shiny"<td>"rainbow"
+<td>"What is the weather like?"<td>"images/weather.png"<td>"shiny"<td>"rainbow"
 </tr>
 <tr>
 <td>"What is your opinion of this pet?"<td>"images/pet.jpg"<td>"cute"<td>"ugly"
@@ -55,7 +55,7 @@ This could be textual/visual/auditory stimuli that will be presented to the part
 In this example our data contains questions a path to a picture and two options for participants to choose from.
 
 
-The reason to run an experiment is, of course, to collect some data.
+The reason to run an experiment is, of course, to collect data.
 Data collected by a magpie experiment is of two kinds: 
 
 1. **trial-level data**: these are measurements made in individual trials, e.g., the reaction times for the first, second ... trial the participant saw

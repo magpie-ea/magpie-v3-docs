@@ -22,7 +22,7 @@ export default {
 
 <style>
     h1 {
-        color: green;
+        font-weight: bold;
     }
 </style>
 ```
@@ -40,11 +40,11 @@ and Vue.js will render the component's contents instead.
 
 This will render
 
-> <h1>hello</h1>
+> <h1><b>hello</b></h1>
 
 ## Data
 To make components more flexible, you can use a special syntax, the *Vue.js template language* inside the `<template>` tag.
-The string `{{ name }}` will be replace on a website with the value of the variable `name` defined in the `data` function inside the `<script>` tag.
+The string `{{ name }}` will be replaced on a website with the value of the variable `name` defined in the `data` function inside the `<script>` tag.
 
 ```html
 <template>
@@ -171,7 +171,7 @@ Static web pages are relatively boring.
 We want the user to interact with the browser.
 We can achieve this by listening to HTML events.
 Vue.js allows us to do this using the @-shorthand.
-For example, to be notified when the user clicks on a sepcific element, we use `@click` on that element.
+For example, to be notified when the user clicks on a specific element, we use `@click` on that element.
 The listener attribute accepts either a JavaScript statement, like a function call, or a function value.
 The HTML event object is available as `$event`.
 
