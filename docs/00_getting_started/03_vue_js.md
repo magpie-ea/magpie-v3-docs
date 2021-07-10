@@ -129,7 +129,7 @@ export default {
 Here, instead of setting the variable `name` with a pre-defined value, we define a prop
 called `name` which accepts string values and always has to be set,
 when using this component (`required`). Notice that we can use props in the same way as variables defined in `data`.
-We can then use the "Greeter" component inside of another component, as follows:
+We can then use the "Greeter" component from within another component, as follows:
 
 ```html
 <template>
@@ -284,7 +284,7 @@ export default {
 
 Here, we've changed the `changeGreeting` method to emit a click event on our Greeter component, using the magic `$emit` method. (Generally, names that start with `$` are built-in methods of Vue.js or associated libraries.)
 
-We can now listen for this event similarly:
+From within a component that uses the Greeter component, we can now listen for this event similarly:
 
 ```html
 <template>
@@ -307,13 +307,13 @@ export default {
 
 ## Component slots
 Component props allow passing JavaScript values as options to Components.
-However, sometimes you want to pass an HTML snippet to another component.
+However, sometimes you want to pass a HTML snippets to another component.
 The template language also supports this.
 
 ```html
 <template>
     <div>
-        <h1>hello <slot name="person" /></h1>
+        <h1>hello <slot /></h1>
     </div>
 </template>
 
@@ -324,10 +324,54 @@ export default {
 </script>
 ```
 
-Instead of defining a prop in our component definition, we used the magic `<slot>` element to define a component slot,
-called `person`. Wherever you use this Greeter component, you can now pass in arbitrary HTML that will be put
-at the position of the slot in the component's template. We pass HTML to a slot by placing a `template` element
-as a child of the Greeter component, with the slot-name given using the #-shorthand.
+Instead of defining a prop in our component definition, we used the magic `<slot>` element to define a component slot.
+
+In a component that uses this Greeter component, you can now pass in arbitrary HTML that will be put
+at the position of the slot element within the Greeter component. We pass HTML to a slot by placing it
+as a child of the Greeter component.
+
+```html
+<template>
+    <div>
+        <Greeter>
+            <i>Donald</i>
+        </Greeter>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'MyComponent',
+}
+</script>
+```
+
+Here we pass the HTML partial `<i>Donald</i>`, which renders `'Donald'` in italic.
+
+The Greeter component will then render
+
+> <h1>hello *Donald*</h1>
+
+By default, children will be put into the `#default` slot. A component may also define multiple slots.
+These will then get names.
+
+```html
+<template>
+    <div>
+        <h1>hello <slot name="person" /></h1>
+        <blockquote><slot name="bio" /></blockquote>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'Greeter',
+}
+</script>
+```
+
+Here we define two slots for our greeter component, one called "person" and one called "bio". In another component we
+can then fill those slots as follows.
 
 ```html
 <template>
@@ -335,6 +379,9 @@ as a child of the Greeter component, with the slot-name given using the #-shorth
         <Greeter>
             <template #person>
                 <b>Donald</b>
+            </template>
+            <template #bio>
+                <p>The 45th president of the United States.</p>
             </template>
         </Greeter>
     </div>
@@ -347,26 +394,7 @@ export default {
 </script>
 ```
 
-Here we pass the HTML partial `<b>Donald</b>`, which renders `'Donald'` in bold.
-
-By default, child contents will be put into the `#default` slot. In that case we could have used the "Greeter" component
-as follows:
-
-```html
-<template>
-    <div>
-        <Greeter>
-            <b>Donald</b>
-        </Greeter>
-    </div>
-</template>
-
-<script>
-export default {
-  name: 'MyComponent',
-}
-</script>
-```
+Here, we use template elements with #-directives to declare which children go into which slot.
 
 ## If and for
 To make things even more interesting, Vue.js introduces two special attributes: `v-if` and `v-for`,
