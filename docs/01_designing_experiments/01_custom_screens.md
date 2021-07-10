@@ -95,7 +95,7 @@ After 1 second of displaying "Hello world", we display "Anybody here?" and when 
 we go to the next screen.
 
 ## Collecting data
-Experiments are of course about collecting data, so we need some inputs to collect responses from our participants.
+Of course, Experiments are about collecting data, so we need some inputs to collect responses from our participants.
 
 Magpie has some built-in input components ready for you. For example, you could use the RatingInput component to realize
 a rating task:
@@ -240,7 +240,7 @@ function that returns true if the validation passed and false if it didn't.
 Here, we've replaced the `minLength` validator with a hand-built validator that does the same thing.
 
 Validations incidentally also work for built-in screens as they inherit from the abstract Screen component.
-The variable that holds the response in these case is always called `response`.
+The variable that holds the response in these cases is always called `response`.
 
 ## Separating custom screens into files
 If we want to use a custom screen multiple times in our experiment, we can separate it out into a different `.vue` file as follows:
