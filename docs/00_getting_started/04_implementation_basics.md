@@ -85,14 +85,13 @@ For a list of available ready-made screens see [here](https://magpie-reference.n
 ```
 
 ### $magpie
-magpie also supplies a magic variable called [`$magpie`](https://magpie-reference.netlify.app/#Magpie), which gives you
-access to many utility functions, including methods to change slides and screens, mouse and eyetracking as well as a
-messaging socket to communicate with other running sessions of the same experiment. It always available as a variable in all components.
+Magpie also supplies a magic variable called [`$magpie`](https://magpie-reference.netlify.app/#Magpie), which gives you
+access to many utility functions. These include methods to change slides and screens, mouse and eye tracking as well as a
+messaging socket to communicate with other running sessions of the same experiment. It is always available as a variable in all components.
 
 ## A minimal example
-This is a simple example of how your experiment code could look like.
-
-**TODO: maybe explain what's going on here? maybe introduce bit by bit? maybe embedd a video here, developing this minimal example?**
+This is a simple example of how your experiment code could look like. The following experiment implements three tasks
+presenting an image and a question with a rating slider. The details of this code will become clear after reading the next sections.
 
 ```html
 <template>
@@ -153,21 +152,21 @@ const sliderRating = [
   {
     picture: 'images/question_mark_02.png',
     question: 'How are you today?',
-    optionLeft: 'fine',
-    optionRight: 'great'
+    optionLeft: 'good',
+    optionRight: 'bad'
   },
   {
     picture: 'images/question_mark_01.png',
-    question: "What's the weather like?",
-    optionLeft: 'shiny',
-    optionRight: 'rainbow'
+    question: "What is the weather like?",
+    optionLeft: 'good',
+    optionRight: 'bad'
   },
   {
     QUD: 'Here is a sentence that stays on the screen from the very beginning',
     picture: 'images/question_mark_03.jpg',
-    question: "What's on the bread?",
-    optionLeft: 'ham',
-    optionRight: 'jam'
+    question: "How was your breakfast?",
+    optionLeft: 'good',
+    optionRight: 'bad'
   }
 ];
 </script>
