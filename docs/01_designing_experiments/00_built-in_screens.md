@@ -48,13 +48,13 @@ Magpie has some ready-made trial screens built-in for simple experimental trials
 
 ### Life cycle phases
 The built-in trial screens are usually based on the [`<LifecycleScreen>`](https://magpie-reference.netlify.app/#lifecyclescreen) component and thus
-have 5 phases:
+have 5 phases in the following order:
 
- * A pause phase of variable duration, displaying nothing (optional)
- * A fixation phase of variable duration, displaying a fixation cross or similar (optional)
- * A stimulus phase of variable duration, presenting the stimulus (optional)
- * A response phase with an optional timeout, allowing the participant to respond
- * A feedback phase where you can give feedback to the participant (optional)
+1. A pause phase of variable duration, displaying nothing (optional)
+2. A fixation phase of variable duration, displaying a fixation cross or similar (optional)
+3. A stimulus phase of variable duration, presenting the stimulus (optional)
+4. A response phase with an optional timeout, allowing the participant to respond
+5. A feedback phase where you can give feedback to the participant (optional)
 
 Let's have a look at this using the ForcedChoiceScreen as an example.
 
