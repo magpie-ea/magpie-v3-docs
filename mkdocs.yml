@@ -4,12 +4,14 @@ site_author: 'Michael Franke'
 
 theme:
   name: readthedocs
-  highlightjs: true
-  hljs_languages:
-    - yaml
-    - html
-    - js
-    - gitignore
+  highlightjs: false
+
+extra_javascript:
+   - https://cdn.jsdelivr.net/npm/prismjs@v1.x/components/prism-core.min.js
+   - https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js
+extra_css:
+   - https://cdn.jsdelivr.net/npm/prismjs@v1.x/themes/prism.css
+   - /assets/prism.css
 
 repo_url: https://github.com/magpie-ea/magpie-v3-docs/
 
@@ -44,9 +46,5 @@ nav:
 
 plugins:
   - search
-
-markdown_extensions:
-  - pymdownx.highlight
-  - pymdownx.superfences
 
 copyright: MIT license
