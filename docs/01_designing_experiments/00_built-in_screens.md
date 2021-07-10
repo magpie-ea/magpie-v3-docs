@@ -48,62 +48,171 @@ Magpie has some ready-made trial screens built-in for simple experimental trials
 
 ### Life cycle phases
 The built-in trial screens are usually based on the [`<LifecycleScreen>`](https://magpie-reference.netlify.app/#lifecyclescreen) component and thus
-have 4 slides or phases:
+have 5 phases:
 
- * A pause phase of variable duration, where nothing is displayed
- * A fixation phase of variable duration, where a fixation cross or similar is displayed
- * A stimulus phase of variable duration, where the stimulus is presented
- * A response phase with an optional timeout, where the participant can respond
+ * A pause phase of variable duration, displaying nothing (optional)
+ * A fixation phase of variable duration, displaying a fixation cross or similar (optional)
+ * A stimulus phase of variable duration, presenting the stimulus (optional)
+ * A response phase with an optional timeout, allowing the participant to respond
+ * A feedback phase where you can give feedback to the participant (optional)
 
-The first two can be skipped and the stimulus and response phase can be merged into one phase.
+Let's have a look at this using the ForcedChoiceScreen as an example.
 
+#### Only response phase
+```html
+<ForcedChoiceScreen
+    :options="['Yes', 'No']"
+    question="Do you understand this question?"
+    qud="Always do the opposite of what you are asked."
+/>
+```
+
+Here we only have a response phase, presenting a question as well as the response choices "Yes" and "No".
+
+#### Stimulus and response phase together
 You can provide a stimulus by overriding the `stimulus` slot of the relevant screen as follows:
 
 ```html
 <ForcedChoiceScreen
     :options="['Yes', 'No']"
     question="Do you understand this question?"
-    qud="Always do the opposite of what you are asked."
->
+    qud="Always do the opposite of what you are asked.">
     <template #stimulus>
         <img src="img/confusion.jpg" />
     </template>
 </ForcedChoiceScreen>
 ```
 
-This will display the stimulus on the same slide as the response inputs.
+Here we pass an image to the stimulus slot. This will display the stimulus on the same slide as the response inputs.
 
-If you want to present the stimulus only for a certain amount of time, you can use the `stimulusTime` prop:
+#### Separate stimulus and response phase
+If you want to present the stimulus separately from the response phase, you need to define a stimulus time.
 
 ```html
 <ForcedChoiceScreen
     :options="['Yes', 'No']"
     question="Do you understand this question?"
     qud="Always do the opposite of what you are asked."
-    :stimulusTime="1500"
->
+    :stimulusTime="1500">
     <template #stimulus>
         <img src="img/confusion.jpg" />
     </template>
 </ForcedChoiceScreen>
 ```
 
-For things like audio or video, it can also be useful to go to the next slide dynamically:
+This will present the stimulus for 1.5 seconds and then present the response slide instead.
+
+#### Separate stimulus and response phase (manual transition)
+For things like audio or video stimuli, it can also be useful to go to the next slide manually:
 
 ```html
 <ForcedChoiceScreen
     :options="['Yes', 'No']"
     question="Do you understand this question?"
     qud="Always do the opposite of what you are asked."
-    :stimulusTime="-1"
->
+    :stimulusTime="-1">
     <template #stimulus>
         <audio src="audio/sealion.ogg" autoplay @ended="$magpie.nextSlide()" /> 
     </template>
 </ForcedChoiceScreen>
 ```
 
-Here we set `stimulusTime` to `-1` to indicate that we want to control stimulus presentation ourselves.
+Here we set `stimulusTime` to `-1` to indicate that we want to control stimulus presentation ourselves and use
+`$magpie.nextSlide()` to go to the next slide once the audio playback has ended.
+
+#### Pause and stimulus
+To add a pause phase, simply add a `pauseTime` prop, defining the pause duration.
+```html
+<ForcedChoiceScreen
+    :options="['Yes', 'No']"
+    question="Do you understand this question?"
+    qud="Always do the opposite of what you are asked."
+    :pauseTime="500">
+    <template #stimulus>
+        <img src="img/confusion.jpg" />
+    </template>
+</ForcedChoiceScreen>
+```
+
+In this example we pause for 0.5s before presenting the stimulus and the response interface.
+
+#### Pause, Fixation and stimulus phase
+```html
+<ForcedChoiceScreen
+    :options="['Yes', 'No']"
+    question="Do you understand this question?"
+    qud="Always do the opposite of what you are asked."
+    :pauseTime="500"
+    :fixationTime="1000">
+    <template #stimulus>
+        <img src="img/confusion.jpg" />
+    </template>
+</ForcedChoiceScreen>
+```
+
+Here, we display a fixation cross for 1s after a 0.5s pause. Finally, we display the stimulus together with the response interface.
+
+#### Custom fixation phase
+If you would like to use your own fixation material, you can use the `fixation` slot.
+```html
+<ForcedChoiceScreen
+    :options="['Yes', 'No']"
+    question="Do you understand this question?"
+    qud="Always do the opposite of what you are asked."
+    :fixationTime="1000">
+    <template #fixation>
+        <img src="img/fixation.jpg" />
+    </template>
+    <template #stimulus>
+        <img src="img/confusion.jpg" />
+    </template>
+</ForcedChoiceScreen>
+```
+
+Here, we present a custom image for 1s in the fixation phase. Afterwards we present the stimulus and the response interface together in the same phase.
+
+#### Feedback phase
+If you would like to provide feedback, after the participant has responded, you can use the `feedback` slot.
+
+```html
+<ForcedChoiceScreen
+    :options="['Yes', 'No']"
+    question="Do you understand this question?"
+    qud="Always do the opposite of what you are asked."
+    :feedbackTime="1500">
+    <template #stimulus>
+        <img src="img/confusion.jpg" />
+    </template>
+    <template #feedback>
+        <p v-if="$magpie.measurements.response === 'No'">Correct</p>
+        <p v-else>Incorrect</p>
+    </template>
+</ForcedChoiceScreen>
+```
+
+Here, we check the response the participant gave and display an indicator of whether it is right or wrong for 1.5s.
+
+#### Feedback phase (manual transition)
+If you would like to provide feedback, after the participant has responded, you can use the `feedback` slot.
+
+```html
+<ForcedChoiceScreen
+    :options="['Yes', 'No']"
+    question="Do you understand this question?"
+    qud="Always do the opposite of what you are asked.">
+    <template #stimulus>
+        <img src="img/confusion.jpg" />
+    </template>
+    <template #feedback>
+        <p v-if="$magpie.measurements.response === 'No'">Correct</p>
+        <p v-else>Incorrect</p>
+        <button @click="$magpie.nextScreen()">Ok</button>
+    </template>
+</ForcedChoiceScreen>
+```
+
+Here, we check the response the participant gave and display an indicator of whether it is right or wrong.
+The user then has the possibility to go to the next screen with the click of a button.
 
 For more details on the available parameters, [refer to the reference on the LifecycleScreen](https://magpie-reference.netlify.app/#lifecyclescreen).
 
@@ -114,7 +223,7 @@ Choices are made by clicking on one of the buttons.
 
 ```html
 <ForcedChoiceScreen
-    :options="['Yes', 'No']"
+    :options="['Yes', 'No', 'Maybe']"
     question="Do you understand this question?"
     qud="Always do the opposite of what you are asked."
 />
