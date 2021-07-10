@@ -1,4 +1,6 @@
 # Built-in screens
+There are two basic categories of screens: Trial screens display the actual trial tasks, while wrapper screens wrap your trial block
+with useful information like instructions or ask for demographic information about participants.
 
 ## Wrapper screens
 Wrapper screens allow you to display information about the experiment or ask for additional information
@@ -40,8 +42,7 @@ If you would like to ask for additional information, you can use the component's
 ## Trial screens
 Trial screens are the parts of your experiment which are (usually) instantiated several times (realizing different
 trials of your main experimental task, for example). They usually collect the data and often rely on
-additional information (e.g., the picture to be displayed in trial 27, or the question and answer
-options for trial 13).
+additional information (e.g. pictures to be displayed, or questions and answer options).
 
 Magpie has some ready-made trial screens built-in for simple experimental trials.
 
@@ -104,7 +105,7 @@ For things like audio or video, it can also be useful to go to the next slide dy
 
 Here we set `stimulusTime` to `-1` to indicate that we want to control stimulus presentation ourselves.
 
-For more details on the available parameter, [refer to the reference on the LifecycleScreen](https://magpie-reference.netlify.app/#lifecyclescreen).
+For more details on the available parameters, [refer to the reference on the LifecycleScreen](https://magpie-reference.netlify.app/#lifecyclescreen).
 
 ### Forced choice
 The [`<ForcedChoiceScreen>`](https://magpie-reference.netlify.app/#forcedchoicescreen) component displays a context,
