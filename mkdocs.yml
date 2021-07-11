@@ -11,7 +11,7 @@ extra_javascript:
    - https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js
 extra_css:
    - https://cdn.jsdelivr.net/npm/prismjs@v1.x/themes/prism.css
-   - /assets/prism.css
+   - /assets/style.css
 
 repo_url: https://github.com/magpie-ea/magpie-v3-docs/
 
@@ -26,7 +26,7 @@ nav:
   - Built-in screens: '01_designing_experiments/00_built-in_screens.md'
   - Custom screens: '01_designing_experiments/01_custom_screens.md'
   - Independent variables: '01_designing_experiments/02_independent_variables.md'
-  - Interactive experiments: '01_designing_experiments/03_interactive_experiments.md'
+  - Interactive experiments: '01_designing_experiments/03_interactive_and iterated_experiments.md'
   - Progress bar: '01_designing_experiments/04_progress_bar.md'
   - Mouse and eye tracking: '01_designing_experiments/05_mouse_and_eye_tracking.md'
   - Canvas: '01_designing_experiments/06_canvas.md'

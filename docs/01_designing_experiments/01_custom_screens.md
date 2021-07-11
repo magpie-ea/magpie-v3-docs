@@ -338,26 +338,118 @@ We import the new screen component into the current file using a normal import s
 sub-component to be used as part of our main App component. Now, we can use it in the `<template>` part of the file.
 
 ## Creating result rows manually
-Sometimes you need to create multiple rows in the result data per screen or even add global data which should be present
-in all rows (for things like participant demographics, or information about participant's technical setup).
+Usually, you will use the `measurements` object to collect data and save it to the results as seen above:
+
+```html
+<Screen>
+    <Slide>
+        <RatingInput
+                :right="very appealing"
+                :left="very unappealing"
+                :response.sync="$magpie.measurements.appetite" />
+        <RatingInput
+                :right="very large"
+                :left="very small"
+                :response.sync="$magpie.measurements.portion" />
+        <RatingInput
+                :right="very healthy"
+                :left="very unhealthy"
+                :response.sync="$magpie.measurements.healthy" />
+
+        <button @click="$magpie.saveAndNextScreen()">Submit</button>
+    </Slide>
+</Screen>
+```
+
+This might result into the following result data set:
+
+|appetite|portion|healthy|
+|-|-|-|
+|20|35|75|
+
+
+However, sometimes you need to create multiple rows in the result data per screen.
 
 You can add new result rows from all contexts using [`$mapgie.addTrialData()`](https://magpie-reference.netlify.app/#Magpie+addTrialData)
 
-For example, instead of using `Screen`'s `measurements` together with `saveAndNextScreen`, you can save the data directly
+For example, instead of using `Screen`'s `measurements` together with `saveAndNextScreen`, you can save the data manually
 as follows:
 
 ```html
 <Screen>
     <Slide>
-        <KeypressInput
-                :keys="{f: 'same', j: 'different'}"
-                @update:response="$magpie.addTrialData({keypress: $event}); $magpie.nextScreen()" />    
+        <RatingInput
+                :right="very appealing"
+                :left="very unappealing"
+                :response.sync="$magpie.measurements.appetite" />
+        <RatingInput
+                :right="very large"
+                :left="very small"
+                :response.sync="$magpie.measurements.portion" />
+        <RatingInput
+                :right="very healthy"
+                :left="very unhealthy"
+                :response.sync="$magpie.measurements.healthy" />
+
+        <button @click="$magpie.addTrialData({
+          appetite: $magpie.measurements.appetite / 100,
+          portion: $magpie.measurements.portion / 100,
+          healthy: $magpie.measurements.healthy / 100
+        })">Add row</button>
+        <button @click="$magpie.nextScreen()">Next</button>
     </Slide>
 </Screen>
 ```
 
-Here we use a [`KeypressInput`](https://magpie-reference.netlify.app/#keypressinput) to capture keyboard presses and listen for the `update:response` event to save the response
-and go the next screen afterwards.
+Here we use a [`RatingInput`](https://magpie-reference.netlify.app/#ratinginput) to collect three different variables.
+The participant can add new data multiple times using the "Add row" button's click handler, which
+calls [`$mapgie.addTrialData()`](https://magpie-reference.netlify.app/#Magpie+addTrialData). Since the data is already
+saved, we only need to call `nextScreen` instead of `saveAndNextScreen`.
+
+This might result in the following result data set:
+
+|appetite|portion|healthy|
+|-|-|-|
+|20|35|75|
+|84|26|75|
+|20|35|75|
 
 ### Adding global data
 We can also add data globally such that it will be present in all result rows using [`$mapgie.addExpData()`](https://magpie-reference.netlify.app/#Magpie+addExpData).
+
+```html
+<Screen>
+    <Slide>
+        <RatingInput
+                :right="very appealing"
+                :left="very unappealing"
+                :response.sync="$magpie.measurements.appetite" />
+        <RatingInput
+                :right="very large"
+                :left="very small"
+                :response.sync="$magpie.measurements.portion" />
+        <RatingInput
+                :right="very healthy"
+                :left="very unhealthy"
+                :response.sync="$magpie.measurements.healthy" />
+
+        <button @click="$magpie.addExpData({
+          appetite: $magpie.measurements.appetite / 100,
+          portion: $magpie.measurements.portion / 100,
+          healthy: $magpie.measurements.healthy / 100
+        }); $magpie.nextScreen()">Submit</button>
+    </Slide>
+</Screen>
+```
+
+This time, we call [`$mapgie.addExpData()`](https://magpie-reference.netlify.app/#Magpie+addExpData) on submit which adds the data globally, so that
+it is present in every result row of our hypothetical experiment:
+
+|response_time|response|appetite|portion|healthy|
+|-|-|-|-|-|
+|500|Yes|20|35|75|No
+|736|Yes|20|35|75|
+|365|No|20|35|75|
+|615|Yes|20|35|75|
+
+This is useful for demographic data like age or level of education.

@@ -6,3 +6,13 @@ pre[class*="language-"] {
 code[class*="language-"] {
    font-size: 1em !important;
 }
+
+table {
+    padding: 0;
+    margin: 1.5em 0;
+    margin-bottom: 2em;
+}
+
+blockquote {
+    border-left: 5px #efefef solid;
+}
