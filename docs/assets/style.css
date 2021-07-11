@@ -13,6 +13,8 @@ table {
     margin-bottom: 2em;
 }
 
-blockquote {
+.rst-content blockquote {
+    margin-left: 0;
+    padding-left: 24px;
     border-left: 5px #efefef solid;
 }
