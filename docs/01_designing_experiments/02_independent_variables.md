@@ -1,5 +1,5 @@
 # Independent variables
-Let's have a look again at an example experiment.
+Let's have another look at our example experiment.
 
 ```html
 <template>
@@ -82,7 +82,7 @@ const sliderRating = [
 Here, we have our independent variables already in JavaScript form, stored in a variable called `sliderRating`, which we then inject into the experiment data.
 
 ## Loading csv data
-Usually, you probably have trial data only available in csv. You can import csv files into your experiment as follows:
+Usually, you have trial data only available in csv. You can import csv files into your experiment as follows:
 
 ```js
 import sliderRating from '../trials/slider_rating.csv'
@@ -101,17 +101,9 @@ As seen in the example above you can now simply iterate over your trial data usi
 <template v-for="(rating_task, i) in sliderRating">
 ```
 
-If you would like to present the same sequence of screens multiple times, you can use
-
-```html
-<template v-for="i in 5">
-```
-
-to loop 5 times.
-
 ## Trial Randomization
-To randomize your trial data, you can use a function, provided by the `lodash` library, which is pre-installed in all projects
-created using the `magpie` command: [`_.shuffle`](https://lodash.com/docs/4.17.15#shuffle)
+To randomize your trial data, you can use the function [`_.shuffle`](https://lodash.com/docs/4.17.15#shuffle) provided by the `lodash` library.
+(Lodash comes pre-installed with all projects created with the `magpie` command.)
 
 First, we have to import lodash as follows
 
@@ -186,7 +178,7 @@ In a custom screen we could then use this method to draw a circle with a random 
 ## Pre-loading media assets
 When displaying media on the web, it is usually only loaded by the browser the second it is about to be displayed.
 In an experiment that depends on response times, this is not ideal, so we often want to pre-load media assets before
-they are being displayed.
+they are displayed.
 
 For this, the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) component has various `assets` props:
 
@@ -194,37 +186,9 @@ For this, the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment)
 <template>
   <Experiment title="magpie demo"
               :image-assets="pictures">
-      
-      <!-- This is the welcome screen -->
-      <InstructionScreen :title="'Welcome'">
-        This is a sample introduction screen.
-        <br />
-        <br />
-        This screen welcomes the participant and gives general information about
-        the experiment.
-        <br />
-        <br />
-        This mock up experiment is a showcase of the functionality of magpie.
-      </InstructionScreen>
-
-      <!-- We iterate over our experiment trials -->
-      <template v-for="(rating_task, i) in sliderRating">
-        <!-- and display a screen with a slider rating task
-             using the built-in SliderScreen component -->
-        <SliderScreen
-            :key="i"
-            :picture="rating_task.picture"
-            :left="rating_task.optionLeft"
-            :right="rating_task.optionRight" />
-      </template>
-
-      <!-- This screen will ask some optional questions about the
-           participant's background, like age, gender etc. -->
-      <PostTestScreen />
-
-      <!-- This screen is useful while testing your experiment to check
-           the results immediately after taking the experiment -->
-      <DebugResultsScreen />
+      <!--
+      ...
+      -->
   </Experiment>
 </template>
 
@@ -245,3 +209,4 @@ export default {
 ```
 
 Here, we extract all pictures from our trial data and pass them to the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) component via the `image-assets` prop.
+This will cause all passed image paths to be loaded with the initial page load.
