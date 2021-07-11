@@ -7,7 +7,7 @@ theme:
   highlightjs: false
 
 extra_javascript:
-   - https://cdn.jsdelivr.net/npm/prismjs@v1.x/components/prism-core.min.js
+   - https://cdn.jsdelivr.net/npm/prismjs@v1.x/prism.js
    - https://cdn.jsdelivr.net/npm/prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js
 extra_css:
    - https://cdn.jsdelivr.net/npm/prismjs@v1.x/themes/prism.css
