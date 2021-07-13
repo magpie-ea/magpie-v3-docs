@@ -1,5 +1,5 @@
-# Interactive experiments
-Interactive experiments allow multiple participants to interact with each other.
+# Interactive and iterated experiments
+Interactive experiments allow multiple participants to interact with each other, synchronously as well as asynchronously.
 
 ## Creating a complex experiment
 In order for interactivity to work, the magpie server needs to be aware of the rough structure of the experiment.
@@ -8,20 +8,32 @@ between different realizations of the same experiment.
 
 Complex experiments have three defining characteristics:
 
-### Number of variants
-The number of variants indicates how many participant groups there are. For example there might be two variants in an
-experiment with an experimental group and a control group.
+* Conditions
+* Chains
+* Generations
+* Collaborators
 
-### Number of chains
-A chain is a coherent unit inside one participant group. For example in an iterated narration experiment, all participants
-of the same chain share the same story.
+  <img src="/images/getting_started/complex-experiments.png" />
+An example experiment with 2 collaborators per generation, 3 generations per chain, and 2 groups per condition and 2 conditions
 
-### Number of realizations
-The number of realizations indicates how many participants are part of one chain.
+### Collaborators
+The number of collaborators indicates how many participants are in one session interacting live together. In an experiment where
+pairs of people should work together, there would be 2 collaborators (see schema above).
 
-## The experiment tri-tuple
-These three characteristics indicate the total number of required participants, obtained by multiplying them. Each participant
-can thus also be assigned a unique tri-tuple, indicating their variant, chain and realization ID.
+### Generations
+The number of generations indicates how many iterations the experiment should have. For example in an iterated narration
+experiment (think Game of telephone) there would be one generation for each step in the retelling of the story (possibly with multiple collaborators each).
+
+### Chains
+A chain contains a line of generations. For example in an iterated narration experiment, every chain would develop their story independently.
+
+### Conditions
+A condition contains multiple chains and defines the independent variables for those chains. In an iterated narration experiment
+conditions would be different initial stories, for example.
+
+## The experiment tuple
+These characteristics indicate the total number of required participants, obtained by multiplying them. Each participant
+can thus also be assigned a unique tri-tuple, indicating their collaborator number, generation number and chain number and condition number.
 
 ## Building interactive experiments
 Before participants can interact with other participants in their chain, the browser needs to connect to the magpie server
@@ -43,12 +55,28 @@ You can however replace it by entering your own text inside the component:
 
 This screen will jump to the next screen in your experiment once a sufficient number of participants have joined the current chain.
 
-## Communication
+## Interactivity
+Interactivity is enabled by a socket connection from each participant to the server.
+
+### Chat
 To allow participants to communicate, you can add the [`<Chat>`](https://magpie-reference.netlify.app/#chat) component
-to your screens.
+to your screens, which uses this socket under the hood:
+
+```html
+<Experiment>
+    <ConnectInteractiveScreen />
+
+    <Screen>
+        <p>Please discuss the text you have just read.</p>
+        <Chat :data.sync="$magpie.measurements.chat" />
+    </Screen>
+
+</Experiment>
+```
 
 ## Socket
-In order to build more complex interactions, you can use [magpie's socket](https://magpie-reference.netlify.app/#Socket) infrastructure.
+In order to build more complex interactions, you can use [magpie's socket](https://magpie-reference.netlify.app/#Socket)
+directly.
 
 This is a simplified Chat component that showcases how magpie's socket works:
 
@@ -56,11 +84,13 @@ This is a simplified Chat component that showcases how magpie's socket works:
 <template>
   <div class="chat">
     <div ref="box" class="chat-box">
+      <!-- Show all messages sent so far -->
       <p
         v-for="(message, i) in messages"
         :key="i"
       >{{ message.message }}</p>
     </div>
+    <!-- Allow sending messages via Send button or via enter-->
     <div class="chat-input">
       <textarea
         ref="text"
@@ -82,11 +112,14 @@ export default {
     };
   },
   socket: {
+    // for each chat_message socket event (including our own) we get a callback
+    // and add the message to our stack of messages
     chat_message(payload) {
       this.messages.push(payload);
     }
   },
   methods: {
+    // Get message text and send a chat_message event down the socket
     send() {
       const message = this.$refs.text.value;
       this.$magpie.socket.broadcast('chat_message', {
@@ -111,37 +144,12 @@ The template then renders all chat messages and displays the input field for ent
 ### Active participants
 If you would like to know how many participants are currently active in the current screen, you can watch
 [`$magpie.socket.active`](https://magpie-reference.netlify.app/#Socket+active), which is an array with the IDs of all participants currently
-active in the current screen:
+active in the current screen.
 
-```html
-<script>
-export default {
-  name: 'Chat',
-  data() {
-    return {
-      messages: [],
-    };
-  },
-  socket: {
-    chat_message(payload) {
-      this.messages.push(payload);
-    }
-  },
-  computed: {
-    activeParticipants() {
-        return this.$magpie.socket.active
-    }  
-  },
-  methods: {
-    send() {
-      const message = this.$refs.text.value;
-      this.$magpie.socket.broadcast('chat_message', {
-        message,
-        participantId: this.$magpie.socket.participantId,
-        time: Date.now()
-      });
-    },
-  }
-};
-</script>
-```
+## Iterated experiments and intermediate results
+Interactive experiments do not have to be synchronous.
+Imagine for example an iterated narration experiment, where participants have to read and relay a story to each other
+successively, similar to the game of Telephone.
+
+TODO
+
