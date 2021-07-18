@@ -7,7 +7,7 @@ The synthesizer is available via the [`<Synth>`](https://magpie-reference.netlif
 <Synth :frequency="440" />
 ```
 
-This will sound a 440 Hz tone via the participant's sound system as long as the component is being rendered
+This will produce a 440 Hz tone via the participant's sound system as long as the component is being rendered
 (i.e. as long as the current slide is visible).
 
 You can also use pitch-octave notation to set the frequency:
@@ -18,7 +18,7 @@ You can also use pitch-octave notation to set the frequency:
 <Synth frequency="A3" />
 ```
 
-This will sound a D major triad.
+This will produce a D major triad.
 
 Instead of letting the tone ring for as long as the component is being rendered, you can also specify a duration in seconds:
 

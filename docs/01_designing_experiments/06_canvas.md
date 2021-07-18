@@ -10,14 +10,14 @@ Using the `config` prop, you can specify the dimensions of the new canvas:
 <CanvasStage :config="{width: 700, height: 500}">
 ```
 
-Inside a stage, the shapes you draw are organized in layers that come one before the other, similar
+Inside a stage, the shapes you draw are organized in layers that come one after the other, similar
 to photo editing software. So, the children in your CanvasStage are going to be `CanvasLayer` components.
 
 ### Drawing shapes
 Inside your layers, you can use the following built-in shapes to draw on your canvas. `x` and `y` are either the top left
 coordinates of the shape (in case of rectangular shapes), or the center coordinates of the shape (in case of radial shapes).
 
-All case components are reactive, meaning, whenever you change the config values, the drawing will update in real-time.
+All canvas components are reactive, meaning, whenever you change the config values, the drawing will update in real-time.
 
 #### CanvasCircle
 ```html
