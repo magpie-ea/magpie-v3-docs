@@ -111,7 +111,7 @@ a rating task:
 ```
 
 This will display a 7-step rating going from "very appalling" to "very cute". To store the response somewhere, we can
-use the `$magpie.measurements` object:
+use the `$magpie.measurements` object, which holds custom variables:
 
 ```html
 <Screen>
@@ -124,7 +124,7 @@ use the `$magpie.measurements` object:
 </Screen>
 ```
 
-We can assign a property of the measurements object to the `response` prop of the RatingInput. The magic here
+We can assign a custom property of the measurements object to the `response` prop of the RatingInput. The magic here
 is in the `.sync` suffix. This will make sure, that the assignment is two-way: If the participant changes their response,
 `$magpie.measurements.rating` will be changed automatically to always reflect the latest value.
 
