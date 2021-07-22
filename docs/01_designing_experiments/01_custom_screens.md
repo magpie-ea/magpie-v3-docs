@@ -219,7 +219,7 @@ Below, on the submit button, we added an if-statement that makes sure, we only s
 with the measurement.
 
 You may have noticed, we use [`$magpie.v`](https://magpie-reference.netlify.app/#Magpie+validators) to access the validators we needed this time. `$magpie.v` provides
-a selection of generally useful validators. If you ever need a validator that is not in there, you can simply write a
+a selection of generally useful validators which you can find all listed in the reference. If you ever need a validator that is not in there, you can simply write a
 function that returns true if the validation passed and false if it didn't.
 
 ```html
