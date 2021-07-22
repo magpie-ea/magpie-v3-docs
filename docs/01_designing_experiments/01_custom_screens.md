@@ -360,7 +360,7 @@ Usually, you will use the `measurements` object to collect data and save it to t
 </Screen>
 ```
 
-This might result into the following result data set:
+This might result in the following result data set:
 
 |appetite|portion|healthy|
 |-|-|-|
@@ -369,7 +369,7 @@ This might result into the following result data set:
 
 However, sometimes you need to create multiple rows in the result data per screen.
 
-You can add new result rows from all contexts using [`$mapgie.addTrialData()`](https://magpie-reference.netlify.app/#Magpie+addTrialData)
+You can add new result rows from within a screen as well as from within a method using [`$mapgie.addTrialData()`](https://magpie-reference.netlify.app/#Magpie+addTrialData)
 
 For example, instead of using `Screen`'s `measurements` together with `saveAndNextScreen`, you can save the data manually
 as follows:
