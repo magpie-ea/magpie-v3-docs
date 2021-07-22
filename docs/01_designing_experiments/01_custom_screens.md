@@ -225,8 +225,7 @@ function that returns true if the validation passed and false if it didn't.
 ```html
 <Screen :validations="{
       text: {
-        minLength: (text) => text.length >= 4,
-        alpha: $magpie.v.alpha
+        lengthRequirements: (text) => text.length >= 4 && text.length < 50
       }
     }">
     <Slide>
@@ -237,7 +236,7 @@ function that returns true if the validation passed and false if it didn't.
 </Screen>
 ```
 
-Here, we've replaced the `minLength` validator with a hand-built validator that does the same thing.
+Here, we've added a hand-built validator that check whether the text is between 4 and 50 characters long.
 
 Validations incidentally also work for built-in screens as they inherit from the abstract Screen component.
 The variable that holds the response in these cases is always called `response`.
