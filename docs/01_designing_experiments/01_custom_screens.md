@@ -1,7 +1,7 @@
 # Custom screens
 When the built-in screens are not enough for your purposes, you can define your own custom screens.
 
-For this purpose there is an abstract [`<Screen>`](https://magpie-reference.netlify.app/#screen) component available with magpie, along with a catalog of [input](https://magpie-reference.netlify.app/#inputs) and [stimulus](https://magpie-reference.netlify.app/#stimuli) components.
+For this purpose there is an abstract [<Screen>](https://magpie-reference.netlify.app/#screen) component available with magpie, along with a catalog of [input](https://magpie-reference.netlify.app/#inputs) and [stimulus](https://magpie-reference.netlify.app/#stimuli) components.
 Magpie's `$magpie` API offers additional helpers for managing screens and slides.
 
 ## Slides
@@ -219,7 +219,7 @@ only contain alphabetical characters.
 Below, on the submit button, we added an if-statement that makes sure, we only show the button, if there are no problems
 with the measurement.
 
-You may have noticed, we use [`$magpie.v`](https://magpie-reference.netlify.app/#Magpie+validators) to access the validators we needed this time. `$magpie.v` provides
+You may have noticed, we use [$magpie.v](https://magpie-reference.netlify.app/#Magpie+validators) to access the validators we needed this time. `$magpie.v` provides
 a selection of generally useful validators which you can find all listed in the reference. If you ever need a validator that is not in there, you can simply write a
 function that returns true if the validation passed and false if it didn't.
 
@@ -370,7 +370,7 @@ This might result in the following result data set:
 
 However, sometimes you need to create multiple rows in the result data per screen.
 
-You can add new result rows from within a screen as well as from within a method using [`$mapgie.addTrialData()`](https://magpie-reference.netlify.app/#Magpie+addTrialData)
+You can add new result rows from within a screen as well as from within a method using [$mapgie.addTrialData()](https://magpie-reference.netlify.app/#Magpie+addTrialData)
 
 For example, instead of using `Screen`'s `measurements` together with `saveAndNextScreen`, you can save the data manually
 as follows:
@@ -401,9 +401,9 @@ as follows:
 </Screen>
 ```
 
-Here we use a [`RatingInput`](https://magpie-reference.netlify.app/#ratinginput) to collect three different variables.
+Here we use a [RatingInput](https://magpie-reference.netlify.app/#ratinginput) to collect three different variables.
 The participant can add new data multiple times using the "Add row" button's click handler, which
-calls [`$mapgie.addTrialData()`](https://magpie-reference.netlify.app/#Magpie+addTrialData). Since the data is already
+calls [$mapgie.addTrialData()](https://magpie-reference.netlify.app/#Magpie+addTrialData). Since the data is already
 saved, we only need to call `nextScreen` instead of `saveAndNextScreen`.
 
 This might result in the following result data set:
@@ -415,7 +415,7 @@ This might result in the following result data set:
 |20|35|75|
 
 ### Adding global data
-We can also add data globally such that it will be present in all result rows using [`$mapgie.addExpData()`](https://magpie-reference.netlify.app/#Magpie+addExpData).
+We can also add data globally such that it will be present in all result rows using [$mapgie.addExpData()](https://magpie-reference.netlify.app/#Magpie+addExpData).
 
 ```html
 <Screen>
@@ -442,7 +442,7 @@ We can also add data globally such that it will be present in all result rows us
 </Screen>
 ```
 
-This time, we call [`$mapgie.addExpData()`](https://magpie-reference.netlify.app/#Magpie+addExpData) on submit which adds the data globally, so that
+This time, we call [$mapgie.addExpData()](https://magpie-reference.netlify.app/#Magpie+addExpData) on submit which adds the data globally, so that
 it is present in every result row of our hypothetical experiment:
 
 |response_time|response|appetite|portion|healthy|

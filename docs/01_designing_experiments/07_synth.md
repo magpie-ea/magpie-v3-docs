@@ -1,7 +1,7 @@
 # Synthesizer
 In addition to using pre-recorded audio files, magpie also provides a synthesizer for creating auditory stimuli.
 
-The synthesizer is available via the [`<Synth>`](https://magpie-reference.netlify.app/#synth) component:
+The synthesizer is available via the [<Synth>](https://magpie-reference.netlify.app/#synth) component:
 
 ```html
 <Synth :frequency="440" />
@@ -33,4 +33,4 @@ Similarly, the volume can be adjusted by specifying a normalized decibel value
 <Synth frequency="D3" :duration="3" :volume="-8" />
 ```
 
-There are other controls available that you can experiment with in the reference: [`<Synth>`](https://magpie-reference.netlify.app/#synth)
+There are other controls available that you can experiment with in the reference: [<Synth>](https://magpie-reference.netlify.app/#synth)

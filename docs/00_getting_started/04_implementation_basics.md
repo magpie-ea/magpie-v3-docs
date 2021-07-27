@@ -47,7 +47,7 @@ src/
 The structure of the component tree resembles the above conceptual schema of an experiment, using screens and slides, discussed in Section [Screens & Slides](/00_getting_started/02_basics/#screens-slides).
 
 The root component of the component tree  will always be the one in file `App.vue` in your project `src` directory. 
-The top-most component in the `<template>` section of your `App.vue` should be an [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) component, which initializes magpie and makes sure you can use all magpie functionality in your experiment.
+The top-most component in the `<template>` section of your `App.vue` should be an [<Experiment>](https://magpie-reference.netlify.app/#experiment) component, which initializes magpie and makes sure you can use all magpie functionality in your experiment.
 
 ```html
 <template>
@@ -59,7 +59,7 @@ The top-most component in the `<template>` section of your `App.vue` should be a
 ```
 
 ### The `Screen` components
-Below the `Experiment` component, you define your screens. You can use ready-made screens, which magpie supplies for convenience, such as the `InstructionsScreen`, but you can also use the flexible [`<Screen>`](https://magpie-reference.netlify.app/#screen) component to build your own custom screens.
+Below the `Experiment` component, you define your screens. You can use ready-made screens, which magpie supplies for convenience, such as the `InstructionsScreen`, but you can also use the flexible [<Screen>](https://magpie-reference.netlify.app/#screen) component to build your own custom screens.
 For a list of available ready-made screens see [here](https://magpie-reference.netlify.app/#screens).
 
 ```html
@@ -85,7 +85,7 @@ For a list of available ready-made screens see [here](https://magpie-reference.n
 ```
 
 ### $magpie
-Magpie also supplies a magic variable called [`$magpie`](https://magpie-reference.netlify.app/#Magpie), which gives you
+Magpie also supplies a magic variable called [$magpie](https://magpie-reference.netlify.app/#Magpie), which gives you
 access to many utility functions. These include methods to change slides and screens, mouse and eye tracking as well as a
 messaging socket to communicate with other running sessions of the same experiment. It is always available as a variable in all components.
 

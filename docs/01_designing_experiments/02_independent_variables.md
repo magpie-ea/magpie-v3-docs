@@ -102,7 +102,7 @@ As seen in the example above you can now simply iterate over your trial data usi
 ```
 
 ## Trial Randomization
-To randomize your trial data, you can use the function [`_.shuffle`](https://lodash.com/docs/4.17.15#shuffle) provided by the `lodash` library.
+To randomize your trial data, you can use the function [_.shuffle](https://lodash.com/docs/4.17.15#shuffle) provided by the `lodash` library.
 (Lodash comes pre-installed with all projects created with the `magpie` command.)
 
 First, we have to import lodash as follows
@@ -130,7 +130,7 @@ export default {
 
 ## Random variables
 If you would like to randomly draw a sample from a collection at certain points in your experiment, you can use
-lodash's [`_.sample`](https://lodash.com/docs/4.17.15#sample)
+lodash's [_.sample](https://lodash.com/docs/4.17.15#sample)
 
 
 ```html
@@ -180,7 +180,7 @@ When displaying media on the web, it is usually only loaded by the browser the s
 In an experiment that depends on response times, this is not ideal, so we often want to pre-load media assets before
 they are displayed.
 
-For this, the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) component has various `assets` props:
+For this, the [<Experiment>](https://magpie-reference.netlify.app/#experiment) component has various `assets` props:
 
 ```html
 <template>
@@ -208,5 +208,5 @@ export default {
 </script>
 ```
 
-Here, we extract all pictures from our trial data and pass them to the [`<Experiment>`](https://magpie-reference.netlify.app/#experiment) component via the `image-assets` prop.
+Here, we extract all pictures from our trial data and pass them to the [<Experiment>](https://magpie-reference.netlify.app/#experiment) component via the `image-assets` prop.
 This will cause all passed image paths to be loaded with the initial page load.
