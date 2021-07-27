@@ -1,7 +1,8 @@
 # Custom screens
 When the built-in screens are not enough for your purposes, you can define your own custom screens.
 
-For this purpose there is an abstract [`<Screen>`](https://magpie-reference.netlify.app/#screen) component available with magpie.
+For this purpose there is an abstract [`<Screen>`](https://magpie-reference.netlify.app/#screen) component available with magpie, along with a catalog of [input](https://magpie-reference.netlify.app/#inputs) and [stimulus](https://magpie-reference.netlify.app/#stimuli) components.
+Magpie's `$magpie` API offers additional helpers for managing screens and slides.
 
 ## Slides
 
