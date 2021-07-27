@@ -165,6 +165,9 @@ export default {
 
 Here we use the colon-prefix for the prop to indicate that we want to pass a JavaScript expression.
 
+### Syntax
+In templates, props with long names can either be specified in camelCase e.g. `firstName`, or kebab-case e.g. `first-name`.
+In the JavaScript component definition, you can only use camelCase.
 
 ## Listening to events
 Static web pages are relatively boring.
