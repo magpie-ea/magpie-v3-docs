@@ -37,7 +37,6 @@ nav:
   - Use: '02_using_the_server_app/02_use.md'
 - Deploying experiments:
   - Deploy configuration: '03_deploying_experiments/01_configuration.md'
-  - Recruitment via MTurk: '03_deploying_experiments/02_recruitment_MTurk.md'
   - Recruitment via Prolific: '03_deploying_experiments/03_recruitment_Prolific.md'
   - Hosting on netlify: '03_deploying_experiments/04_hosting_on_netlify.md'
 - Misc:

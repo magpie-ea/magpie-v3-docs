@@ -11,32 +11,39 @@ branches:
 
 #### (1) Source files
 
-- src/
-    - `magpie-canvas.js`
-    - `magpie-errors.js`
-    - `magpie-init.js`
-    - `magpie-progress-bar.js`
-    - `magpie-submit.js`
-    - `magpie-utils.js`
-    - `magpie-views.js`
+- `lib` contains the Command Line interface as well as the scaffolding files for new magpie projects
+- `src/` contains the main source code
+    - `docs.md` Each component folder contains a docs.md which will be prepended to the reference for that section
+    - `API.md` This file is created automatically from the JavaScript source files
+- `styleguidist/` contains the initialization code for the reference documentation
+- `styleguidist.config.js` contains the configuration for the reference documentation
 
-- `magpie.css`
+#### (2) Build the docs
 
-#### (2) Create magpie.js and magpie.full.js
+##### Option 1: Build the reference documentation while developing
 
-##### Option 1: Build the magpie package files while developing
+Use `npm run docs` command from the `magpie-base` folder to start a process which watches for changes in the files in `src` and makes a fully built version of the docs available on your local machine.
 
-Use `npm run watch` command from the `magpie-ea` folder to start a process which watches for changes in the files in `src` and builds (updates) `magpie.js` and `magpie.full.js`. This commands builds both `magpie.js` and `magpie.full.js` when a file  in `src` is saved.
+##### Option 2: Make changes to the files and then build the reference documentation
 
-##### Option 2: Make changes to the files and then build the magpie files
+Run `npm run docs:build` from the `magpie-base` folder. This command outputs the reference docs in the styleguide folder.
 
-Run `npm run concat` from the `magpie-ea` folder. This command builds both `magpie.js` and `magpie.full.js`.
+#### (3) Develop experiments with your local version of magpie-base
 
-#### (3) Merge into master
+In order to install your local version of magpie-base in a magpie project without publishing it first...
+
+1. Run `npm link` in the folder `magpie-base`
+2. Go to your project folder
+3. Run `npm install`
+4. Run `npm link magpie-base` to install the version of magpie-base that you just ran `npm link` in.
+
+#### (4) Merge into master
 - include a changelog information in the README
 - merge to master
 - [update the version of magpie](https://docs.npmjs.com/about-semantic-versioning) in `package.json`
 
-#### (4) Publish to npm
+#### (5) Publish to npm
 
-Run `npm publish` from the `magpie-ea` folder to publish the new version of magpie.
+Run `npm publish` from the `magpie-base` folder to publish the new version of magpie.
+
+No build step is required before publishing.
