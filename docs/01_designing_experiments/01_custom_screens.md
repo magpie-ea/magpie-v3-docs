@@ -414,6 +414,39 @@ This might result in the following result data set:
 |84|26|75|
 |20|35|75|
 
+### Passing variables directly to the results
+Often, you will have independent variables that you want to be present in the result rows as well.
+For this you can use the [Record](https://magpie-reference.netlify.app/#record) component.
+
+```html
+<Screen>
+    <Slide>
+        <img :src="imgpath" />
+        
+        <RatingInput
+                :right="very appealing"
+                :left="very unappealing"
+                :response.sync="$magpie.measurements.appetite" />
+        <RatingInput
+                :right="very large"
+                :left="very small"
+                :response.sync="$magpie.measurements.portion" />
+        <RatingInput
+                :right="very healthy"
+                :left="very unhealthy"
+                :response.sync="$magpie.measurements.healthy" />
+        
+        <Record :data="{
+              image: imgpath,
+            }" />
+
+        <button @click="$magpie.saveAndNextScreen()">Submit</button>
+    </Slide>
+</Screen>
+```
+
+Whatever object you pass to the Record component will be merged with your measurements the next time you save.
+
 ### Adding global data
 We can also add data globally such that it will be present in all result rows using [$mapgie.addExpData()](https://magpie-reference.netlify.app/#Magpie+addExpData).
 
