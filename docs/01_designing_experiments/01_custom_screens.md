@@ -344,16 +344,16 @@ Usually, you will use the `measurements` object to collect data and save it to t
 <Screen>
     <Slide>
         <RatingInput
-                :right="very appealing"
-                :left="very unappealing"
+                right="very appealing"
+                left="very unappealing"
                 :response.sync="$magpie.measurements.appetite" />
         <RatingInput
-                :right="very large"
-                :left="very small"
+                right="very large"
+                left="very small"
                 :response.sync="$magpie.measurements.portion" />
         <RatingInput
-                :right="very healthy"
-                :left="very unhealthy"
+                right="very healthy"
+                left="very unhealthy"
                 :response.sync="$magpie.measurements.healthy" />
 
         <button @click="$magpie.saveAndNextScreen()">Submit</button>
@@ -379,16 +379,16 @@ as follows:
 <Screen>
     <Slide>
         <RatingInput
-                :right="very appealing"
-                :left="very unappealing"
+                right="very appealing"
+                left="very unappealing"
                 :response.sync="$magpie.measurements.appetite" />
         <RatingInput
-                :right="very large"
-                :left="very small"
+                right="very large"
+                left="very small"
                 :response.sync="$magpie.measurements.portion" />
         <RatingInput
-                :right="very healthy"
-                :left="very unhealthy"
+                right="very healthy"
+                left="very unhealthy"
                 :response.sync="$magpie.measurements.healthy" />
 
         <button @click="$magpie.addTrialData({
@@ -424,16 +424,16 @@ For this you can use the [Record](https://magpie-reference.netlify.app/#record) 
         <img :src="imgpath" />
         
         <RatingInput
-                :right="very appealing"
-                :left="very unappealing"
+                right="very appealing"
+                left="very unappealing"
                 :response.sync="$magpie.measurements.appetite" />
         <RatingInput
-                :right="very large"
-                :left="very small"
+                right="very large"
+                left="very small"
                 :response.sync="$magpie.measurements.portion" />
         <RatingInput
-                :right="very healthy"
-                :left="very unhealthy"
+                right="very healthy"
+                left="very unhealthy"
                 :response.sync="$magpie.measurements.healthy" />
         
         <Record :data="{
@@ -454,16 +454,16 @@ We can also add data globally such that it will be present in all result rows us
 <Screen>
     <Slide>
         <RatingInput
-                :right="very appealing"
-                :left="very unappealing"
+                right="very appealing"
+                left="very unappealing"
                 :response.sync="$magpie.measurements.appetite" />
         <RatingInput
-                :right="very large"
-                :left="very small"
+                right="very large"
+                left="very small"
                 :response.sync="$magpie.measurements.portion" />
         <RatingInput
-                :right="very healthy"
-                :left="very unhealthy"
+                right="very healthy"
+                left="very unhealthy"
                 :response.sync="$magpie.measurements.healthy" />
 
         <button @click="$magpie.addExpData({
