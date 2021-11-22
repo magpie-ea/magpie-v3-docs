@@ -427,6 +427,30 @@ export default {
 
 Here, we only render the image if the value of `name` equals `"Donald"`. As you might have guessed, `v-if` also allows arbitrary JavaScript expressions.
 
+You can also use `v-else` and `v-else-if` to catch alternative conditions. You can use as many instances of `v-else-if` as you need or omit it directly.
+
+```html
+<template>
+    <div>
+        <h1>hello {{ name }}</h1>
+        <img v-if="name === 'Donald'" src="donald.jpg" />
+        <img v-else-if="name === 'Hillary'" src="hillary.jpg" />
+        <img v-else src="person.jpg" />
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Greeter',
+    props: {
+        name: {
+            type: String,
+            required: true,
+        }
+    },
+}
+</script>
+```
 
 ### Loops
 The following renders multiple headings, with the different names that we defined in `data`.
@@ -485,6 +509,192 @@ export default {
 ```
 
 Here, the variable `ì` is bound to the indices of the names in the list, so that we can use it as a `key`for the loop.
+
+### Wrapping multiple elements with v-if or v-for
+You can apply a `v-if` or a `v-for` to multiple elements at once, by wrapping them in a `template` element.
+
+For example, instead of adding the same condition to multiple elements...
+
+```html
+<template>
+    <div>
+        <h1>hello {{ name }}</h1>
+        <blockquote v-if="name === 'Donald'">
+            A duck in a comic.
+        </blockquote>
+        <img src="donald.jpg" v-if="name === 'Donald'" />
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'MyComponent',
+    props: {
+        name: {
+            type: String,
+            required: true,
+        }
+    },
+}
+</script>
+```
+
+... we can wrap them in a `template` element and write the condition only once:
+
+```html
+<template>
+    <div>
+        <h1>hello {{ name }}</h1>
+        <template v-if="name === 'Donald'">
+            <blockquote>
+                A duck in a comic.
+            </blockquote>
+            <img src="donald.jpg" />
+        </template>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'MyComponent',
+    props: {
+        name: {
+            type: String,
+            required: true,
+        }
+    },
+}
+</script>
+```
+
+## Styling
+All HTML elements have a default style, but for your experiments you may want to change the display of some elements.
+In the browser this can be done using Cascading Style Sheets (CSS).
+
+### Inline styles
+The simplest way to style your HTML is using inline styles:
+
+```html
+<template>
+    <div>
+        <h1 style="color: green;">hello {{ name }}</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Greeter',
+    props: {
+        name: {
+            type: String,
+            required: true,
+        }
+    },
+}
+</script>
+```
+
+Here, we display the greeting with green text.
+
+Inline styles are convenient for small adjustments, but quickly become unwieldy when changing many display properties of an element:
+
+```html
+<template>
+    <div>
+        <h1 style="color: green; text-decoration: underline; font-style: italic;">hello {{ name }}</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Greeter',
+    props: {
+        name: {
+            type: String,
+            required: true,
+        }
+    },
+}
+</script>
+```
+
+### CSS classes
+When changing many display properties of an element or when you want to conditionally apply style changes based on your component state,
+CSS classes come in handy.
+
+```html
+<template>
+    <div>
+        <h1 class="greeter-heading big-text">hello {{ name }}</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Greeter',
+    props: {
+        name: {
+            type: String,
+            required: true,
+        }
+    },
+}
+</script>
+<style>
+.greeter-heading {
+    color: green;
+    text-decoration: underline;
+    font-style: italic;
+}
+    
+.big-text {
+    font-size: 40px;
+}
+</style>
+```
+
+Instead of placing our CSS in a `style` attribute directly within our HTML, we declare abstract CSS classes in a separate
+`style` element. We can then apply one or more of these CSS classes to our HTML elements using the `class` attribute.
+This allows us to reuse the same styles on multiple elements without having to repeat ourselves.
+
+### Applying CSS classes conditionally
+Another advantage of CSS classes is that we can easily apply a set of styles conditionally to an element.
+
+```html
+<template>
+    <div>
+        <h1 :class="{ 'greeter-heading': true, 'big-text': name === 'Donald' }">hello {{ name }}</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Greeter',
+    props: {
+        name: {
+            type: String,
+            required: true,
+        }
+    },
+}
+</script>
+<style>
+.greeter-heading {
+    color: green;
+    text-decoration: underline;
+    font-style: italic;
+}
+    
+.big-text {
+    font-size: 40px;
+}
+</style>
+```
+
+We can use the colon prefix for our `class` attribute to be able to pass in JavaScript expressions. This way,
+we can pass in a JavaScript object whose keys are CSS class names, with the associated values indicating whether the class should be applied or not.
+
+In this example, we only apply the class `big-text` if the `Greeter` component was created with the name `'Donald'`.
 
 ## More
 There's much more to learn about Vue.js. If you are curious, head over to [the official guide](https://vuejs.org/v2/guide/syntax.html).
