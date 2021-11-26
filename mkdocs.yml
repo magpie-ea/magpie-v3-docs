@@ -38,7 +38,8 @@ nav:
 - Deploying experiments:
   - Deploy configuration: '03_deploying_experiments/01_configuration.md'
   - Recruitment via Prolific: '03_deploying_experiments/03_recruitment_Prolific.md'
-  - Hosting on netlify: '03_deploying_experiments/04_hosting_on_netlify.md'
+  - Hosting on Github: '03_deploying_experiments/05_hosting_on_github.md'
+  - Hosting on Netlify: '03_deploying_experiments/04_hosting_on_netlify.md'
 - Misc:
   - Development: 04_development.md
   - About: 05_about.md
