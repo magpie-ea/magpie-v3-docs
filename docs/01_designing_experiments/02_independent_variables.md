@@ -128,7 +128,7 @@ export default {
 </script>
 ```
 
-## Random variables
+## In-situ randomization
 If you would like to randomly draw a sample from a collection at certain points in your experiment, you can use
 lodash's [_.sample](https://lodash.com/docs/4.17.15#sample)
 
