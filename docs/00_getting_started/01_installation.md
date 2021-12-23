@@ -1,6 +1,13 @@
 # Installation
-To create an experiment you will need a recent version of [Node.js](https://nodejs.org) and npm (usually comes together with your Node.js installation).
+
+## Pre-requisites
+To create an experiment you will need [Node.js](https://nodejs.org) and npm (usually comes together with your Node.js installation).
 Node.js is a runtime for JavaScript, a language that predominantly runs in the browser. Magpie is therefore also written in JavaScript. npm is a package manager for JavaScript and allows you to install projects and libraries on your computer.
+
+Required are
+
+* Node.js v14.x or v16.x
+* npm v7 or v8
 
 ## Creating a project
 To create a new project, go to a directory of your choice and run
