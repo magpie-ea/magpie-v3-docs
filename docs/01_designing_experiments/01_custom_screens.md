@@ -243,22 +243,44 @@ Validations incidentally also work for built-in screens as they inherit from the
 The variable that holds the response in these cases is always called `response`.
 
 ## Separating custom screens into files
-If we want to use a custom screen multiple times in our experiment, we can separate it out into a different `.vue` file as follows:
+If we want to use a custom screen multiple times in our experiment, we can separate it out into a different `.vue` file.
+
+Suppose our experiment looks like this:
 
 ```html
-<!-- LimitedTextareaScreen.vue -->
 <template>
-    <Screen :validations="{
-          text: {
-            minLength: (text) => text.length >= minLength,
-            alpha: $magpie.v.alpha
-          }
-        }">
-        <Slide>
-            <TextareaInput :response.sync="$magpie.measurements.text" />
-        
-            <button v-if="!$magpie.validateMeasurements.text.$invalid" @click="$magpie.saveAndNextScreen()">Submit</button>
-        </Slide>
+    <Experiment>
+        <template v-for="(task, i) in tasks">
+            <Screen :key="i">
+                <p>{{ task.question }}</p>
+                <TextareaInput :response.sync="$magpie.measurements.text" />
+                <button @click="$magpie.saveAndNextScreen()">Next</button>
+            </Screen>
+        </template>
+    </Experiment>
+</template>
+<script>
+    import tasks from './data/tasks.csv'
+    export default {
+        name: 'App',
+        data() {
+            return {
+                tasks,
+            }
+        }
+    }
+</script>
+```
+
+Now, we're extracting the code for our screen into a new file `QuestionScreen.vue`.
+
+```html
+<!-- QuestionScreen.vue -->
+<template>
+    <Screen>
+        <p>{{ task.question }}</p>
+        <TextareaInput :response.sync="$magpie.measurements.text" />
+        <button @click="$magpie.saveAndNextScreen()">Next</button>
     </Screen>
 </template>
 
@@ -266,8 +288,8 @@ If we want to use a custom screen multiple times in our experiment, we can separ
 export default {
     name: 'LimitedTextareaScreen',
     props: {
-        minLength: {
-            type: Number,
+        task: {
+            type: Object,
             required: true
         }
     }
@@ -275,62 +297,39 @@ export default {
 </script>
 ```
 
-Here, we simply define a new Vue component for the custom screen and introduce a prop called `minLength` to control validation.
+Here, we define a new Vue component for the custom screen and introduce a prop called `task`. We need to pass the task
+object to our custom screen explicitly as a prop, because vue components do not have access to the variables of other components.
+So, much like you'd have to pass a local variable in your JavaScript to a different function as a parameter, if you want to use it
+in that function, we need to explicitly pass variables across component borders, if we want other components to be able to use them.
 
 To define a prop we always have to set two facts about it: What data type is it? (One of `Number`, `String`, `Array`, `Boolean`)
 Is it required? If not, we have to set a default value using the `default` field.
-
-```html
-<script>
-export default {
-    name: 'LimitedTextareaScreen',
-    props: {
-        minLength: {
-            type: Number,
-            default: 10
-        }
-    }
-}    
-</script>
-```
 
 Now, we can use this screen component in our main experiment file.
 
 ```html
 <!-- App.vue -->
 <template>
-  <Experiment title="magpie demo">
-      
-      <!-- This is the welcome screen -->
-      <InstructionScreen :title="'Welcome'">
-        This is a sample introduction screen.
-        <br />
-        <br />
-        This screen welcomes the participant and gives general information about
-        the experiment.
-        <br />
-        <br />
-        This mock up experiment is a showcase of the functionality of magpie.
-      </InstructionScreen>
-
-      <template v-for="i in 10">
-        <LimitedTextareaScreen
+  <Experiment>
+      <template v-for="(task, i) in tasks">
+        <QuestionScreen
             :key="i"
-            :min-length="13" />
+            :task="task" />
       </template>
-
-      <PostTestScreen />
-
-      <DebugResultsScreen />
   </Experiment>
 </template>
-
 <script>
-import LimitedTextareaScreen from './LimitedTextareaScreen'
-export default {
-  name: 'App',
-  components: {LimitedTextareaScreen},
-};
+    import tasks from './data/tasks.csv'
+    import QuestionScreen from './QuestionScreen'
+    export default {
+        name: 'App',
+        components: { QuestionScreen },
+        data() {
+            return {
+                tasks,
+            }
+        }
+    }
 </script>
 ```
 

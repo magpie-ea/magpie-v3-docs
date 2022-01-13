@@ -140,7 +140,7 @@ We can then use the "Greeter" component from within another component, as follow
 
 <script>
 export default {
-  name: 'MyComponent',
+    name: 'MyComponent'
 }
 </script>
 ```
@@ -152,18 +152,26 @@ and of course Vue.js's template language supports that, too.
 ```html
 <template>
 <div>
-    <Greeter :name=" 'Donald'.toUpperCase() " />
+    <Greeter :name="name" />
 </div>
 </template>
 
 <script>
 export default {
-  name: 'MyComponent',
+    name: 'MyComponent',
+    data() {
+        return {
+            name: 'Donald'
+        }
+    }
 }
 </script>
 ```
 
 Here we use the colon-prefix for the prop to indicate that we want to pass a JavaScript expression.
+
+Note that even though the Greeter component internally also uses a variable called `name`, we still have to explicitly pass
+the value as a prop, because components do not implicitly share any state other than the props we pass to them.
 
 ### Syntax
 In templates, props with long names can either be specified in camelCase e.g. `firstName`, or kebab-case e.g. `first-name`.
