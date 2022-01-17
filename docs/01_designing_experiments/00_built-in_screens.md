@@ -262,6 +262,8 @@ If you would like to ask for additional information, you can use the component's
 ### SubmitResultsScreen
 The [SubmitResultsScreen](https://magpie-reference.netlify.app/#submitresultsscreen) is usually placed at the end
 of an experiment to bundle up the recorded data and send it to the server. Once that is done, it will thank the participant for you.
+If you put your experiment into debug mode in the magpie configuration, this screen will behave like
+[DebugResultsScreen](https://magpie-reference.netlify.app/#debugresultsscreen) and will not submit any data.
 
 ```html
 <SubmitResultsScreen />

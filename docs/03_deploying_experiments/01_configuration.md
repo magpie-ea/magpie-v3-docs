@@ -30,6 +30,8 @@ Deployment information is defined in `magpie.config.js`, as shown below:
 ```javascript
 export default {
     // Either 'debug', 'directLink' or 'prolific'
+    // While set to 'debug', the SubmitResultsScreen will not submit any results to your backend
+    // and will instead show them directly on screen for debugging
     mode: 'debug',
     
     experimentId: 'INSERT_A_NUMBER',

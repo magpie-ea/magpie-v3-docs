@@ -129,9 +129,10 @@ presenting an image and a question with a rating slider. The details of this cod
            participant's background, like age, gender etc. -->
       <PostTestScreen />
 
-      <!-- This screen is useful while testing your experiment to check
-           the results immediately after taking the experiment -->
-      <DebugResultsScreen />
+      <!-- While setting your experiment mode to 'debug' in the magpie config
+       this screen will show the results of the current experiment directly. Once you switch to directLink or prolific
+       this screen will submit the results to your magpie backend -->
+      <SubmitResultsScreen />
   </Experiment>
 </template>
 
