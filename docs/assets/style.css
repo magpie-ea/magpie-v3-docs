@@ -18,3 +18,10 @@ table {
     padding-left: 24px;
     border-left: 5px #efefef solid;
 }
+
+.wy-side-nav-search {
+    background-image: url(/assets/logo_text.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 180px;
+}

@@ -1,6 +1,4 @@
-# <img src="assets/logo_text.png" width="500" alt="magpie" />
-
-Magpie is a framework for building online experiments (e.g., for psychological research) that run in the participants' browser.
+### Magpie is a framework for building psychological online experiments that run in the participants' browser.
 
 <video src="/images/getting_started/intro.webm" style="width: 100%" controls></video>
 
