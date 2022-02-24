@@ -216,7 +216,8 @@ If you would like to provide feedback, after the participant has responded, you 
 <ForcedChoiceScreen
     :options="['Yes', 'No']"
     question="Do you understand this question?"
-    qud="Always do the opposite of what you are asked.">
+    qud="Always do the opposite of what you are asked."
+    :feedbackTime="-1">
     <template #stimulus>
         <img src="img/confusion.jpg" />
     </template>
