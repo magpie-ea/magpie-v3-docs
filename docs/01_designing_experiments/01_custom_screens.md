@@ -286,7 +286,7 @@ Now, we're extracting the code for our screen into a new file `QuestionScreen.vu
 
 <script>
 export default {
-    name: 'LimitedTextareaScreen',
+    name: 'QuestionScreen',
     props: {
         task: {
             type: Object,
