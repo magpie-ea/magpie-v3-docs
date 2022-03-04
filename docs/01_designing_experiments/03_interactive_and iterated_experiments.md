@@ -39,7 +39,7 @@ can thus also be assigned a unique tri-tuple, indicating their collaborator numb
 Before participants can interact with other participants in their chain, the browser needs to connect to the magpie server
 and wait for other participants.
 
-This routine is conveniently encapsuled in the [ConnectInteractiveScreen](https://magpie-reference.netlify.app/#connectinteractivescreen)
+This routine is conveniently encapsulated in the [ConnectInteractiveScreen](https://magpie-reference.netlify.app/#connectinteractivescreen)
 component, which by default displays the following text:
 
 > This screen sets up the socket connection for the interactive experiment and waits for other
@@ -146,10 +146,32 @@ If you would like to know how many participants are currently active in the curr
 [$magpie.socket.active](https://magpie-reference.netlify.app/#Socket+active), which is an array with the IDs of all participants currently
 active in the current screen.
 
-## Iterated experiments and intermediate results
+## Iterated experiments
 Interactive experiments do not have to be synchronous.
 Imagine for example an iterated narration experiment, where participants have to read and relay a story to each other
 successively, similar to the game of Telephone.
 
-TODO
+### Waiting for the previous iteration
+Similar to how we need for all participants to arrive in an interactive experiment, in an iterated experiment, we need to
+wait for the results of previous iteration. This routine is encapsulated in [AwaitIteratedResultScreen](https://magpie-reference.netlify.app/#awaitIteratedresultscreen).
 
+```html
+<AwaitIteratedResultScreen>
+    Please wait for other participants...
+</AwaitIteratedResultScreen>
+```
+
+This screen will jump to the next screen in your experiment once the results of the previous iteration become available.
+
+### Accessing previous results
+Once the AwaitIteratedResultScreen has yielded to the next screen, the results from the previous iteration are available
+in [$magpie.socket.lastIterationResults](https://magpie-reference.netlify.app/#Socket+lastIterationResults).
+
+The iteration number is available in [$magpie.socket.generation](https://magpie-reference.netlify.app/#Socket+generation).
+
+## Balancing randomization
+Magpie's complex experiments can also be utilized to implement balanced randomization.
+
+In this case, we use the *condition* to let the magpie backend sort participants into groups, but set *generations* and *chains*
+to `1` for this experiment. After [ConnectInteractiveScreen](https://magpie-reference.netlify.app/#connectinteractivescreen) has
+yielded to the next screen, we can access the assigned condition in `$magpie.socket`.
