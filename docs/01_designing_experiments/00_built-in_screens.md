@@ -240,7 +240,7 @@ All special screens are [listed in the reference](https://magpie-reference.netli
 
 ### Post Test Screen
 The [PostTestScreen](https://magpie-reference.netlify.app/#posttestscreen) component asks for additional information
-about the participant. By default, it will ask for age, gender, level of education, native langauges and further comments.
+about the participant. By default, it will ask for age, gender, level of education, native languages and further comments.
 
 ```html
 <PostTestScreen />

@@ -46,7 +46,7 @@ export default {
     // currently only
     // - en
     // - de
-    langauge: 'en',
+    language: 'en',
 };
 ```
 
