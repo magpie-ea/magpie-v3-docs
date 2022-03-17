@@ -10,18 +10,16 @@ to store the data in a data base (and possibly to manage allocation of participa
 different variants of your experiment). You therefore need to have a running instance of the server app, either online or locally, as described in [the server app section on installation](/02_using_the_server_app/01_installation/).
 
 
-There are three deployment modes to collect data via the magpie server app (to be detailed below):
+There are two deployment modes to collect data via the magpie server app:
 
 1. The `directLink` mode allows participants to work on your experiment simply by following a link.
-2. The `MTurk` mode is used to recruit participants via [Amazon's Mechanical Turk](https://requester.mturk.com/).
 3. The `Prolific` mode is used to recruit participants via [Prolific](https://prolific.ac).
 
-All of these methods require that you have initialized a database on the magpie server app, as described [here](/02_using_the_server_app/02_use/). You need the `experimentID` (a running number) which the server app creates for your experiment, as well as the URL (possibly local) of your experiment.
+Both methods require that you have initialized a database on the magpie server app, as described [here](/02_using_the_server_app/02_use/). You need the `experimentId` (a running number) which the server app creates for your experiment, as well as the URL (possibly local) of your experiment.
 
 Unless you run your experiment strictly locally on your own (lab) computer(s), you also need to
 launch the experiment as a website on some hosting service. A possibility for doing so is
-described in the section on [hosting on
-Netlify](/03_deploying_experiments/02_hosting_on_netlify/).
+described in the section on [hosting on Netlify](/03_deploying_experiments/02_hosting_on_netlify/).
 
 ## Changing deploy information
 
