@@ -1,5 +1,5 @@
 # Vue.js
-Magpie is based on a JavaScript framwork called [Vue.js](https://vuejs.org). To learn how magpie works, it is thus beneficial to take a brief look at Vue.js first.
+Magpie is based on a JavaScript framework called [Vue.js](https://vuejs.org). To learn how magpie works, it is thus beneficial to take a brief look at Vue.js first.
 
 Vue.js allows you to compose a web application out of small self-contained components, that you can re-use and share with other people.
 
@@ -92,7 +92,7 @@ export default {
 </script>
 ```
 
-`toUpperCase` takes a string an returns it with all letters in upper case.
+`toUpperCase` takes a string and returns it with all letters in upper case.
 
 This will render
 
@@ -213,7 +213,7 @@ export default {
 
 This component is a bit more complex. We define a prop, called `name`, which takes
 the name of the person to be greeted as a string. And in `data` we define the greeting we want
-to greet this person with. By default this is set to `'Hello'`.
+to greet this person with. By default, this is set to `'Hello'`.
 
 If we passed the string `'Theodor'` to the prop, the message would then read: 'Hello Theodor'.
 
@@ -384,7 +384,7 @@ export default {
 
 ## Component slots
 Component props allow passing JavaScript values as options to Components.
-However, sometimes you want to pass a HTML snippets to another component.
+However, sometimes you want to pass HTML snippets to another component.
 The template language also supports this.
 
 ```html

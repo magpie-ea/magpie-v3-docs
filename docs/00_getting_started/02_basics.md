@@ -62,7 +62,7 @@ Data collected by a magpie experiment is of two kinds:
 2. **global, experiment-level data**: this is information, like screen resolution, a participant's age or the experimental group that a given participant was allocated to, which is globally fixed across the experiment.
 
 Corresponding to these two kinds of data, magpie experiments have two internal data representations `trialData` and `expData`, which you can add information to at any time. 
-At the end of the experiment, the data from `trialData` and `expData` will be merged, so as to give a [tidy rectangular data representation](https://r4ds.had.co.nz/tidy-data.html) (see example below).
+At the end of the experiment, the data from `trialData` and `expData` will be merged, to give a [tidy rectangular data representation](https://r4ds.had.co.nz/tidy-data.html) (see example below).
 
 
 <table>
@@ -102,5 +102,5 @@ Screens also allow specifying **validations** of the measured observations, for 
 A magpie experiment is implemented using Vue.js.
 Essentially, magpie provides ready-made screens, slides and other useful reusables to implement an experiment using Vue.js.
 If you are not familiar with Vue.js, the following section serves as a basic introduction: [Vue.js](00_getting_started/03_vue_js)
-If you are fammiliar with Vue.js, you can skip ahead to [the implementation basics](00_getting_started/04_implementation_basics).
+If you are familiar with Vue.js, you can skip ahead to [the implementation basics](00_getting_started/04_implementation_basics).
 

@@ -2,7 +2,7 @@
 
 [GitHub](https://github.com) is a code hosting and collaboration platform which lends itself naturally to
 publishing your experiment code as Open Source. In addition to hosting source code, GitHub also allows
-hosting websites using its [Github Pages](https://pages.github.com/) feature.
+hosting websites using its [GitHub Pages](https://pages.github.com/) feature.
 
 Magpie's project template (the one you get, when running `magpie new`) already contains a working GitHub Workflow for deploying to GitHub Pages.
 This means, when you push your project to GitHub, it will automatically build the experiment and commit the output

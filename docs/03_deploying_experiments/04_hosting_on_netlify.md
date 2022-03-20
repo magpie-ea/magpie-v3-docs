@@ -8,7 +8,7 @@
       - choose GitHub and authorize the netlify-app on GitHub
       - configure which repositories to give access to
       - (back on netlify) select the repository to deploy
-      - enter the build command `npm run build` and the publish directory `dist`
+      - enter the build command `npm run build` and the publishing directory `dist`
       - click on `Deploy site` 
     - Manual: Go to [https://app.netlify.com/](https://app.netlify.com/) and drag and drop your finished experiment folder (including node_modules) to the drag&drop area
 3. Configuration

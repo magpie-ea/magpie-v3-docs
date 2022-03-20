@@ -1,6 +1,6 @@
 # Use 
 
-After installation you can visit the server app in a browser, with the username and password you previously specified. For Heroku deployment, you may do so by running `heroku open` in the command line or find the app URL in your Heroku account. For local deployment, the URL is by default http://localhost:4000.
+After installation, you can visit the server app in a browser, with the username and password you previously specified. For Heroku deployment, you may do so by running `heroku open` in the command line or find the app URL in your Heroku account. For local deployment, the URL is by default http://localhost:4000.
 
 There is an example demo of the server app available at [https://magpie-demo.herokuapp.com](https://magpie-demo.herokuapp.com).
 
@@ -30,7 +30,7 @@ if used unwisely could also cause you loss of relevant data.
 
 ## Creating new experiments
 
-Click on the "New" button under "Manage Experiments" to set up a new data base for your
+Click on the "New" button under "Manage Experiments" to set up a new database for your
 experiment. The interface for creating a new experiment is very similar to editing an existing
 experiment. Importantly, you need to give some required information about a new experiment
 (name and author). If you want to use dynamic retrieval of experiment data ([documentation
@@ -39,8 +39,8 @@ API calls. This allows you to expose only the relevant fields, since the dynamic
 is not password protected by default.
 
 After you have created your experiment, there are two pieces of information that are important for later use.
-When you [specify the deploy information](/03_deploying_experiments/01_configuration/#changing-deploy-information), you
-must supply the ID which the server app allocates to your experiment and you must specify the URL (possibly local) of
+When you [specify the deployment information](/03_deploying_experiments/01_configuration/#changing-deploy-information), you
+must supply the ID which the server app allocates to your experiment, and you must specify the URL (possibly local) of
 the server app itself. You find these pieces of information when you click on "Edit" for your newly created experiment.
 
 <img src="../../images/edit_exp_screenshot.png" width="80%">

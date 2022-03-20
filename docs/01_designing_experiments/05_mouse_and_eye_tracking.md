@@ -8,12 +8,12 @@ You can start collecting mouse tracking data by calling
 
 After the trial you can retrieve the tracking data using [$magpie.mousetracking.getMouseTrack()](https://magpie-reference.netlify.app/#Mousetracking+getMouseTrack).
 
-For convenience you can also use [MousetrackingStart](https://magpie-reference.netlify.app/#mousetrackingstart) in your
+For convenience, you can also use [MousetrackingStart](https://magpie-reference.netlify.app/#mousetrackingstart) in your
 custom screens to start a new mouse track once it is rendered. The component will be invisible to participants.
 
 ## Eye tracking
 Magpie supports [WebGazer](https://webgazer.cs.brown.edu), a library that can track participants' eye movements
-via their webcam. Due to licensing issues we cannot bundle WebgGazer with magpie, so you need to install it first using
+via their webcam. Due to licensing issues we cannot bundle WebGazer with magpie, so you need to install it first using
 the following command in your terminal. (Note that WebGazer is licensed under the GNU Public License.)
 
 ```shell
@@ -28,7 +28,7 @@ In a trial screen you can start collecting eyetracking data by calling [$magpie.
 
 After the trial you can retrieve the tracking data using [$magpie.eyetracking.getEyeTrack()](https://magpie-reference.netlify.app/#Eyetracking+getEyeTrack).
 
-For convenience you may also use [EyetrackingStart](https://magpie-reference.netlify.app/#eyetrackingstart) in your
+For convenience, you may also use [EyetrackingStart](https://magpie-reference.netlify.app/#eyetrackingstart) in your
 trial screens to start a new mouse track once the component is rendered (it is invisible).
 
 ## Fullscreen

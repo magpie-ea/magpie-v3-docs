@@ -6,7 +6,7 @@ shows the data collected from the current execution of the experiment in the bro
 of the experiment. 
 
 To actually collect data from participants, magpie uses the magpie server app
-to store the data in a data base (and possibly to manage allocation of participants to
+to store the data in a database (and possibly to manage allocation of participants to
 different variants of your experiment). You therefore need to have a running instance of the server app, either online or locally, as described in [the server app section on installation](/02_using_the_server_app/01_installation/).
 
 
@@ -53,5 +53,5 @@ None of these fields matter for the `debug` mode. But for any of the other modes
 + `contactEmail` should contain an appropriate email address which will be displayed in an alert box in case of errors, so your participants can directly reach out to you.
 + `experimentId` must contain the ID the magpie server app provided for your experiment when created it online (see the [section on server app use](/02_using_the_server_app/02_use/#creating-new-experiments) for more information).
 + `serverUrl` is the URL (possibly local) to your server app instance which handles the data (see the [section on server app use](/02_using_the_server_app/02_use/#creating-new-experiments) for more information).
-+ `completionUrl` is only necessary if you use the `Prolific` deploy mode. In that case you need to enter here the return URL given to you when you create your experiment on the Prolific web site (see information below).
++ `completionUrl` is only necessary if you use the `Prolific` deploy mode. In that case you need to enter here the return URL given to you when you create your experiment on the Prolific website (see information below).
 + `language` can be set to match the locale of your participants, so magpie built-in components are translated into the locale of your participants.

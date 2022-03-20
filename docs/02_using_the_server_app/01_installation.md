@@ -15,7 +15,7 @@ The first-time installation requires an internet connection. After it is finishe
 
 ### First time installation
 
-To begin with, install Docker from [https://docs.docker.com/install/](https://docs.docker.com/install/). You may have to launch the application once in order to let it install its command line tools. Verify the installation by typing `docker version` in a terminal (e.g., the Terminal app on MacOS or cmd.exe on Windows).
+To begin with, install Docker from [https://docs.docker.com/install/](https://docs.docker.com/install/). You may have to launch the application once in order to let it install its command line tools. Verify the installation by typing `docker version` in a terminal (e.g., the Terminal app on macOS or cmd.exe on Windows).
 
 Note:
 - Although the Docker app on Windows and Mac asks for login credentials to Docker Hub, they are not needed for local deployment. You can proceed without creating any Docker account/logging in.
@@ -25,7 +25,7 @@ Once you have Docker installed, follow these steps:
 
 2. Ensure you have [Git](https://git-scm.com/downloads) installed. Clone the server repo with `git clone https://github.com/magpie-ea/magpie-backend.git` or `git clone git@github.com:magpie-ea/magpie-backend.git`.
 
-3. Open a terminal (e.g., the Terminal app on MacOS or cmd.exe on Windows), `cd` into the project directory just cloned via git.
+3. Open a terminal (e.g., the Terminal app on macOS or cmd.exe on Windows), `cd` into the project directory just cloned via git.
 
 4. For the first-time setup, run in the terminal
   ```

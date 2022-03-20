@@ -176,9 +176,9 @@ In a custom screen we could then use this method to draw a circle with a random 
 </Screen>
 ```
 
-## Pre-loading media assets
+## Preloading media assets
 When displaying media on the web, it is usually only loaded by the browser the second it is about to be displayed.
-In an experiment that depends on response times, this is not ideal, so we often want to pre-load media assets before
+In an experiment that depends on response times, this is not ideal, so we often want to preload media assets before
 they are displayed.
 
 For this, the [Experiment](https://magpie-reference.netlify.app/#experiment) component has various `assets` props:

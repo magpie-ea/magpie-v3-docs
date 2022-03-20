@@ -7,7 +7,7 @@ To get the development version of the magpie package, clone this repository and 
 branches:
 
 - master - Current stable version.
-- development - Development version. This is where new featues or bug fixes are pushed. When the version is stable, the branch is merged into master.
+- development - Development version. This is where new features or bug fixes are pushed. When the version is stable, the branch is merged into master.
 
 #### (1) Source files
 

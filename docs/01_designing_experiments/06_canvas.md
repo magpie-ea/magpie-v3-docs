@@ -59,7 +59,7 @@ All canvas components are reactive, meaning, whenever you change the config valu
 * `points`: Define the points of your line as an array of consecutive x,y pairs, i.e. `[x1, y1, x2, y2, x3, y3]`.
 * `lineJoin`: miter, round, or bevel
 * `lineCap`: butt, round, or square
-* `tension`: Value between 0 and 1, where 0 means zig-zag and 1 means completely curved 
+* `tension`: Value between 0 and 1, where 0 means zigzag and 1 means completely curved 
 
 ```html
 <CanvasLine :config="{

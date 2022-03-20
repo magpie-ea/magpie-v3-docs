@@ -334,7 +334,7 @@ Now, we can use this screen component in our main experiment file.
 ```
 
 We import the new screen component into the current file using a normal import statement and afterwards register it as a
-sub-component to be used as part of our main App component. Now, we can use it in the `<template>` part of the file.
+subcomponent to be used as part of our main App component. Now, we can use it in the `<template>` part of the file.
 
 ## Creating result rows manually
 Usually, you will use the `measurements` object to collect data and save it to the results as seen above:
