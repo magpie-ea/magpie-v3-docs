@@ -58,7 +58,7 @@ export default {
   name: 'MyComponent',
   data() {
     return {
-      name: 'Donald'
+      name: 'Theodor'
     }
   }
 }
@@ -85,7 +85,7 @@ export default {
   name: 'MyComponent',
   data() {
     return {
-      name: 'Donald'
+      name: 'Theodor'
     }
   }
 }
@@ -134,7 +134,7 @@ We can then use the "Greeter" component from within another component, as follow
 ```html
 <template>
     <div>
-        <Greeter name="Donald" />
+        <Greeter name="Theodor" />
     </div>
 </template>
 
@@ -161,7 +161,7 @@ export default {
     name: 'MyComponent',
     data() {
         return {
-            name: 'Donald'
+            name: 'Theodor'
         }
     }
 }
@@ -215,10 +215,10 @@ This component is a bit more complex. We define a prop, called `name`, which tak
 the name of the person to be greeted as a string. And in `data` we define the greeting we want
 to greet this person with. By default this is set to `'Hello'`.
 
-If we passed the string `'Donald'` to the prop, the message would then read: 'Hello Donald'.
+If we passed the string `'Theodor'` to the prop, the message would then read: 'Hello Theodor'.
 
 However, in the template, we listen to clicks on the heading. When the user clicks,
-we change the variable `greeting` to `'Bye'`, and now the heading reads 'Bye Donald'.
+we change the variable `greeting` to `'Bye'`, and now the heading reads 'Bye Theodor'.
 
 ## Defining methods
 To avoid having to squeeze our code inside these @-declarations, we can define
@@ -253,7 +253,7 @@ export default {
 </script>
 ```
 
-Again, we listen to a click on the heading, which initially reads e.g. 'Hello Donald' (depending on the name prop, of course).
+Again, we listen to a click on the heading, which initially reads e.g. 'Hello Theodor' (depending on the name prop, of course).
 However, we set a method as the listener for the `click` event. When the user clicks,
 the `changeGreeting` method will be called, which then changes the greeting to `'Bye'`. Notice that we have to use the magic `this` variable to access the variable inside methods.
 
@@ -300,7 +300,7 @@ From within a component that uses the Greeter component, we can now listen for t
 ```html
 <template>
     <div>
-        <Greeter :name="'Donald'" @click="onClick"/>
+        <Greeter :name="'Theodor'" @click="onClick"/>
     </div>
 </template>
 
@@ -309,7 +309,7 @@ export default {
   name: 'MyComponent',
   methods: {
     onClick(event) {
-      // Do something, when Donald is clicked.
+      // Do something, when Theodor is clicked.
     }
   }
 }
@@ -365,7 +365,7 @@ that our variable sayHello will be updated when the Greeter component sends an u
 ```html
 <template>
     <div>
-        <Greeter :name="'Donald'" :hello.sync="sayHello" />
+        <Greeter :name="'Theodor'" :hello.sync="sayHello" />
     </div>
 </template>
 
@@ -411,7 +411,7 @@ as a child of the Greeter component.
 <template>
     <div>
         <Greeter>
-            <i>Donald</i>
+            <i>Theodor</i>
         </Greeter>
     </div>
 </template>
@@ -423,11 +423,11 @@ export default {
 </script>
 ```
 
-Here we pass the HTML partial `<i>Donald</i>`, which renders `'Donald'` in italic.
+Here we pass the HTML partial `<i>Theodor</i>`, which renders `'Theodor'` in italic.
 
 The Greeter component will then render
 
-> <h1>hello *Donald*</h1>
+> <h1>hello *Theodor*</h1>
 
 By default, children will be put into the `#default` slot. A component may also define multiple slots.
 These will then get names.
@@ -455,7 +455,7 @@ can then fill those slots as follows.
     <div>
         <Greeter>
             <template #person>
-                <b>Donald</b>
+                <b>Theodor</b>
             </template>
             <template #bio>
                 <p>The 45th president of the United States.</p>
@@ -482,7 +482,7 @@ which allow you to render elements conditionally and iterate over them, respecti
 <template>
     <div>
         <h1>hello {{ name }}</h1>
-        <img v-if="name === 'Donald'" src="donald.jpg" />
+        <img v-if="name === 'Theodor'" src="theodor.jpg" />
     </div>
 </template>
 
@@ -499,7 +499,7 @@ export default {
 </script>
 ```
 
-Here, we only render the image if the value of `name` equals `"Donald"`. As you might have guessed, `v-if` also allows arbitrary JavaScript expressions.
+Here, we only render the image if the value of `name` equals `"Theodor"`. As you might have guessed, `v-if` also allows arbitrary JavaScript expressions.
 
 You can also use `v-else` and `v-else-if` to catch alternative conditions. You can use as many instances of `v-else-if` as you need or omit it directly.
 
@@ -507,7 +507,7 @@ You can also use `v-else` and `v-else-if` to catch alternative conditions. You c
 <template>
     <div>
         <h1>hello {{ name }}</h1>
-        <img v-if="name === 'Donald'" src="donald.jpg" />
+        <img v-if="name === 'Theodor'" src="theodor.jpg" />
         <img v-else-if="name === 'Hillary'" src="hillary.jpg" />
         <img v-else src="person.jpg" />
     </div>
@@ -541,7 +541,7 @@ export default {
   name: 'MyComponent',
   data() {
     return {
-      names: ['Donald', 'Hillary', 'Joe', 'Barack']
+      names: ['Theodor', 'Hillary', 'Joe', 'Barack']
     }
   }
 }
@@ -551,7 +551,7 @@ In every iteration, we create a new `<h1>` element and the variable `name` will 
 
 This will render the following:
 
-> <h1>hello Donald</h1>
+> <h1>hello Theodor</h1>
 > <h1>hello Hillary</h1>
 > <h1>hello Joe</h1>
 > <h1>hello Barack</h1>
@@ -575,7 +575,7 @@ export default {
   name: 'MyComponent',
   data() {
     return {
-      names: ['Donald', 'Hillary', 'Joe', 'Barack']
+      names: ['Theodor', 'Hillary', 'Joe', 'Barack']
     }
   }
 }
@@ -593,10 +593,10 @@ For example, instead of adding the same condition to multiple elements...
 <template>
     <div>
         <h1>hello {{ name }}</h1>
-        <blockquote v-if="name === 'Donald'">
+        <blockquote v-if="name === 'Theodor'">
             A duck in a comic.
         </blockquote>
-        <img src="donald.jpg" v-if="name === 'Donald'" />
+        <img src="theodor.jpg" v-if="name === 'Theodor'" />
     </div>
 </template>
 
@@ -619,11 +619,11 @@ export default {
 <template>
     <div>
         <h1>hello {{ name }}</h1>
-        <template v-if="name === 'Donald'">
+        <template v-if="name === 'Theodor'">
             <blockquote>
                 A duck in a comic.
             </blockquote>
-            <img src="donald.jpg" />
+            <img src="theodor.jpg" />
         </template>
     </div>
 </template>
@@ -737,7 +737,7 @@ Another advantage of CSS classes is that we can easily apply a set of styles con
 ```html
 <template>
     <div>
-        <h1 :class="{ 'greeter-heading': true, 'big-text': name === 'Donald' }">hello {{ name }}</h1>
+        <h1 :class="{ 'greeter-heading': true, 'big-text': name === 'Theodor' }">hello {{ name }}</h1>
     </div>
 </template>
 
@@ -768,7 +768,7 @@ export default {
 We can use the colon prefix for our `class` attribute to be able to pass in JavaScript expressions. This way,
 we can pass in a JavaScript object whose keys are CSS class names, with the associated values indicating whether the class should be applied or not.
 
-In this example, we only apply the class `big-text` if the `Greeter` component was created with the name `'Donald'`.
+In this example, we only apply the class `big-text` if the `Greeter` component was created with the name `'Theodor'`.
 
 ## More
 There's much more to learn about Vue.js. If you are curious, head over to [the official guide](https://vuejs.org/v2/guide/syntax.html).
