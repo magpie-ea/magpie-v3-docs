@@ -316,6 +316,72 @@ export default {
 </script>
 ```
 
+## Syncing properties
+Properties can be used to define inputs for a component. Events can be used to pass data back up the component tree.
+We often want components to manipulate data for us and pass it back up, for example with a text input.
+While we can use properties and events in the conventional way for this, Vue.js has a special built-in syntax to
+deal with this situation.
+
+```html
+<template>
+    <div>
+        <h1 @click="changeGreeting">{{ hello? 'Hello' : 'Goodbye' }} {{name}}</h1>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Greeter',
+    props: {
+        name: {
+          type: String,
+          required: true,
+        },
+        hello: {
+            type: Boolean,
+            required: true,
+        }
+    },
+    methods: {
+        changeGreeting(event) {
+            this.$emit('update:hello', !this.hello)
+        }
+    }
+}
+</script>
+```
+
+Here, we add a second prop for our Greeter component which is a boolean value indicating whether we want to say 'Hello' or 'Goodbye'.
+
+The complex-looking expression in the template is simply a ternary operator acting as an inline if-else statement: `hello? 'Hello' : 'Goodbye'`
+means "If hello is true, insert 'Hello', otherwise insert 'Goodbye'".
+
+Once the user clicks on the text, the changeGreeting method is called, which this time only sends an event with the new value for our `hello` property,
+inverting the previous value of `hello`.
+
+In our upstream component `MyComponent`, we can now use the `.sync` modifier when setting the `hello` property. This will make sure
+that our variable sayHello will be updated when the Greeter component sends an update and rerender it with the new value.
+
+```html
+<template>
+    <div>
+        <Greeter :name="'Donald'" :hello.sync="sayHello" />
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'MyComponent',
+  data() {
+      return {
+          sayHello: true
+      }
+  }
+}
+</script>
+```
+
+
 ## Component slots
 Component props allow passing JavaScript values as options to Components.
 However, sometimes you want to pass a HTML snippets to another component.
