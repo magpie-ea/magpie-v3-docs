@@ -96,7 +96,7 @@ export default {
 
 This will render
 
-> <h1>hello DONALD</h1>
+> <h1>hello THEODOR</h1>
 
 ## Component props
 To make components even more useful, we usually want to generalize them.
