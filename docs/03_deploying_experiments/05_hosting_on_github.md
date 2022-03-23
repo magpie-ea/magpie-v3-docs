@@ -9,6 +9,3 @@ This means, when you push your project to GitHub, it will automatically build th
 to the `gh-pages` branch for you. Once you enable GitHub Pages for your repository, GitHub will make the latest version of the `gh-pages`
 branch available publicly at `https://<username>.github.io/<repo-name>/`. As you commit new changes to your main branch,
 the workflow will keep your `gh-pages` branch up-to-date.
-
-Note: For this to work, the project name in your `package.json` file needs to match your repository name on GitHub.
-By default, the name in your `package.json` is the same you entered when running `magpie new`.
