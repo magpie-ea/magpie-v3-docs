@@ -7,7 +7,7 @@ Wrapper screens allow you to display information about the experiment or ask for
 about the participants.
 
 ### Instruction screen
-The [InstructionScreen](https://magpie-reference.netlify.app/#instructionscreen) component displays informational
+The [InstructionScreen](https://reference.magpie-experiments.org/#instructionscreen) component displays informational
 text or HTML along with a simple "Next" button below it.
 
 ```html
@@ -22,10 +22,10 @@ Trial screens are the parts of your experiment which are (usually) instantiated 
 trials of your main experimental task, for example). They usually collect the data and often rely on
 additional information (e.g. pictures to be displayed, or questions and answer options).
 
-Magpie has some ready-made trial screens built-in for simple experimental trials, all [listed in the reference](https://magpie-reference.netlify.app/#trial-screens).
+Magpie has some ready-made trial screens built-in for simple experimental trials, all [listed in the reference](https://reference.magpie-experiments.org/#trial-screens).
 
 ### Forced choice
-The [ForcedChoiceScreen](https://magpie-reference.netlify.app/#forcedchoicescreen) component displays a context,
+The [ForcedChoiceScreen](https://reference.magpie-experiments.org/#forcedchoicescreen) component displays a context,
 and a question to be answered in a forced choice task, with a variable number of options.
 Choices are made by clicking on one of the buttons.
 
@@ -38,7 +38,7 @@ Choices are made by clicking on one of the buttons.
 ```
 
 ### Image selection
-The [ImageSelectionScreen](https://magpie-reference.netlify.app/#imageselectionscreen) realizes another forced choice task, by presenting multiple pictures (arranged horizontally) and
+The [ImageSelectionScreen](https://reference.magpie-experiments.org/#imageselectionscreen) realizes another forced choice task, by presenting multiple pictures (arranged horizontally) and
 requiring a click on one of the pictures.
 
 ```html
@@ -53,7 +53,7 @@ requiring a click on one of the pictures.
 ```
 
 ### Text box input
-The [TextareaScreen](https://magpie-reference.netlify.app/#textareascreen) requires users to type in text freely in a text box.
+The [TextareaScreen](https://reference.magpie-experiments.org/#textareascreen) requires users to type in text freely in a text box.
 ```html
 <TextareaScreen
     question="What do you usually eat?"
@@ -71,7 +71,7 @@ Built-in trial screens usually have 5 phases in the following order:
 4. A response phase with an optional timeout, allowing the participant to respond
 5. A feedback phase where you can give feedback to the participant (optional)
 
-(If you'd like to implement a custom view with these phases, you can use [LifecycleScreen](https://magpie-reference.netlify.app/#lifecyclescreen).)
+(If you'd like to implement a custom view with these phases, you can use [LifecycleScreen](https://reference.magpie-experiments.org/#lifecyclescreen).)
 
 Let's have a look at this using the ForcedChoiceScreen as an example.
 
@@ -232,14 +232,14 @@ If you would like to provide feedback, after the participant has responded, you 
 Here, we check the response the participant gave and display an indicator of whether it is right or wrong.
 The user then has the possibility to go to the next screen with the click of a button.
 
-For more details on the available parameters, [refer to the reference on the LifecycleScreen](https://magpie-reference.netlify.app/#lifecyclescreen).
+For more details on the available parameters, [refer to the reference on the LifecycleScreen](https://reference.magpie-experiments.org/#lifecyclescreen).
 
 
 ## Special screens
-All special screens are [listed in the reference](https://magpie-reference.netlify.app/#screens).
+All special screens are [listed in the reference](https://reference.magpie-experiments.org/#screens).
 
 ### Post Test Screen
-The [PostTestScreen](https://magpie-reference.netlify.app/#posttestscreen) component asks for additional information
+The [PostTestScreen](https://reference.magpie-experiments.org/#posttestscreen) component asks for additional information
 about the participant. By default, it will ask for age, gender, level of education, native languages and further comments.
 
 ```html
@@ -261,17 +261,17 @@ If you would like to ask for additional information, you can use the component's
 ```
 
 ### SubmitResultsScreen
-The [SubmitResultsScreen](https://magpie-reference.netlify.app/#submitresultsscreen) is usually placed at the end
+The [SubmitResultsScreen](https://reference.magpie-experiments.org/#submitresultsscreen) is usually placed at the end
 of an experiment to bundle up the recorded data and send it to the server. Once that is done, it will thank the participant for you.
 If you put your experiment into debug mode in the magpie configuration, this screen will behave like
-[DebugResultsScreen](https://magpie-reference.netlify.app/#debugresultsscreen) and will not submit any data.
+[DebugResultsScreen](https://reference.magpie-experiments.org/#debugresultsscreen) and will not submit any data.
 
 ```html
 <SubmitResultsScreen />
 ```
 
 ### DebugResultsScreen
-The [DebugResultsScreen](https://magpie-reference.netlify.app/#debugresultsscreen) can be placed at the end of an
+The [DebugResultsScreen](https://reference.magpie-experiments.org/#debugresultsscreen) can be placed at the end of an
 experiment instead of the SubmitResultsScreen. Instead of submitting the recorded data to the server, it will display the data
 and offer a button for download.
 

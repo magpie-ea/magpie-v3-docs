@@ -1,6 +1,6 @@
 # Canvas
 Apart from using static files as stimuli, like image, audio or video files,
-you can also dynamically draw visual stimuli using the [Canvas](http://magpie-reference.netlify.app/#canvas) components.
+you can also dynamically draw visual stimuli using the [Canvas](http://reference.magpie-experiments.org/#canvas) components.
 
 ## CanvasStage and CanvasLayer
 In order to draw anything you first need a canvas stage, which lays out the canvas on the web page.

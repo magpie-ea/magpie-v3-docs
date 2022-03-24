@@ -39,7 +39,7 @@ can thus also be assigned a unique tri-tuple, indicating their collaborator numb
 Before participants can interact with other participants in their chain, the browser needs to connect to the magpie server
 and wait for other participants.
 
-This routine is conveniently encapsulated in the [ConnectInteractiveScreen](https://magpie-reference.netlify.app/#connectinteractivescreen)
+This routine is conveniently encapsulated in the [ConnectInteractiveScreen](https://reference.magpie-experiments.org/#connectinteractivescreen)
 component, which by default displays the following text:
 
 > This screen sets up the socket connection for the interactive experiment and waits for other
@@ -59,7 +59,7 @@ This screen will jump to the next screen in your experiment once a sufficient nu
 Interactivity is enabled by a socket connection from each participant to the server.
 
 ### Chat
-To allow participants to communicate, you can add the [Chat](https://magpie-reference.netlify.app/#chat) component
+To allow participants to communicate, you can add the [Chat](https://reference.magpie-experiments.org/#chat) component
 to your screens, which uses this socket under the hood:
 
 ```html
@@ -75,7 +75,7 @@ to your screens, which uses this socket under the hood:
 ```
 
 ## Socket
-In order to build more complex interactions, you can use [magpie's socket](https://magpie-reference.netlify.app/#Socket)
+In order to build more complex interactions, you can use [magpie's socket](https://reference.magpie-experiments.org/#Socket)
 directly.
 
 This is a simplified Chat component that showcases how magpie's socket works:
@@ -137,13 +137,13 @@ Here, we define an array of messages in our component data. Whenever a socket ev
 it to the array of messages, as defined by the `chat_message` function in the `socket` option of our component.
 
 To send our own messages, we have a `send` method, which takes the value of the input field and broadcasts a `chat_message` event
-to all other participants in our chain using [$magpie.socket.broadcast](https://magpie-reference.netlify.app/#Socket+broadcast).
+to all other participants in our chain using [$magpie.socket.broadcast](https://reference.magpie-experiments.org/#Socket+broadcast).
 
 The template then renders all chat messages and displays the input field for entering messages.
 
 ### Active participants
 If you would like to know how many participants are currently active in the current screen, you can watch
-[$magpie.socket.active](https://magpie-reference.netlify.app/#Socket+active), which is an array with the IDs of all participants currently
+[$magpie.socket.active](https://reference.magpie-experiments.org/#Socket+active), which is an array with the IDs of all participants currently
 active in the current screen.
 
 ## Iterated experiments
@@ -153,7 +153,7 @@ successively, similar to the game of Telephone.
 
 ### Waiting for the previous iteration
 Similar to how we need for all participants to arrive in an interactive experiment, in an iterated experiment, we need to
-wait for the results of previous iteration. This routine is encapsulated in [AwaitIteratedResultScreen](https://magpie-reference.netlify.app/#awaitIteratedresultscreen).
+wait for the results of previous iteration. This routine is encapsulated in [AwaitIteratedResultScreen](https://reference.magpie-experiments.org/#awaitIteratedresultscreen).
 
 ```html
 <AwaitIteratedResultScreen>
@@ -165,13 +165,13 @@ This screen will jump to the next screen in your experiment once the results of 
 
 ### Accessing previous results
 Once the AwaitIteratedResultScreen has yielded to the next screen, the results from the previous iteration are available
-in [$magpie.socket.lastIterationResults](https://magpie-reference.netlify.app/#Socket+lastIterationResults).
+in [$magpie.socket.lastIterationResults](https://reference.magpie-experiments.org/#Socket+lastIterationResults).
 
-The iteration number is available in [$magpie.socket.generation](https://magpie-reference.netlify.app/#Socket+generation).
+The iteration number is available in [$magpie.socket.generation](https://reference.magpie-experiments.org/#Socket+generation).
 
 ## Balancing randomization
 Magpie's complex experiments can also be utilized to implement balanced randomization.
 
 In this case, we use the *condition* to let the magpie backend sort participants into groups, but set *generations* and *chains*
-to `1` for this experiment. After [ConnectInteractiveScreen](https://magpie-reference.netlify.app/#connectinteractivescreen) has
+to `1` for this experiment. After [ConnectInteractiveScreen](https://reference.magpie-experiments.org/#connectinteractivescreen) has
 yielded to the next screen, we can access the assigned condition in `$magpie.socket`.

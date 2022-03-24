@@ -24,5 +24,5 @@ Some features of magpie include:
 ## This site
 This site serves the manual, which will guide you through the various features.
 
-There is also [the magpie reference](https://magpie-reference.netlify.app/), a comprehensive documentation
+There is also [the magpie reference](https://reference.magpie-experiments.org/), a comprehensive documentation
 of magpie's components and their interfaces. It includes code examples that can be edited live to try out the components.

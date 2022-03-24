@@ -181,7 +181,7 @@ When displaying media on the web, it is usually only loaded by the browser the s
 In an experiment that depends on response times, this is not ideal, so we often want to preload media assets before
 they are displayed.
 
-For this, the [Experiment](https://magpie-reference.netlify.app/#experiment) component has various `assets` props:
+For this, the [Experiment](https://reference.magpie-experiments.org/#experiment) component has various `assets` props:
 
 ```html
 <template>
@@ -209,5 +209,5 @@ export default {
 </script>
 ```
 
-Here, we extract all pictures from our trial data and pass them to the [Experiment](https://magpie-reference.netlify.app/#experiment) component via the `image-assets` prop.
+Here, we extract all pictures from our trial data and pass them to the [Experiment](https://reference.magpie-experiments.org/#experiment) component via the `image-assets` prop.
 This will cause all passed image paths to be loaded with the initial page load.
