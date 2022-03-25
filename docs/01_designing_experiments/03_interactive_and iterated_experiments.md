@@ -8,13 +8,13 @@ between different realizations of the same experiment.
 
 Complex experiments have three defining characteristics:
 
-* Conditions
+* Variants
 * Chains
 * Generations
 * Collaborators
 
   <img src="/images/getting_started/complex-experiments.png" />
-An example experiment with 2 collaborators per generation, 3 generations per chain, and 2 groups per condition and 2 conditions
+An example experiment with 2 collaborators per generation, 3 generations per chain, and 2 groups per variant and 2 variants
 
 ### Collaborators
 The number of collaborators indicates how many participants are in one session interacting live together. In an experiment where
@@ -27,13 +27,13 @@ experiment (think Game of telephone) there would be one generation for each step
 ### Chains
 A chain contains a line of generations. For example in an iterated narration experiment, every chain would develop their story independently.
 
-### Conditions
-A condition contains multiple chains and defines the independent variables for those chains. In an iterated narration experiment
-conditions would be different initial stories, for example.
+### Variants
+A variant contains multiple chains and defines the independent variables for those chains. In an iterated narration experiment
+variants would be different initial stories, for example.
 
 ## The experiment tuple
 These characteristics indicate the total number of required participants, obtained by multiplying them. Each participant
-can thus also be assigned a unique tri-tuple, indicating their collaborator number, generation number and chain number and condition number.
+can thus also be assigned a unique tri-tuple, indicating their collaborator number, generation number and chain number and variant number.
 
 ## Building interactive experiments
 Before participants can interact with other participants in their chain, the browser needs to connect to the magpie server
@@ -172,7 +172,7 @@ The iteration number is available in [$magpie.socket.generation](https://referen
 ## Balancing randomization
 Magpie's complex experiments can also be utilized to implement balanced randomization.
 
-In this case, we use the *condition* to let the magpie backend sort participants into groups. *chains* should then be the
-number of participants per condition, and *generations* can be `1` for this experiment (unless you want to create an iterated experiment).
+In this case, we use the *variant* to let the magpie backend sort participants into groups. *chains* should then be the
+number of participants per variant, and *generations* can be `1` for this experiment (unless you want to create an iterated experiment).
 After [ConnectInteractiveScreen](https://reference.magpie-experiments.org/#connectinteractivescreen) has
-yielded to the next screen, we can access the assigned condition in `$magpie.socket`.
+yielded to the next screen, we can access the assigned variant in `$magpie.socket`.
