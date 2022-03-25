@@ -172,6 +172,7 @@ The iteration number is available in [$magpie.socket.generation](https://referen
 ## Balancing randomization
 Magpie's complex experiments can also be utilized to implement balanced randomization.
 
-In this case, we use the *condition* to let the magpie backend sort participants into groups, but set *generations* and *chains*
-to `1` for this experiment. After [ConnectInteractiveScreen](https://reference.magpie-experiments.org/#connectinteractivescreen) has
+In this case, we use the *condition* to let the magpie backend sort participants into groups. *chains* should then be the
+number of participants per condition, and *generations* can be `1` for this experiment (unless you want to create an iterated experiment).
+After [ConnectInteractiveScreen](https://reference.magpie-experiments.org/#connectinteractivescreen) has
 yielded to the next screen, we can access the assigned condition in `$magpie.socket`.
