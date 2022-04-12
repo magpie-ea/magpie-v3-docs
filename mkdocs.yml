@@ -17,6 +17,7 @@ repo_url: https://github.com/magpie-ea/magpie-v3-docs/
 
 nav:
 - Home: 'index.md'
+- Reference ➡: 'https://reference.magpie-experiments.org/'
 - Getting started:
   - Installation: '00_getting_started/01_installation.md'
   - Basics: '00_getting_started/02_basics.md'
