@@ -7,6 +7,11 @@ You can install magpie on a server for online use or locally on your machine. We
 The magpie server app can be hosted on any hosting service or your own server. The process for
 installation on [Heroku](https://www.heroku.com/) is described [in the README of the backend project](https://github.com/magpie-ea/magpie-backend#deployment-with-heroku).
 
+## Installation using docker
+
+If you are already familiar with [docker and docker-compose](https://docs.docker.com/), the magpie backend is also available
+as a ready-to-install docker container. You can find more details about this on the GitHub repository: <https://github.com/magpie-ea/magpie-docker/>
+
 ## Installation locally
 
 The first-time installation requires an internet connection. After it is finished, the server can be launched offline.
