@@ -1,6 +1,9 @@
 # Installation
 
-You can install magpie on a server for online use or locally on your machine. We explain here how to use Heroku as a hosting service for online use, and how to set up the server app locally. 
+You can install magpie on a server for online use or locally on your machine.
+
+The latest version of magpie-base (v3.x) requires magpie-backend v2.x to run on the server to function properly. Previous iterations
+of magpie, require magpie-backend v1.x but will usually also run with magpie-backend v2.x.
 
 ## Installation on Heroku
 
