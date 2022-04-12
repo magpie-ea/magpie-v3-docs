@@ -4,8 +4,8 @@
 
 Magpie is composed of these parts:
 
- 1. **a server-side part** that allows managing and configuring experiments and stores experiment results; and
- 2. **a client-side part** based on [Vue.js](https://vuejs.org/) that runs in the participant's browser and provides:
+ 1. [**a server-side part**](https://github.com/magpie-ea/magpie-backend) that allows managing and configuring experiments and stores experiment results; and
+ 2. [**a client-side part**](https://github.com/magpie-ea/magpie-base) based on [Vue.js](https://vuejs.org/) that runs in the participant's browser and provides:
      * a technical and conceptual framework for building experiments; and
      * a catalogue of components that can be used in experiments.
    
