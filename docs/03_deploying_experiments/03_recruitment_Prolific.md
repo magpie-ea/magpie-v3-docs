@@ -8,7 +8,7 @@ Go to the Prolific website and create a new experiment. Make a note of the **com
 
 <img src="https://raw.githubusercontent.com/magpie-ea/ProlificDeployTemplate/master/images/readme/prolific_url.png" width="100%" >
 
-Enter the completion URL in the field `prolificURL` when creating your experiment, as follows:
+Enter the completion URL in the field `completionUrl` when creating your experiment, as follows:
 
 ```javascript
 export default {
