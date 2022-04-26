@@ -98,6 +98,69 @@ This will render
 
 > <h1>hello THEODOR</h1>
 
+## Computed data
+As we've seen in the last section, we can compute arbitrary JavaScript inside of template tags. However, we often
+want to use the same values at multiple places in the code and we would rather don't want to repeat ourselves. This is
+where computed data comes into play.
+
+```html
+<template>
+    <div>
+        <h1>hello {{ name.toUpperCase() }}</h1>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'MyComponent',
+  data() {
+    return {
+      name: 'Theodor'
+    }
+  }
+}
+</script>
+```
+
+Let's have a look at this example again. Turning a string into an upper case representation is luckily not very
+resource-heavy, but we could very well imagine other transformations that are.
+
+```html
+<template>
+    <div>
+        <h1>hello {{ upperCaseName }}</h1>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'MyComponent',
+  data() {
+    return {
+      name: 'Theodor'
+    }
+  },
+  computed: {
+      upperCaseName() {
+          return this.name.toUpperCase()
+      }
+  }  
+}
+</script>
+```
+
+Here we define a computed variable based on our name variable and we now use the computed variable directly in the template
+as if it was a regular variable. This way
+
+1. we don't have to repeatedly write the same code, but can put it in a computed variable
+2. we make sure to only execute code when necessary
+
+The second point is a very nice bonus: `upperCaseName` is only recomputed when the value of `name` changes, allowing us to cache
+heavy computations while automatically recomputing these values when necessary.
+
+**Note:** When writing computed variables, make sure to not add any side effects to them. Ie. we should not alter any other
+variables in this computation or even `name` itself, because we would end up in infinite loops and hard to track down rabbit holes.
+
 ## Component props
 To make components even more useful, we usually want to generalize them.
 So, we don't want a component for each person that can be greeted,
