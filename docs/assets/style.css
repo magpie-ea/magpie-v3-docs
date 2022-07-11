@@ -25,3 +25,7 @@ table {
     background-repeat: no-repeat;
     padding-top: 180px;
 }
+
+a[href^="https://reference.magpie-experiments.org"]::before {
+    content: "📕 ";
+}
