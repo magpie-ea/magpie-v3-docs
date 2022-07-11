@@ -29,7 +29,7 @@ In a trial screen you can start collecting eyetracking data by calling [$magpie.
 After the trial you can retrieve the tracking data using [$magpie.eyetracking.getEyeTrack()](https://reference.magpie-experiments.org/#Eyetracking+getEyeTrack).
 
 For convenience, you may also use [EyetrackingStart](https://reference.magpie-experiments.org/#eyetrackingstart) in your
-trial screens to start a new mouse track once the component is rendered (it is invisible).
+trial screens to start a new eye track once the component is rendered (it is invisible).
 
 ## Fullscreen
 For mouse and eye tracking it can be beneficial for the experiment to take up as much screen estate as possible.
