@@ -44,6 +44,8 @@ src/
 ```
 
 ### The `Experiment` component
+<img src="../../images/getting_started/experiments_schema.png" alt="Experiments schema" />
+
 The structure of the component tree resembles the above conceptual schema of an experiment, using screens and slides, discussed in Section [Screens & Slides](/00_getting_started/02_basics/#screens-slides).
 
 The root component of the component tree  will always be the one in file `App.vue` in your project `src` directory. 
