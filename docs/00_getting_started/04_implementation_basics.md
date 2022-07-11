@@ -10,8 +10,14 @@ By default, a magpie project has the following file structure:
 .eslintrc.js
 .gitignore
 .prettierrc.js
+
+# These files are related to npm
+# and list the dependencies that we need to build and run our experiments
 package.json
 package-lock.json
+
+# This is the vue.js configuration
+# Usually you won't need to touch this file
 vue.config.js
 
 # This is where npm installs the dependencies of your project
