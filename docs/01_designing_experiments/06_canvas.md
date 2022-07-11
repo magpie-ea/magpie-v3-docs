@@ -13,13 +13,13 @@ Using the `config` prop, you can specify the dimensions of the new canvas:
 Inside a stage, the shapes you draw are organized in layers that come one after the other, similar
 to photo editing software. So, the children in your CanvasStage are going to be `CanvasLayer` components.
 
-### Drawing shapes
+## Drawing shapes
 Inside your layers, you can use the following built-in shapes to draw on your canvas. `x` and `y` are either the top left
 coordinates of the shape (in case of rectangular shapes), or the center coordinates of the shape (in case of radial shapes).
 
 All canvas components are reactive, meaning, whenever you change the config values, the drawing will update in real-time.
 
-#### CanvasCircle
+### CanvasCircle
 ```html
 <CanvasCircle :config="{
         x: 100,
@@ -30,7 +30,7 @@ All canvas components are reactive, meaning, whenever you change the config valu
         strokeWidth: 2 }" />
 ```
 
-#### CanvasRect
+### CanvasRect
 ```html
 <CanvasRect :config="{
     x: 230,
@@ -42,7 +42,7 @@ All canvas components are reactive, meaning, whenever you change the config valu
     strokeWidth: 2 }"/>
 ```
 
-#### CanvasStar
+### CanvasStar
 ```html
 <CanvasStar :config="{
         x: 500,
@@ -70,7 +70,7 @@ All canvas components are reactive, meaning, whenever you change the config valu
         lineJoin: 'round'}" />
 ```
 
-### Canvas events
+## Events
 You can add all normal event listeners to all shapes, as follows:
 
 ```html
