@@ -26,6 +26,10 @@ table {
     padding-top: 180px;
 }
 
-a[href^="https://reference.magpie-experiments.org"]::before {
+.document a[href^="https://reference.magpie-experiments.org"]::before {
     content: "📕 ";
+}
+
+.document a[href^="https://magpie-experiments.org"]::before {
+    content: "🔖 ";
 }
