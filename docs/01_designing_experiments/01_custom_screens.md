@@ -485,3 +485,54 @@ it is present in every result row of our hypothetical experiment:
 |615|Yes|20|35|75|
 
 This is useful for demographic data like age or level of education.
+
+You can use the [Record](https://reference.magpie-experiments.org/#record) component for this as well, by using the global
+property:
+
+```html
+<Screen>
+    <Slide>
+        <RatingInput
+                right="very appealing"
+                left="very unappealing"
+                :response.sync="$magpie.measurements.appetite" />
+        <RatingInput
+                right="very large"
+                left="very small"
+                :response.sync="$magpie.measurements.portion" />
+        <RatingInput
+                right="very healthy"
+                left="very unhealthy"
+                :response.sync="$magpie.measurements.healthy" />
+
+        <Record
+                global
+                :data="{
+                 maxAppetite: 100,
+                 maxPortion: 100,
+                 maxHealthy: 100
+                }"
+            />
+        
+        <button @click="$magpie.nextScreen()">Submit</button>
+    </Slide>
+</Screen>
+```
+
+### Using Record in built-in screens
+You can also use the [Record](https://reference.magpie-experiments.org/#record) component in built-in screens. You only need to make sure
+to declare it inside one of the named slots, e.g. `#stimulus`. 
+
+```html
+<CompletionScreen ...>
+    <template #stimulus>
+        <Record
+                :data="{
+                 maxAppetite: 100,
+                 maxPortion: 100,
+                 maxHealthy: 100
+                }"
+            />
+    </template>
+</CompletionScreen>
+```
