@@ -30,6 +30,6 @@ table {
     content: "📕 ";
 }
 
-.document a[href^="https://magpie-experiments.org"]::before {
-    content: "🔖 ";
+.document a:not([href^="http"])::before {
+    content: "👉 ";
 }
