@@ -13,7 +13,7 @@ Required are
 To create a new project, go to a directory of your choice and run
 
 ```bash
-npx magpie-base new "project-name"
+npx magpie-base@latest new "project-name"
 ```
 
 magpie will create a new directory for you with a ready-to-run sample project.
