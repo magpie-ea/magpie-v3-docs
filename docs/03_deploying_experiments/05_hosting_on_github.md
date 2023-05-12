@@ -8,7 +8,7 @@ Magpie's project template (the one you get, when running `magpie new`) already c
 This means, when you push your project to GitHub, it will automatically build the experiment and commit the output
 to the `gh-pages` branch for you. Once you enable GitHub Pages for your repository, GitHub will make the latest version of the `gh-pages`
 branch available publicly at `https://<username>.github.io/<repo-name>/`. As you commit new changes to your main branch,
-the workflow will keep your `gh-pages` branch up-to-date.
+the workflow will keep your `gh-pages` branch up-to-date. (Make sure that, in your GitHub repository settings under "Pages" you select "Deploy from a branch" and select the `gh-pages` branch.)
 
 ## Multi-experiment repositories
 
