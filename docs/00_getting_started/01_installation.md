@@ -6,8 +6,8 @@ Node.js is a runtime for JavaScript, a language that predominantly runs in the b
 
 Required are
 
-* Node.js v14.x or v16.x
-* npm v7 or v8
+* Node.js v18.x
+* npm v8 or later
 
 ## Creating a project
 To create a new project, go to a directory of your choice and run
