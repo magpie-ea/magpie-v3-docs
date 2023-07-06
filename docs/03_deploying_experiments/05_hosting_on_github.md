@@ -4,11 +4,29 @@
 publishing your experiment code as Open Source. In addition to hosting source code, GitHub also allows
 hosting websites using its [GitHub Pages](https://pages.github.com/) feature.
 
-Magpie's project template (the one you get, when running `magpie new`) already contains a working GitHub Workflow for deploying to GitHub Pages.
-This means, when you push your project to GitHub, it will automatically build the experiment and commit the output
-to the `gh-pages` branch for you. Once you enable GitHub Pages for your repository, GitHub will make the latest version of the `gh-pages`
-branch available publicly at `https://<username>.github.io/<repo-name>/`. As you commit new changes to your main branch,
-the workflow will keep your `gh-pages` branch up-to-date. (Make sure that, in your GitHub repository settings under "Pages" you select "Deploy from a branch" and select the `gh-pages` branch.)
+Assuming that the experiment exists locally, but has not been added to
+GitHub:
+
+1. Create a repository on GitHub
+2. Set read/write permissions for GitHub workflows
+   - GitHub.com -> in the repo -> settings -> actions -> general ->
+   workflow permissions -> check R/W persmissions -> save
+   - otherwise the GH-actions scripts halts with an error
+3. initialize the local repo with `git init`
+4. Commit everything that’s relevant (including `.github` folder) and push to GitHub
+5. Wait for the GitHub Action to finish (this will create a `gh-pages`
+   branch)
+6. On GitHub, go to settings -> pages and select to host GitHub Pages from
+   the branch `gh-pages`
+   - you must do this only *after* the Action has created
+   the `gh-pages` branch, otherwise GitHub Pages keeps serving a page
+   from your `main` branch (showing only your `README.md` file)
+7. After a while your page will appear under URL
+   `https://<username>.github.io/<repo-name>/`
+   - this URL will show on GitHub under settings -> pages only after one
+   more build (after one more commit to the repo, which will trigger a rerun
+   of the GitHub Action), but the site should be there even without a
+   second built
 
 ## Multi-experiment repositories
 
