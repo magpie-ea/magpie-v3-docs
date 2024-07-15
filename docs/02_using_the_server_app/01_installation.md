@@ -1,41 +1,88 @@
-# Installation
+(Please refer to the [magpie-backend Github repo](https://github.com/magpie-ea/magpie-backend) for the most up-to-date detailed instructions.)
 
-You can install magpie on a server for online use or locally on your machine.
+## Deploying the Server
 
-The latest version of magpie-base (v3.x) requires magpie-backend v2.x to run on the server to function properly. Previous iterations
-of magpie, require magpie-backend v1.x but will usually also run with magpie-backend v2.x.
+This section documents some methods one can use to deploy the server.
 
-## Installation on Heroku
+Previously, Heroku was the recommended way to deploy the server. However, it ceased support for its free plan. Gigalixir and Fly.io are listed below as potential alternatives.
 
-The magpie server app can be hosted on any hosting service or your own server. The process for
-installation on [Heroku](https://www.heroku.com/) is described [in the README of the backend project](https://github.com/magpie-ea/magpie-backend#deployment-with-heroku).
+### Deploying via Gigalixir
 
-## Installation using docker
+[Gigalixir](https://www.gigalixir.com) is a hosting service that offers a free tier. However, note that deploying the app once per month might be needed to avoid the app being temporarily shut down.
 
-If you are already familiar with [docker and docker-compose](https://docs.docker.com/), the magpie backend is also available
-as a ready-to-install docker container. You can find more details about this on the GitHub repository: <https://github.com/magpie-ea/magpie-docker/>
+```
+pip3 install gigalixir --user
+gigalixir signup
+gigalixir login
+# Replace [your-app-name] with the desired name.
+gigalixir create -n [your-app-name]
+gigalixir pg:create --free
+# Replace [your-app-name] with the desired name.
+gigalixir config:set PHX_HOST=[your-app-name].gigalixirapp.com
+gigalixir config:set PHX_SERVER=true
+# Replace with your desired auth username and password.
+gigalixir config:set AUTH_USERNAME=[your-auth-username]
+gigalixir config:set AUTH_PASSWORD=[your-password]
+git push -u gigalixir master
+```
 
-## Installation locally
+```
+HTTPoison.get(url, [], [proxy: {:socks5, String.to_charlist("server_domain"), port_num}, socks5_user: "username", socks5_pass: "password"])
+```
 
-The first-time installation requires an internet connection. After it is finished, the server can be launched offline.
+To deploy the app again after pulling in the latest updates:
 
-(Note that for local deployment, the default username is `default` and the default password is `password`. You can change them in `config/dev.exs`.)
+```
+# The `origin` git remote should point to the Github repo, while the `gigalixir` git remote points to the Fly.io repo.
+git pull origin master
+git push -u gigalixir master
+```
 
-### First time installation
+To force deploy the app (e.g. once per month) even without any changes:
 
-1. Install Docker from https://docs.docker.com/install/. You may have to launch the application once in order to let it install its command line tools. Ensure that it's running by typing `docker version` in a terminal (e.g., the Terminal app on MacOS or cmd.exe on Windows).
+```
+git commit --amend --no-edit
+git push --force -u gigalixir master
+```
 
-   Note:
+### Deploying via Fly.io
 
-   - Although the Docker app on Windows and Mac asks for login credentials to Docker Hub, they are not needed for local deployment . You can proceed without creating any Docker account/logging in.
-   - Linux users would need to install `docker-compose` separately. See relevant instructions at https://docs.docker.com/compose/install/.
+[Fly.io](https://fly.io/) is a hosting service that remains free as long as the app's monthly usage remains below [the allowance](https://fly.io/docs/about/pricing/#free-allowances). However, credit card information is needed upon signup.
 
-2. Ensure you have [Git](https://git-scm.com/downloads) installed. Clone the server repo with `git clone https://github.com/magpie-ea/magpie-backend.git` or `git clone git@github.com:magpie-ea/magpie-backend.git`.
 
-3. Open a terminal (e.g., the Terminal app on MacOS or cmd.exe on Windows), `cd` into the project directory just cloned via git.
+```
+brew install flyctl
+fly auth signup
+fly auth login
+# Do not proceed to deployment yet at the "whether to deploy" step.
+fly launch
+# Replace with your desired auth username and password.
+fly secrets set AUTH_USERNAME=[your-auth-username]
+fly secrets set AUTH_PASSWORD=[your-password]
+fly deploy
+```
 
-4. Run `docker-compose up` to launch the application every time you want to run the server. Wait until the line `web_1 | [info] Running MAGPIE.Endpoint with Cowboy using http://0.0.0.0:4000` appears in the terminal.
+To deploy the app again after pulling in the latest updates:
 
-5. Visit `localhost:4000` in your browser. You should see the server up and running.
+```
+# The `origin` git remote should point to the Github repo, while the `gigalixir` git remote points to the Fly.io repo.
+git pull origin master
+fly deploy
+```
 
-   Note: Windows 7 users who installed _Docker Machine_ might need to find out the IP address used by `docker-machine` instead of `localhost`. See [Docker documentation](https://docs.docker.com/get-started/part2/#build-the-app) for details.
+### Running the app locally
+
+To run the server app locally with `dev` environment, the following instructions could help. However, as the configuration of Postgres DB could be platform specific, relevant resources for [Postgres](https://www.postgresql.org/) could help.
+
+1. Install Postgres. Ensure that you have version 9.2 or greater (for its JSON data type). You can check the version with the command `psql --version`.
+
+2. Make sure that Postgres is correctly initialized as a service. If you installed it via Homebrew, the instructions should be shown on the command line. If you're on Linux, [the guide on Arch Linux Wiki](https://wiki.archlinux.org/index.php/PostgreSQL#Initial_configuration) could help.
+
+3. Run `mix deps.get; mix ecto.create; mix ecto.migrate` in the app folder.
+
+4. Run `mix assets.deploy` to deploy the frontend assets using `esbuild`.
+
+5. Run `cd ..; mix phx.server` to run the server on `localhost:4000`.
+
+6. Every time a database change is introduced with new migration files, run `mix ecto.migrate` again before starting the server.
+
